@@ -1,0 +1,43 @@
+@mixin flexCenter($direction, $justify) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: center;
+  text-align: center;
+}
+
+$mainGreen: #82ae46;
+
+.grid-container {
+  padding: 6rem;
+  .grid-item {
+    @include flexCenter(column, center);
+
+    .icon-container {
+      border-radius: 50%;
+      padding: 2rem;
+
+      .icon {
+        width: 70px;
+        height: 70px;
+      }
+
+      &:hover {
+        background-color: $mainGreen !important;
+      }
+    }
+
+    .title {
+      font-size: 15px;
+      font-family: "Poppins", Arial, sans-serif;
+      font-weight: 700;
+      margin: 8px 0;
+      text-transform: uppercase;
+    }
+
+    .description {
+      font-size: 15px;
+      color: #aaa;
+    }
+  }
+}
