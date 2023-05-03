@@ -1,70 +1,41 @@
+import { createSlice } from "@reduxjs/toolkit";
 import { apiRequests } from "../../Services/Axios/api";
+import { createAsyncThunk } from "@reduxjs/toolkit";
 
-// get all products
-const getAllProducs = {
-  all: "GET_ALL_PRODUCTS",
-  success: "GET_ALL_PRODUCTS_SUCCESS",
-  error: "GET_ALL_PRODUCTS_ERROR",
-  filter: "FILTER_PRODUCTS",
-  category: "SELECTED_CATEGORY",
-};
+export const fetchProducts = createAsyncThunk("fetchProducts", async () => {
+  const response = await apiRequests.get("/products");
+  return response.data;
+});
+export const fetchCategories = createAsyncThunk("fetchCategories", async () => {
+  const response = await apiRequests.get("/categories");
+  return response.data;
+});
 
-const initialState = {
-  products: [],
-  filteredProducts: []
-};
-
-export function getProductsReducer(state = initialState, action) {
-  switch (action.type) {
-    case getAllProducs.all: {
-      let newProducts = action.payload;
-      let allProducts = state.products;
-      return { allProducts, newProducts };
-    }
-    case getAllProducs.success: {
-      return { ...state, products: action.payload };
-    }
-    case getAllProducs.filter:
-      let filteredProducts = state.products.filter((product) => {
-        return product.category === action.category;
-      });
-
-      return  {products: state.products, filteredProducts }
-    case getAllProducs.error: {
-      return [state, { error: action.payload }];
-    }
-    default: {
-      return state;
-    }
-  }
-}
-
-export const getAllProducsFromServerAction = (url) => {
-  return function (dispatch, getState) {
-    apiRequests.get(url).then((data) => {
-      dispatch(getAllProducsSuccessAction(data.data));
+export const slice = createSlice({
+  name: "products",
+  initialState: {
+    products: [],
+    categories: [],
+    selectedCategory: "",
+  },
+  reducers: {
+    selectCategory: (state, action) => {
+      state.selectedCategory = action.payload;
+    },
+  },
+  extraReducers: (builder) => {
+    builder.addCase(fetchProducts.fulfilled, (state, action) => {
+      state.products = action.payload;
     });
-  };
-};
-export const getAllProducsSuccessAction = (data) => {
-  return {
-    type: getAllProducs.success,
-    payload: data,
-  };
-};
-export const filterProductsAction = (payload, category) => {
-  return {
-    type: getAllProducs.filter,
-    payload,
-    category,
-  };
-};
-export const selectCategory = (category) => {
-  return { type: getAllProducs.category, payload: category };
-};
-export const getAllProducsErrorAction = (error) => {
-  return { type: getAllProducs.error, payload: error };
-};
+    builder.addCase(fetchCategories.fulfilled, (state, action) => {
+      state.categories = action.payload;
+    });
+  },
+});
+
+export const {selectCategory} = slice.actions;
+
+export default slice.reducer;
 
 // bestPrice
 const bestPrice = {

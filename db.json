@@ -174,7 +174,8 @@
     },
     { "id": 2, "title": "Fruits", "cover": "./assets/images/category-2.jpg" },
     { "id": 3, "title": "Juice", "cover": "./assets/images/category-3.jpg" },
-    { "id": 4, "title": "Dried", "cover": "./assets/images/category-4.jpg" }
+    { "id": 4, "title": "Dried", "cover": "./assets/images/category-4.jpg" },
+    { "id": 5, "title": "All", "cover": "./assets/images/category-4.jpg" }
   ],
   "heroImages": ["./assets/images/bg_1.jpg", "./assets/images/bg_2.jpg"],
   "best-price": {

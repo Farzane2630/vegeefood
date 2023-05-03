@@ -1,22 +1,18 @@
-import React, { useState } from "react";
-
+import React, { useEffect } from "react";
 import ProductItem from "../ProductItem/ProductItem";
 import { Box, Grid } from "@mui/material";
-
-// import Product1 from "../../assets/images/tomatoe.jpg";
-// import Product2 from "../../assets/images/chili.jpg";
-// import Product3 from "../../assets/images/garlic.jpg";
-// import Product4 from "../../assets/images/onion.jpg";
-// import Product5 from "../../assets/images/green-beans.jpg";
-// import Product6 from "../../assets/images/fruit-juice.jpg";
-// import Product7 from "../../assets/images/carrot.jpg";
-// import Product8 from "../../assets/images/bell-peper.jpg";
-
 import "./_Products.scss";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchProducts } from "../../Redux/Reducers/products";
 
 export default function Products() {
+  const dispatch = useDispatch()
   const products = useSelector(state=> state.products.products)
+  console.log("all Products",products);
+
+  useEffect(()=>{
+    dispatch(fetchProducts())
+  },[dispatch])
   return (
     <Box>
       <div className="landing-section-title">Featured Products</div>
