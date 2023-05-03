@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "../../components/Header/Header";
-import Services from "../../components/OurServices/Services";
+import OurServices from "../../components/OurServices/OurServices";
 import Category from "../../components/Category/Category";
 import Products from "../../components/Products/Products";
 import BestPrice from "../../components/BestPrice/BestPrice";
@@ -44,7 +44,7 @@ export default function Index() {
           </Button>
         </SwiperSlide>
       </Hero>
-      <Services />
+      <OurServices />
       <Category />
       <Products />
       <BestPrice />

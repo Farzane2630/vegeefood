@@ -234,5 +234,11 @@
       "userImgUrl": "./assets/images/person.jpg",
       "userCommentText": "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts."
     }
+  ],
+  "services":[
+    { "url": "./assets/images/free-delivery.png"  , "title": "Free Shipping", "detail": "on order over $100", "bg": "#e4b2d6" },
+    { "url": "./assets/images/grocery-cart.png" , "title": "Always Fresh", "detail": "products well packaged", "bg": "#dcc698" },
+    { "url":"./assets/images/premium-quality.png"  , "title": "Superior Quality", "detail": "quality products", "bg": "#a2d1e1" },
+    { "url": "./assets/images/customer-service.png" , "title": "Support", "detail": "24/7 support", "bg": "#dcd691" }
   ]
 }

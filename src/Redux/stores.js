@@ -9,6 +9,7 @@ import categoryReducer, { fetchCategory } from "./Reducers/categories";
 import usersReducer, { fetchUsersInfo } from "./Reducers/users";
 import { reducer as inputValueReducer } from "./Reducers/InputValue";
 import bestPriceReducer, { fetchProductData } from "./Reducers/bestPrice";
+import servicesReducer, { fetchServicesData } from "./Reducers/Services";
 
 const rootReducer = combineReducers({
   products: dataReducer,
@@ -17,6 +18,7 @@ const rootReducer = combineReducers({
   bestPrice: bestPriceReducer,
   usersInfo: usersReducer,
   inputValue: inputValueReducer,
+  services: servicesReducer,
 });
 
 const store = configureStore({
@@ -30,6 +32,7 @@ store.dispatch(fetchCategory());
 store.dispatch(fetchProductData());
 store.dispatch(fetchBackgroundUrl());
 store.dispatch(fetchUsersInfo());
+store.dispatch(fetchServicesData());
 store.subscribe(() => console.log(store.getState()));
 
 export default store;

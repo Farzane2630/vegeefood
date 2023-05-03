@@ -32,17 +32,14 @@ $mainGreen: #82ae46;
 }
 
 .slide-container {
-  background-size: cover !important;
-  background-repeat: no-repeat !important;
-  background-position: center !important;
-  position: relative !important;
-  width: 100vw;
-  height: 366px !important;
+  background-size: contain !important;
+background-repeat: no-repeat !important;
+background-position: center !important;
+position: relative !important;
+width: 100vw;
+height: 1000px !important;
   
-  .slide-1 {
-    @include flexCenter(column, center);
-  }
-  .slide-2 {
+  .slide-1, .slide-2 {
     @include flexCenter(column, center);
   }
   

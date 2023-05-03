@@ -3,6 +3,8 @@ $mainGreen: #82ae46;
 .nav-main {
   background-color: #fff;
   position: sticky !important;
+  top: 0;
+  width: 100%;
   z-index: 1000;
 }
 .logo {
