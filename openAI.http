@@ -1,0 +1,9 @@
+POST https://api.openai.com/v1/engine/davinci-codex/completions HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer YOUR_API_KEY
+
+{
+  "prompt": "Hello, my name is",
+  "max_tokens": 5,
+  "temperature": 0.5
+}

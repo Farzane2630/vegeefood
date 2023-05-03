@@ -1,49 +1,24 @@
+import { createSlice } from "@reduxjs/toolkit";
 import { apiRequests } from "../../Services/Axios/api";
+import { createAsyncThunk } from "@reduxjs/toolkit";
 
-//action types
-const getCategories = {
-  all: "GET_ALL_CATEGORIES",
-  success: "GET_ALL_CATEGORIES_SUCCESS",
-  error: "GET_ALL_CATEGORIES_ERROR",
-};
-
-//reducers
-
-export function reducer(state = [], action) {
-  switch (action.type) {
-    case getCategories.all: {
-      let newCategories = action.payload;
-      return [...state, newCategories];
-    }
-    case getCategories.success: {
-      let newCategories = action.payload;
-      return [...state, ...newCategories];
-    }
-    case getCategories.error: {
-      return [...state, { error: action.payload }];
-    }
-    default: {
-      return state;
-    }
+export const fetchCategory = createAsyncThunk(
+  "fetchCategory",
+  async () => {
+    const response = await apiRequests.get("/categories");
+    return response.data;
   }
-}
+);
 
-//action creators
-export const getAllCategoriesAction = (url) => {
-  return (dispatch) => {
-    apiRequests.get(url).then((data) => dispatch(getCategoriesSuccessAction(data.data)));
-  };
-};
+const slice = createSlice({
+  name: "allCategory",
+  initialState: [],
+  reducers:{},
+  extraReducers: (builder) => {
+    builder.addCase(fetchCategory.fulfilled, (state, action) => {
+      return action.payload;
+    });
+  },
+});
 
-export const getCategoriesSuccessAction = (data)=>{
-  return {
-    type: getCategories.success,
-    payload: data
-  }
-}
-export const getCategoriesErrorAction = (err)=>{
-  return {
-    type: getCategories.error,
-    payload: err
-  }
-}
+export default slice.reducer;

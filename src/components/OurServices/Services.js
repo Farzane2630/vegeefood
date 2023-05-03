@@ -6,9 +6,9 @@ import { Box } from "@mui/material";
 // import Cart from "../../assets/images/grocery-cart.png"
 // import Quality from "../../assets/images/premium-quality.png"
 // import Service from "../../assets/images/customer-service.png"
-import "./_Shiping.scss"
+import "./_Services.scss"
 
-export default function Shiping() {
+export default function Services() {
   // const [contents, setContents] = useState([
   //   { url: freeDelivery , title: "Free Shipping", detail: "on order over $100", bg: "#e4b2d6" },
   //   { url: Cart, title: "Always Fresh", detail: "products well packaged", bg: "#dcc698" },

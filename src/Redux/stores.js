@@ -1,22 +1,20 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import thunkMiddleware from "redux-thunk";
-import { bestPriceRreducer, fetchCategories, fetchProducts } from "./Reducers/products";
-import { reducer as backGroundReducer } from "./Reducers/background";
-import { reducer as categoryReducer } from "./Reducers/categories";
-import { reducer as usersReducer } from "./Reducers/users";
+import dataReducer, {
+  fetchCategories,
+  fetchProducts,
+} from "./Reducers/products";
+import backgroundReducer, { fetchBackgroundUrl } from "./Reducers/background";
+import categoryReducer, { fetchCategory } from "./Reducers/categories";
+import usersReducer, { fetchUsersInfo } from "./Reducers/users";
 import { reducer as inputValueReducer } from "./Reducers/InputValue";
-import dataReducer from "./Reducers/products";
-import { getBestPriceProductFromServerAction } from "./Reducers/products";
-import { getBgImgFromServerAction } from "./Reducers/background";
-import { getAllCategoriesAction } from "./Reducers/categories";
-import { getAllUsersInfoFromServerAction } from "./Reducers/users";
-// import selectCategory from "./Reducers/products";
+import bestPriceReducer, { fetchProductData } from "./Reducers/bestPrice";
 
 const rootReducer = combineReducers({
   products: dataReducer,
-  bgUrls: backGroundReducer,
+  bgUrl: backgroundReducer,
   categories: categoryReducer,
-  bestPrice: bestPriceRreducer,
+  bestPrice: bestPriceReducer,
   usersInfo: usersReducer,
   inputValue: inputValueReducer,
 });
@@ -28,11 +26,10 @@ const store = configureStore({
 
 store.dispatch(fetchProducts());
 store.dispatch(fetchCategories());
-// store.dispatch(selectCategory());
-store.dispatch(getBgImgFromServerAction("/heroImages"));
-store.dispatch(getAllCategoriesAction("/categories"));
-store.dispatch(getBestPriceProductFromServerAction("/best-price"));
-store.dispatch(getAllUsersInfoFromServerAction("/usersInfo"));
+store.dispatch(fetchCategory());
+store.dispatch(fetchProductData());
+store.dispatch(fetchBackgroundUrl());
+store.dispatch(fetchUsersInfo());
 store.subscribe(() => console.log(store.getState()));
 
 export default store;

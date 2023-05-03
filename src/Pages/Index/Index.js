@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "../../components/Header/Header";
-import Shiping from "../../components/Shiping/Shiping";
+import Services from "../../components/OurServices/Services";
 import Category from "../../components/Category/Category";
 import Products from "../../components/Products/Products";
 import BestPrice from "../../components/BestPrice/BestPrice";
@@ -18,7 +18,8 @@ import "swiper/css";
 import { useSelector } from "react-redux";
 
 export default function Index() {
-  const bgUrls = useSelector((state)=> state.bgUrls)
+  const bgUrls = useSelector((state)=> state.bgUrl)
+
   return (
     <>
       <Header />
@@ -43,7 +44,7 @@ export default function Index() {
           </Button>
         </SwiperSlide>
       </Hero>
-      <Shiping />
+      <Services />
       <Category />
       <Products />
       <BestPrice />

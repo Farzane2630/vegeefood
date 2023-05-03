@@ -167,6 +167,7 @@
     }
   ],
   "categories": [
+    { "id": 5, "title": "All", "cover": "./assets/images/category-4.jpg" },
     {
       "id": 1,
       "title": "Vegetables",
@@ -174,8 +175,7 @@
     },
     { "id": 2, "title": "Fruits", "cover": "./assets/images/category-2.jpg" },
     { "id": 3, "title": "Juice", "cover": "./assets/images/category-3.jpg" },
-    { "id": 4, "title": "Dried", "cover": "./assets/images/category-4.jpg" },
-    { "id": 5, "title": "All", "cover": "./assets/images/category-4.jpg" }
+    { "id": 4, "title": "Dried", "cover": "./assets/images/category-4.jpg" }
   ],
   "heroImages": ["./assets/images/bg_1.jpg", "./assets/images/bg_2.jpg"],
   "best-price": {
@@ -186,13 +186,53 @@
     "bgUrl": "./assets/images/bg_3.jpg"
   },
   "usersInfo": [
-    {"userID": 1, "userName": "Farzane", "userImgUrl": "./assets/images/person.jpg", "userCommentText": "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts."},
-    {"userID": 2, "userName": "Hossein", "userImgUrl": "./assets/images/person.jpg", "userCommentText": "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts."},
-    {"userID": 3, "userName": "Sahel", "userImgUrl": "./assets/images/person.jpg", "userCommentText": "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts."},
-    {"userID": 4, "userName": "Stephie", "userImgUrl": "./assets/images/person.jpg", "userCommentText": "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts."},
-    {"userID": 5, "userName": "Muller", "userImgUrl": "./assets/images/person.jpg", "userCommentText": "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts."},
-    {"userID": 6, "userName": "Sara", "userImgUrl": "./assets/images/person.jpg", "userCommentText": "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts."},
-    {"userID": 7, "userName": "Chelssi", "userImgUrl": "./assets/images/person.jpg", "userCommentText": "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts."},
-    {"userID": 8, "userName": "Berlin", "userImgUrl": "./assets/images/person.jpg", "userCommentText": "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts."}
+    {
+      "userID": 1,
+      "userName": "Farzane",
+      "userImgUrl": "./assets/images/person.jpg",
+      "userCommentText": "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts."
+    },
+    {
+      "userID": 2,
+      "userName": "Hossein",
+      "userImgUrl": "./assets/images/person.jpg",
+      "userCommentText": "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts."
+    },
+    {
+      "userID": 3,
+      "userName": "Sahel",
+      "userImgUrl": "./assets/images/person.jpg",
+      "userCommentText": "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts."
+    },
+    {
+      "userID": 4,
+      "userName": "Stephie",
+      "userImgUrl": "./assets/images/person.jpg",
+      "userCommentText": "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts."
+    },
+    {
+      "userID": 5,
+      "userName": "Muller",
+      "userImgUrl": "./assets/images/person.jpg",
+      "userCommentText": "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts."
+    },
+    {
+      "userID": 6,
+      "userName": "Sara",
+      "userImgUrl": "./assets/images/person.jpg",
+      "userCommentText": "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts."
+    },
+    {
+      "userID": 7,
+      "userName": "Chelssi",
+      "userImgUrl": "./assets/images/person.jpg",
+      "userCommentText": "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts."
+    },
+    {
+      "userID": 8,
+      "userName": "Berlin",
+      "userImgUrl": "./assets/images/person.jpg",
+      "userCommentText": "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts."
+    }
   ]
 }

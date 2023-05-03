@@ -11,6 +11,7 @@ export const fetchCategories = createAsyncThunk("fetchCategories", async () => {
   return response.data;
 });
 
+
 export const slice = createSlice({
   name: "products",
   initialState: {
@@ -37,47 +38,4 @@ export const {selectCategory} = slice.actions;
 
 export default slice.reducer;
 
-// bestPrice
-const bestPrice = {
-  get: "GET_PRODUCT_FROM_SERVER",
-  success: "GET_PRODUCT_SUCCESS",
-  failiure: "GET_PRODUCT_FAILIURE",
-};
 
-export function bestPriceRreducer(state = {}, action) {
-  switch (action.type) {
-    case bestPrice.get: {
-      let newItem = action.payload;
-      return { ...state, newItem };
-    }
-    case bestPrice.success: {
-      let newItem = action.payload;
-      return { ...state, ...newItem };
-    }
-    case bestPrice.failiure: {
-      return [...state, { err: action.payload }];
-    }
-    default: {
-      return state;
-    }
-  }
-}
-export const getBestPriceProductFromServerAction = (url) => {
-  return (dispatch) => {
-    apiRequests
-      .get(url)
-      .then((data) => dispatch(getBestPriceProductSuccessAction(data.data)));
-  };
-};
-export const getBestPriceProductSuccessAction = (data) => {
-  return {
-    type: bestPrice.success,
-    payload: data,
-  };
-};
-export const getBestPriceProductErrorAction = (err) => {
-  return {
-    type: bestPrice.error,
-    payload: err,
-  };
-};

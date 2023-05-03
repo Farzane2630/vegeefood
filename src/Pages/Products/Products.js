@@ -13,6 +13,7 @@ import slice, { selectCategory } from "../../Redux/Reducers/products";
 
 export default function Products() {
   const dispatch = useDispatch();
+  const bg = useSelector(state=> state.bgUrl)
   const products = useSelector((state) => state.products.products);
   const categories = useSelector((state) => state.products.categories);
   const selectedCategory = useSelector(
@@ -20,21 +21,19 @@ export default function Products() {
   );
 
   const filterProductsHandel = (category) => {
-    
-      dispatch(selectCategory(category));
-    
+    dispatch(selectCategory(category));
   };
 
   const filteredProducts =
     selectedCategory && selectedCategory !== "All"
       ? products.filter((product) => product.category === selectedCategory)
       : products;
-  console.log(filteredProducts);
+
   return (
     <>
       <Header />
       <Hero>
-        <SwiperSlide className="slide-1">
+        <SwiperSlide className="slide-1" style={{backgroundImage: `url(${bg[0]})`}}>
           <p className="product-page"> Home Products </p>
           <h1 className="product-title">Products</h1>
         </SwiperSlide>
