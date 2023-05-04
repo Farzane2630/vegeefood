@@ -15,13 +15,7 @@ using #redux and redux-tool-kit as state manager.
 Clone the project
 
 ```bash
-  git clone https://link-to-project
-```
-
-Go to the project directory
-
-```bash
-  cd my-project
+  git clone http://8080/#
 ```
 
 Install dependencies
@@ -30,20 +24,28 @@ Install dependencies
   npm install
 ```
 
-Start the server
-
+Run json-server
 ```bash
-  npm run start
+json-server --watch db.json
 ```
 
+if it crashed Run 
+```bash
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+```
+
+and try again
+```bash
+json-server --watch db.json
+```
 
 ## Features
 
-- responsive
+- Responsive
 - Live previews
 - Fullscreen mode
 - Cross platform
-- dynamic
+- Fully dynamic shopping cart
 
 
 ## 🛠 Skills
