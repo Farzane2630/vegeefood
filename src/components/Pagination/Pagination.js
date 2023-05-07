@@ -1,11 +1,19 @@
-import * as React from 'react';
-import Pagination from '@mui/material/Pagination';
-import Stack from '@mui/material/Stack';
+import React from "react";
+import Pagination from "@mui/material/Pagination";
+import "./_Pagination.scss"
 
-export default function CustomPagination() {
+function CustomPagination({ items, itemsCount, pathname, onPageChange }) {
+  const pageCount = Math.ceil(items.length / itemsCount);
+
+  const handlePageChange = (event, value) => {
+    onPageChange(value);
+  };
+
   return (
-    <Stack spacing={2}>
-      <Pagination count={4} variant="outlined" />
-    </Stack>
+    <div className="pagination-wrapper paigination-parent">
+      <Pagination count={pageCount} onChange={handlePageChange} className="pagination" />
+    </div>
   );
 }
+
+export default CustomPagination;

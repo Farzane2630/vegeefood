@@ -51,6 +51,7 @@ $mainGreen: #82ae46;
   background-color: $mainGreen;
   border-radius: 50%;
   padding: 10px;
+  flex-direction: column;
   width: 50px;
   height: 50px;
   margin-top: -3%;
@@ -58,9 +59,11 @@ $mainGreen: #82ae46;
   position: absolute;
   z-index: 9999 !important;
 
-//   Link {
-//     @include flexCenter();
-//   }
+  button {
+    @include flexCenter();
+    border: none;
+    outline: none !important;
+  }
   .icon {
     color: #fff;
     margin: 0;

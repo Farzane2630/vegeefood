@@ -4,7 +4,6 @@ import KeyboardDoubleArrowUpIcon from "@mui/icons-material/KeyboardDoubleArrowUp
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./_Newsletter.scss";
-import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getInputValueAction } from "../../Redux/Reducers/InputValue";
 
@@ -40,6 +39,14 @@ export default function Newsletter() {
       });
     }
   };
+
+
+  const goToTop = ()=>{
+    window.scrollTo({top: 0, behavior: "smooth"})
+  }
+
+
+
   return (
     <>
       <Grid container columnSpacing={8} className="newsletter-container">
@@ -84,9 +91,9 @@ export default function Newsletter() {
         </Grid>
       </Grid>
       <div className="swipe-up">
-        <Link to="#">
+        <button onClick={goToTop}>
           <KeyboardDoubleArrowUpIcon className="icon" />
-        </Link>
+        </button>
       </div>
     </>
   );

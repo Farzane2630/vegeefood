@@ -25,7 +25,8 @@ $mainGreen: #82ae46;
 .landing-section-title {
   @include textCenter(24px, _, $mainGreen, ("Lora", Georgia, serif), italic);
   display: block;
-  margin-bottom: 10px;
+  margin: 30px 0 10px 0;
+
 }
 .landing-section-subtitle {
   @include textCenter(40px, 600, black, ("Poppins", Arial, sans-serif), _);

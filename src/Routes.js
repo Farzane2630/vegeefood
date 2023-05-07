@@ -14,7 +14,7 @@ export default function AllRoutes() {
   return (
     <Routes>
       <Route exact path="/" Component={Index} />
-      <Route path="products/:page" Component={Products} />
+      <Route path="products/:currentPageCount" Component={Products} />
       <Route path="about" Component={About} />
       <Route path="blog" Component={Blog} />
       <Route path="cart" Component={Cart} />
