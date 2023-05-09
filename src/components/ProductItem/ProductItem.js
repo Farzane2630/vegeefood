@@ -1,13 +1,24 @@
-import React, { useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import React, { useState, useContext } from "react";
+import { Link } from "react-router-dom";
 import MenuIcon from "@mui/icons-material/Menu";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import { cartContext } from "../../Contexts/Contexts";
 
 import "./_ProductItem.scss";
 
 export default function ProductItem(props) {
   const [isShowOptions, setIsShowOptions] = useState(false);
+
+  const context = useContext(cartContext);
+  const [isSelected, setIsSelected] = useState(false);
+
+  const addToCartHandler = () => {
+    if (!isSelected) {
+      context.setValue((prev) => prev + 1);
+      setIsSelected(true);
+    }
+  };
 
   return (
     <div
@@ -54,8 +65,8 @@ export default function ProductItem(props) {
             <Link to="wishlist">
               <FavoriteIcon className="icon" />
             </Link>
-            <Link to="cart">
-              <ShoppingCartIcon className="icon" />
+            <Link to="">
+              <ShoppingCartIcon className="icon" onClick={addToCartHandler} />
             </Link>
           </div>
         </div>

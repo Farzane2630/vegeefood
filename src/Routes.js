@@ -20,7 +20,7 @@ export default function AllRoutes() {
       <Route path="cart" Component={Cart} />
       <Route path="checkout" Component={Checkout} />
       <Route path="contact" Component={Contact} />
-      <Route path="product-info/:productName" Component={ProductInfo} />
+      <Route path="product-info/:productID" Component={ProductInfo} />
       <Route path="products/:page/Product-info/:productName" Component={ProductInfo} />
       <Route path="wishlist" Component={WishList} />
     </Routes>

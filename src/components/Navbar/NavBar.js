@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
@@ -7,10 +7,14 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 
 import "./_Navbar.scss";
 import { Link, useParams } from "react-router-dom";
+import { cartContext } from "../../Contexts/Contexts";
 
 export default function NavBar() {
 
-  const productName = useParams()
+  const context = useContext(cartContext)
+  console.log(context.value);
+
+  const productID = useParams()
   return (
     <Navbar expand="lg" className="nav-main">
       <Container className="nav-container">
@@ -37,7 +41,7 @@ export default function NavBar() {
                 </Link>
               </NavDropdown.Item>
               <NavDropdown.Item href="#action/3.1" className="nav-item">
-              <Link to={`Product-info/${productName}`} className="link">
+              <Link to={`Product-info/${productID}`} className="link">
                 Single Product
                 </Link>
               </NavDropdown.Item>
@@ -70,7 +74,7 @@ export default function NavBar() {
             <Nav.Link href="" className="nav-item cart-elem">
               <Link to="cart" className="link">
                 <ShoppingCartIcon />
-                <span className="orders-count">[0]</span>
+                <span className="orders-count">[{context.value}]</span>
               </Link>
             </Nav.Link>
           </Nav>

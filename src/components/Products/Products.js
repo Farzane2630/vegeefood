@@ -29,7 +29,7 @@ export default function Products() {
               img={product.cover}
               price={product.price}
               discount={product.discount}
-              path={`Product-info/${product.title}`}
+              path={`Product-info/${product.id}`}
             />
           </Grid>
         ))}

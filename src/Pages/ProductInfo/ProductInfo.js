@@ -1,52 +1,68 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import Header from "../../components/Header/Header";
 import Hero from "../../components/Hero/Hero";
-// import AHero from "../../assets/images/bg_1.jpg";
 import { SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "./_ProductInfo.scss";
 import Footer from "../../components/Footer/Footer";
-
-// import apple from "../../assets/images/apple.jpg";
 import { Grid } from "@mui/material";
-import StarIcon from '@mui/icons-material/Star';
-import StarBorderIcon from '@mui/icons-material/StarBorder';
+import { useSelector } from "react-redux";
+import { useParams } from "react-router";
+import BasicRating from "../../Components/Rating/Rating";
+import { cartContext } from "../../Contexts/Contexts";
 
 export default function ProductInfo() {
+  const context = useContext(cartContext);
+  const [isSelected, setIsSelected] = useState(false);
+  const [inputValue, setInputValue] = useState(0);
+
+  const bg = useSelector((state) => state.bgUrl);
+
+  const products = useSelector((state) => state.products.products);
+  const { productID } = useParams();
+  const mainProductInfo = products.find((product) => product.id == productID);
+
+  const addToCartHandler = () => {
+    if (!isSelected) {
+      context.setValue((prev) => prev + 1);
+      setIsSelected(true);
+    }
+  };
   return (
     <>
       <Header />
       <Hero>
         <SwiperSlide
           className="slide-1"
-          // style={{ backgroundImage: `url(${AHero})` }}
+          style={{ backgroundImage: `url(${bg[0]})` }}
         >
           <p className="product-page"> Home Products </p>
           <h1 className="product-title">Product info</h1>
         </SwiperSlide>
       </Hero>
 
-      <Grid container>
+      <Grid container className="product-info-container">
         <Grid className="img-section" item xs={12} lg={6}>
-          <div className="product-img-container">
-            {/* <img src={apple} alt="apple" className="product-img" /> */}
-          </div>
+          <img
+            src={mainProductInfo.cover}
+            alt={mainProductInfo.title}
+            className="product-img"
+          />
         </Grid>
         <Grid className="txt-section" item xs={12} lg={6}>
-          <h2 className="product-title">APPLE</h2>
+          <h2 className="product-title">{mainProductInfo.title}</h2>
           <div className="statistical-info">
             <div className="rating">
-              5.0
-              <div className="stars">
-                <StarIcon className="star-filled" />
-                <StarBorderIcon className="star-outlined" />
-              </div>
+              <BasicRating
+                type="read-only"
+                rate={Math.round(mainProductInfo.rate)}
+              />
             </div>
             <div className="sold-count">
-              500 <span className="sold">Sold</span>{" "}
+              {mainProductInfo.sold} <span className="sold">Sold</span>{" "}
             </div>
           </div>
-          <div className="price">$ 120.00</div>
+          <h3 className="price">$ {mainProductInfo.price}</h3>
           <p className="more-info">
             A small river named Duden flows by their place and supplies it with
             the necessary regelialia. It is a paradisematic country, in which
@@ -54,12 +70,36 @@ export default function ProductInfo() {
             around and return to its own, safe country. But nothing the copy
             said could convince her and so it didn’t take long until.
           </p>
-          <div className="add-to-cart-section">
-            <div className="minus">-</div>
-            <input type="text" className="product-count" />
-            <div className="minus">+</div>
+          <div>
+            <button
+              className="minus"
+              onClick={(e) =>
+                setInputValue((prev) => {
+                  if (e.target.value == 0) {
+                    return 0;
+                  } else {
+                    return prev - 1;
+                  }
+                })
+              }
+            >
+              -
+            </button>
+            <input
+              type="text"
+              className="product-count"
+              value={Number(inputValue)}
+            />
+            <button
+              className="plus"
+              onClick={() => setInputValue((prev) => prev + 1)}
+            >
+              +
+            </button>
           </div>
-          <button className="add-to-cart">Add to Cart</button>
+          <button className="add-to-cart" onClick={addToCartHandler}>
+            Add to Cart
+          </button>
         </Grid>
       </Grid>
       <Footer />

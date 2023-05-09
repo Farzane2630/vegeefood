@@ -10,7 +10,6 @@ import ProductItem from "../../components/ProductItem/ProductItem";
 import CustomPagination from "../../components/Pagination/Pagination";
 import { useDispatch, useSelector } from "react-redux";
 import slice, { selectCategory } from "../../Redux/Reducers/products";
-// import { Navigate, useNavigate, useParams } from "react-router";
 
 export default function Products() {
   const dispatch = useDispatch();
@@ -75,7 +74,7 @@ export default function Products() {
               img={product.cover}
               price={product.price}
               discount={product.discount}
-              path={`Product-info/${product.title}`}
+              path={`Product-info/${product.id}`}
             />
           </Grid>
         ))}

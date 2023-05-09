@@ -1,18 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { HashRouter } from "react-router-dom";
-import * as ReactDOM from "react-dom/client";
-import AllRoutes from "./Routes";
-import store from "./Redux/stores"
-
+import ReactDOM from "react-dom";
 import "./Style/reset.scss";
 import "./Style/Style.scss";
-import { Provider } from "react-redux";
+import App from "./App";
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(
-  <HashRouter>
-    <Provider store={store}>
-      <AllRoutes />
-    </Provider>
-  </HashRouter>
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <React.StrictMode>
+    <HashRouter>
+      <App />
+    </HashRouter>
+  </React.StrictMode>
 );
