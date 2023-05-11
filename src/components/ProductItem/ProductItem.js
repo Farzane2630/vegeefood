@@ -62,8 +62,8 @@ export default function ProductItem(props) {
             <Link to={props.path}>
               <MenuIcon className="icon" />
             </Link>
-            <Link to="wishlist">
-              <FavoriteIcon className="icon" />
+            <Link to="">
+              <FavoriteIcon className="icon" onClick={props.addToWishlist} />
             </Link>
             <Link to="">
               <ShoppingCartIcon className="icon" onClick={addToCartHandler} />

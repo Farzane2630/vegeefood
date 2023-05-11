@@ -31,7 +31,7 @@ export default function ProductInfo() {
   return (
     <>
       <Header />
-      <Hero>
+      <Hero notIndex={true}>
         <SwiperSlide
           className="slide-1"
           style={{ backgroundImage: `url(${bg[0]})` }}

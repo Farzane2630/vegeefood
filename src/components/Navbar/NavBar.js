@@ -10,11 +10,10 @@ import { Link, useParams } from "react-router-dom";
 import { cartContext } from "../../Contexts/Contexts";
 
 export default function NavBar() {
-
-  const context = useContext(cartContext)
+  const context = useContext(cartContext);
   console.log(context.value);
 
-  const productID = useParams()
+  const productID = useParams();
   return (
     <Navbar expand="lg" className="nav-main">
       <Container className="nav-container">
@@ -32,47 +31,42 @@ export default function NavBar() {
               title="Shop"
               id="basic-nav-dropdown"
             >
-              <NavDropdown.Item href="#/products/1" className="nav-item">
-                Shop
+              <NavDropdown.Item href="/products/1" className="nav-item">
+                <Link to="/products/1" className="link">Shop</Link>
               </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.1" className="nav-item">
-              <Link to="wishlist" className="link">
-                Wishlist
+              <NavDropdown.Item href="/wishlist" className="nav-item">
+                <Link to="/wishlist" className="link">
+                  Wishlist
                 </Link>
               </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.1" className="nav-item">
-              <Link to={`Product-info/${productID}`} className="link">
-                Single Product
+              <NavDropdown.Item href="/cart" className="nav-item">
+                <Link to="/cart" className="link">
+                  Cart
                 </Link>
               </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.1" className="nav-item">
-              <Link to="cart" className="link">
-                Cart
-                </Link>
-              </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.1" className="nav-item">
-              <Link to="checkout" className="link">
-                Checkout
+              <NavDropdown.Item href="/checkout" className="nav-item">
+                <Link to="/checkout" className="link">
+                  Checkout
                 </Link>
               </NavDropdown.Item>
             </NavDropdown>
-            <Nav.Link href="" className="nav-item">
-            <Link to="about" className="link">
-              About
+            <Nav.Link href="/about" className="nav-item">
+              <Link to="/about" className="link">
+                About
               </Link>
             </Nav.Link>
-            <Nav.Link href="" className="nav-item">
-            <Link to="blog" className="link">
-              Blog
+            <Nav.Link href="/blog" className="nav-item">
+              <Link to="/blog" className="link">
+                Blog
               </Link>
             </Nav.Link>
-            <Nav.Link href="" className="nav-item">
-            <Link to="contact" className="link">
-              Contact
+            <Nav.Link href="/contact" className="nav-item">
+              <Link to="/contact" className="link">
+                Contact
               </Link>
             </Nav.Link>
-            <Nav.Link href="" className="nav-item cart-elem">
-              <Link to="cart" className="link">
+            <Nav.Link href="/cart" className="nav-item cart-elem">
+              <Link to="/cart" className="link">
                 <ShoppingCartIcon />
                 <span className="orders-count">[{context.value}]</span>
               </Link>

@@ -1,13 +1,12 @@
 import React from "react";
-import { Button } from "@mui/material";
-import { Link } from "react-router-dom";
-import { Swiper, SwiperSlide } from "swiper/react";
+import { Swiper } from "swiper/react";
 import { Autoplay, Pagination, Navigation } from "swiper";
 import "swiper/css";
 
 import "./_Hero.scss";
 
-export default function Hero({ children }) {
+export default function Hero({notIndex, children }) {
+  // const notIndex = notIndex
   return (
     <Swiper
       autoplay={{
@@ -15,7 +14,7 @@ export default function Hero({ children }) {
         disableOnInteraction: false,
       }}
       modules={[Autoplay, Pagination, Navigation]}
-      className="mySwiper slide-container"
+      className={`mySwiper slide-container ${notIndex ? "not-index" : ""}`}
     >
         {children}
     </Swiper>

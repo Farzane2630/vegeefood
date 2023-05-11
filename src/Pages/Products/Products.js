@@ -1,4 +1,10 @@
-import React, { useState } from "react";
+import React, {
+  useEffect,
+  useContext,
+  useState,
+  useCallback,
+  useMemo,
+} from "react";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import Hero from "../../components/Hero/Hero";
@@ -9,7 +15,8 @@ import { Grid } from "@mui/material";
 import ProductItem from "../../components/ProductItem/ProductItem";
 import CustomPagination from "../../components/Pagination/Pagination";
 import { useDispatch, useSelector } from "react-redux";
-import slice, { selectCategory } from "../../Redux/Reducers/products";
+import { selectCategory } from "../../Redux/Reducers/products";
+import { addTolist } from "../../Redux/Reducers/Wishlist";
 
 export default function Products() {
   const dispatch = useDispatch();
@@ -29,7 +36,7 @@ export default function Products() {
       ? products.filter((product) => product.category === selectedCategory)
       : products;
 
-      //pagination
+  //pagination
   const [currentPage, setCurrentPage] = useState(1);
   const itemsCountPerPage = 4;
   const indexOfLastItem = currentPage * itemsCountPerPage;
@@ -40,11 +47,20 @@ export default function Products() {
     setCurrentPage(newPage);
   };
 
+  //wishlist
+  const wishListItems = useSelector((state) => state.wishlist);
+  console.log("initialWishlist", wishListItems);
+
+  const wishlistHandler = (productID) => {
+    const favoriteItem = products.find((product) => product.id === productID);
+    dispatch(addTolist(favoriteItem));
+  };
+  console.log("wishlist", wishListItems);
 
   return (
     <>
       <Header />
-      <Hero>
+      <Hero notIndex={true}>
         <SwiperSlide
           className="slide-1"
           style={{ backgroundImage: `url(${bg[0]})` }}
@@ -70,6 +86,7 @@ export default function Products() {
         {shownItems.map((product) => (
           <Grid key={product.id} item sx={12} sm={6} md={3} p={3}>
             <ProductItem
+              addToWishlist={() => wishlistHandler(product.id)}
               name={product.title}
               img={product.cover}
               price={product.price}
@@ -80,9 +97,9 @@ export default function Products() {
         ))}
       </Grid>
       <CustomPagination
-      items={filteredProducts}
-      itemsCount={itemsCountPerPage}
-     onPageChange={handlePageChange}
+        items={filteredProducts}
+        itemsCount={itemsCountPerPage}
+        onPageChange={handlePageChange}
       />
       <Footer />
     </>

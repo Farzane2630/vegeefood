@@ -13,7 +13,7 @@ import WishList from "./Pages/WishList/WishList";
 export default function AllRoutes() {
   return (
     <Routes>
-      <Route exact path="/" Component={Index} />
+      <Route path="/" Component={Index} />
       <Route path="products/:currentPageCount" Component={Products} />
       <Route path="about" Component={About} />
       <Route path="blog" Component={Blog} />
@@ -21,7 +21,6 @@ export default function AllRoutes() {
       <Route path="checkout" Component={Checkout} />
       <Route path="contact" Component={Contact} />
       <Route path="product-info/:productID" Component={ProductInfo} />
-      <Route path="products/:page/Product-info/:productName" Component={ProductInfo} />
       <Route path="wishlist" Component={WishList} />
     </Routes>
   );
