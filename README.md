@@ -1,13 +1,13 @@
 
 # vegeeFood(vegetable online shop)
 
-This is a #responsive and full dynamic website using #react js and json-server as backend technology.
+This is a responsive and fully dynamic website using react js and json-server as its backend technology.
 
-This project is inviroment has been build with #webpack and as CSS preprocessor I have used #SASS and also #MUI has been a great part of this project. 
+This project`s enviroment has been build with Webpack and as CSS preprocessor I have used SASS and also MUI has been a great part of this project. 
 
-To manage #api_requests I have used #axios library.
+To manage api_requests I have used axios library.
 
-using #redux and redux-tool-kit as state manager. 
+using redux and redux-tool-kit as state manager. 
 
 
 ## Run Locally
