@@ -11,6 +11,12 @@ export const fetchCategories = createAsyncThunk("fetchCategories", async () => {
   return response.data;
 });
 
+export const fetchProductCount = createAsyncThunk("fetchProductCount", async (products , productID)=>{
+  const mainProduct = await products.find(product=> product.id === productID)
+
+  return mainProduct.count
+})
+
 
 export const slice = createSlice({
   name: "products",
@@ -18,6 +24,7 @@ export const slice = createSlice({
     products: [],
     categories: [],
     selectedCategory: "",
+    productCount: 1
   },
   reducers: {
     selectCategory: (state, action) => {
@@ -30,6 +37,9 @@ export const slice = createSlice({
     });
     builder.addCase(fetchCategories.fulfilled, (state, action) => {
       state.categories = action.payload;
+    });
+    builder.addCase(fetchProductCount.fulfilled, (state, action) => {
+      state.productCount = action.payload;
     });
   },
 });

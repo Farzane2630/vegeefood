@@ -10,7 +10,9 @@ import usersReducer, { fetchUsersInfo } from "./Reducers/users";
 import { reducer as inputValueReducer } from "./Reducers/InputValue";
 import bestPriceReducer, { fetchProductData } from "./Reducers/bestPrice";
 import servicesReducer, { fetchServicesData } from "./Reducers/Services";
-import wishlistReducer, { addTolist, removeFromList } from "./Reducers/Wishlist";
+import wishlistReducer from "./Reducers/Wishlist";
+import cartReducer from "./Reducers/Cart";
+// import productCountReducer from "./Reducers/ProductCount";
 
 const rootReducer = combineReducers({
   products: dataReducer,
@@ -21,6 +23,8 @@ const rootReducer = combineReducers({
   inputValue: inputValueReducer,
   services: servicesReducer,
   wishlist: wishlistReducer,
+  cart: cartReducer,
+  // productCount: productCountReducer,
 });
 
 const store = configureStore({

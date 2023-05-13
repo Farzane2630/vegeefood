@@ -10,16 +10,6 @@ import "./_ProductItem.scss";
 export default function ProductItem(props) {
   const [isShowOptions, setIsShowOptions] = useState(false);
 
-  const context = useContext(cartContext);
-  const [isSelected, setIsSelected] = useState(false);
-
-  const addToCartHandler = () => {
-    if (!isSelected) {
-      context.setValue((prev) => prev + 1);
-      setIsSelected(true);
-    }
-  };
-
   return (
     <div
       className="product-container"
@@ -66,7 +56,7 @@ export default function ProductItem(props) {
               <FavoriteIcon className="icon" onClick={props.addToWishlist} />
             </Link>
             <Link to="">
-              <ShoppingCartIcon className="icon" onClick={addToCartHandler} />
+              <ShoppingCartIcon className="icon" onClick={props.addToCart} />
             </Link>
           </div>
         </div>

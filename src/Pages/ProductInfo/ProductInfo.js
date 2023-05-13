@@ -6,13 +6,13 @@ import "swiper/css";
 import "./_ProductInfo.scss";
 import Footer from "../../components/Footer/Footer";
 import { Grid } from "@mui/material";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
-import BasicRating from "../../Components/Rating/Rating";
-import { cartContext } from "../../Contexts/Contexts";
+import BasicRating from "../../Utils/Rating/Rating";
+import { addToCart } from "../../Redux/Reducers/Cart";
 
 export default function ProductInfo() {
-  const context = useContext(cartContext);
+  const dispatch = useDispatch();
   const [isSelected, setIsSelected] = useState(false);
   const [inputValue, setInputValue] = useState(0);
 
@@ -20,11 +20,11 @@ export default function ProductInfo() {
 
   const products = useSelector((state) => state.products.products);
   const { productID } = useParams();
-  const mainProductInfo = products.find((product) => product.id == productID);
+  const mainProduct = products.find((product) => product.id == productID);
 
-  const addToCartHandler = () => {
+  const addToCartHandler = (id) => {
     if (!isSelected) {
-      context.setValue((prev) => prev + 1);
+      dispatch(addToCart(mainProduct));
       setIsSelected(true);
     }
   };
@@ -44,25 +44,25 @@ export default function ProductInfo() {
       <Grid container className="product-info-container">
         <Grid className="img-section" item xs={12} lg={6}>
           <img
-            src={mainProductInfo.cover}
-            alt={mainProductInfo.title}
+            src={mainProduct.cover}
+            alt={mainProduct.title}
             className="product-img"
           />
         </Grid>
         <Grid className="txt-section" item xs={12} lg={6}>
-          <h2 className="product-title">{mainProductInfo.title}</h2>
+          <h2 className="product-title">{mainProduct.title}</h2>
           <div className="statistical-info">
             <div className="rating">
               <BasicRating
                 type="read-only"
-                rate={Math.round(mainProductInfo.rate)}
+                rate={Math.round(mainProduct.rate)}
               />
             </div>
             <div className="sold-count">
-              {mainProductInfo.sold} <span className="sold">Sold</span>{" "}
+              {mainProduct.sold} <span className="sold">Sold</span>{" "}
             </div>
           </div>
-          <h3 className="price">$ {mainProductInfo.price}</h3>
+          <h3 className="price">$ {mainProduct.price}</h3>
           <p className="more-info">
             A small river named Duden flows by their place and supplies it with
             the necessary regelialia. It is a paradisematic country, in which

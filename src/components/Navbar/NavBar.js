@@ -1,19 +1,17 @@
-import React, { useContext } from "react";
+import React from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 import "./_Navbar.scss";
-import { Link, useParams } from "react-router-dom";
-import { cartContext } from "../../Contexts/Contexts";
 
-export default function NavBar() {
-  const context = useContext(cartContext);
-  console.log(context.value);
+export default function NavBar({props}) {
+ const selectedProducts = useSelector(state=> state.cart)
 
-  const productID = useParams();
   return (
     <Navbar expand="lg" className="nav-main">
       <Container className="nav-container">
@@ -68,7 +66,7 @@ export default function NavBar() {
             <Nav.Link href="/cart" className="nav-item cart-elem">
               <Link to="/cart" className="link">
                 <ShoppingCartIcon />
-                <span className="orders-count">[{context.value}]</span>
+                <span className="orders-count">[{selectedProducts.length}]</span>
               </Link>
             </Nav.Link>
           </Nav>

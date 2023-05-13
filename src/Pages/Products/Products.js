@@ -1,10 +1,4 @@
-import React, {
-  useEffect,
-  useContext,
-  useState,
-  useCallback,
-  useMemo,
-} from "react";
+import React, { useState } from "react";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import Hero from "../../components/Hero/Hero";
@@ -13,10 +7,12 @@ import "swiper/css";
 import "./_Products.scss";
 import { Grid } from "@mui/material";
 import ProductItem from "../../components/ProductItem/ProductItem";
-import CustomPagination from "../../components/Pagination/Pagination";
+import CustomPagination from "../../Utils/Pagination/Pagination";
 import { useDispatch, useSelector } from "react-redux";
 import { selectCategory } from "../../Redux/Reducers/products";
+import { addToCart } from "../../Redux/Reducers/Cart";
 import { addTolist } from "../../Redux/Reducers/Wishlist";
+import { toast } from "react-toastify";
 
 export default function Products() {
   const dispatch = useDispatch();
@@ -38,7 +34,7 @@ export default function Products() {
 
   //pagination
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsCountPerPage = 4;
+  const itemsCountPerPage = 8;
   const indexOfLastItem = currentPage * itemsCountPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsCountPerPage;
   const shownItems = filteredProducts.slice(indexOfFirstItem, indexOfLastItem);
@@ -47,15 +43,41 @@ export default function Products() {
     setCurrentPage(newPage);
   };
 
-  //wishlist
-  const wishListItems = useSelector((state) => state.wishlist);
-  console.log("initialWishlist", wishListItems);
+  //cartItems
+  const cartItems = useSelector((state) => state.cart);
+  const addToCartHandler = (productID) => {
+    const selectedItem = products.find((product) => product.id === productID);
+    if (cartItems.includes(selectedItem)) {
+      toast.error("You have added this Item before!", {
+        position: "top-right",
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
+    } else {
+      dispatch(addToCart(selectedItem));
+      toast.success("Item added to cart", {
+        position: "top-right",
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
+    }
+  };
 
   const wishlistHandler = (productID) => {
-    const favoriteItem = products.find((product) => product.id === productID);
-    dispatch(addTolist(favoriteItem));
+    const favorieItem = products.find((product) => product.id === productID);
+
+    dispatch(addTolist(favorieItem));
   };
-  console.log("wishlist", wishListItems);
 
   return (
     <>
@@ -87,11 +109,12 @@ export default function Products() {
           <Grid key={product.id} item sx={12} sm={6} md={3} p={3}>
             <ProductItem
               addToWishlist={() => wishlistHandler(product.id)}
+              addToCart={() => addToCartHandler(product.id)}
               name={product.title}
               img={product.cover}
               price={product.price}
               discount={product.discount}
-              path={`Product-info/${product.id}`}
+              path={`/product-info/${product.id}`}
             />
           </Grid>
         ))}

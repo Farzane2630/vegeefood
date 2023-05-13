@@ -1,27 +1,53 @@
-import React, { useEffect, useContext } from "react";
+import React from "react";
 import ProductItem from "../ProductItem/ProductItem";
 import { Box, Grid } from "@mui/material";
 import "./_Products.scss";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchProducts } from "../../Redux/Reducers/products";
-import { cartContext } from "../../Contexts/Contexts";
+import { addToCart } from "../../Redux/Reducers/Cart";
+import { addTolist } from "../../Redux/Reducers/Wishlist";
+import { ToastContainer, toast } from "react-toastify";
+
 
 export default function Products() {
-  const dispatch = useDispatch()
-  const products = useSelector(state=> state.products.products)
-  console.log("all Products",products);
+  const dispatch = useDispatch();
+  const products = useSelector((state) => state.products.products);
 
-  
-  const context = useContext(cartContext)
+//cartItems
+  const cartItems = useSelector((state) => state.cart);
+  const addToCartHandler = (productID) => {
+    const selectedItem = products.find((product) => product.id === productID);
+    if (cartItems.includes(selectedItem)) {
+      toast.error("You have added this Item before!", {
+        position: "top-right",
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
+    } else {
+      dispatch(addToCart(selectedItem));
+      toast.success("Item added to cart", {
+        position: "top-right",
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
+    }
+  };
 
   const wishlistHandler = (productID) => {
-    context.addToFavorit(productID, products)
-    console.log(context.wishlist);
-  }
+    const favorieItem = products.find((product) => product.id === productID);
 
-  useEffect(()=>{
-    dispatch(fetchProducts())
-  },[dispatch])
+    dispatch(addTolist(favorieItem));
+  };
+
   return (
     <Box>
       <div className="landing-section-title">Featured Products</div>
@@ -31,10 +57,11 @@ export default function Products() {
         and Consonantia
       </div>
       <Grid container className="products-grid-container">
-        {products.slice(0,8).map((product, index) => (
+        {products.slice(0, 8).map((product, index) => (
           <Grid key={index + 1} item sx={12} sm={6} md={3} p={3}>
             <ProductItem
-            addToWishlist={()=>wishlistHandler(product.id)}
+              addToWishlist={() => wishlistHandler(product.id)}
+              addToCart={() => addToCartHandler(product.id)}
               name={product.title}
               img={product.cover}
               price={product.price}
