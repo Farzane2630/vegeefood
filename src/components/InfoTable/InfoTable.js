@@ -1,106 +1,78 @@
-import * as React from 'react';
-import Box from '@mui/material/Box';
-import IconButton from '@mui/material/IconButton';
-import Input from '@mui/material/Input';
-import FilledInput from '@mui/material/FilledInput';
-import OutlinedInput from '@mui/material/OutlinedInput';
-import InputLabel from '@mui/material/InputLabel';
-import InputAdornment from '@mui/material/InputAdornment';
-import FormHelperText from '@mui/material/FormHelperText';
-import FormControl from '@mui/material/FormControl';
-import TextField from '@mui/material/TextField';
-import Visibility from '@mui/icons-material/Visibility';
-import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import * as React from "react";
+import Box from "@mui/material/Box";
+import TextField from "@mui/material/TextField";
+import "./_InfoTable.scss";
 
 export default function InputAdornments() {
-//   const [showPassword, setShowPassword] = React.useState(false);
-
-//   const handleClickShowPassword = () => setShowPassword((show) => !show);
-
-//   const handleMouseDownPassword = (event) => {
-//     event.preventDefault();
-//   };
-
   return (
-    <Box sx={{ display: 'flex', flexWrap: 'wrap', flexDirection: 'column'}}>
+    <Box
+      sx={{ display: "flex", flexWrap: "wrap", flexDirection: "column" }}
+      className="form-container"
+    >
       <div>
         <TextField
+          className="half-width"
           label="First name"
           id="outlined-start-adornment"
-          sx={{ m: 1, width: '25ch' }}
-          InputProps={{
-            startAdornment: <InputAdornment position="start"></InputAdornment>,
-          }}
+          sx={{ m: 1 }}
         />
         <TextField
+          className="half-width"
           label="Last name"
           id="outlined-start-adornment"
-          sx={{ m: 1, width: '25ch' }}
-          InputProps={{
-            startAdornment: <InputAdornment position="start"></InputAdornment>,
-          }}
+          sx={{ m: 1 }}
         />
-        <FormControl fullWidth sx={{ m: 1 }}>
-          <InputLabel htmlFor="outlined-start-adornment">Country / State</InputLabel>
-          <OutlinedInput
-            id="outlined-start-adornment"
-            startAdornment={<InputAdornment position="start"> Germany </InputAdornment>}
-
-          />
-        </FormControl>
       </div>
       <div>
       <TextField
-          label="Street Address"
+          className="full-width"
+          label="Country / State"
           id="outlined-start-adornment"
-          sx={{ m: 1, width: '25ch' }}
-          InputProps={{
-            startAdornment: <InputAdornment position="start"> Hous number and street name </InputAdornment>,
-          }}
+          sx={{ m: 1 }}
+        />
+      </div>
+      <div>
+        <TextField
+          className="half-width"
+          label="Street Address"
+          placeholder="Hous number and street name"
+          id="outlined-start-adornment"
+          sx={{ m: 1 }}
         />
         <TextField
-         //  label="Last name"
+          className="half-width"
+          //  label="Last name"
           id="outlined-start-adornment"
-          sx={{ m: 1, width: '25ch' }}
-          InputProps={{
-            startAdornment: <InputAdornment position="start">Appartment, suit, unit(etc): optional</InputAdornment>,
-          }}
+          sx={{ m: 1 }}
+          placeholder="Appartment,unit(etc):optional"
         />
       </div>
       <div>
-      <TextField
+        <TextField
+          className="half-width"
           label="Town City"
           id="outlined-start-adornment"
-          sx={{ m: 1, width: '25ch' }}
-          InputProps={{
-            startAdornment: <InputAdornment position="start"></InputAdornment>,
-          }}
+          sx={{ m: 1 }}
         />
         <TextField
+          className="half-width"
           label="Postcode / ZIP *"
           id="outlined-start-adornment"
-          sx={{ m: 1, width: '25ch' }}
-          InputProps={{
-            startAdornment: <InputAdornment position="start"></InputAdornment>,
-          }}
+          sx={{ m: 1 }}
         />
       </div>
       <div>
-      <TextField
+        <TextField
+          className="half-width"
           label="Phone"
           id="outlined-start-adornment"
-          sx={{ m: 1, width: '25ch' }}
-          InputProps={{
-            startAdornment: <InputAdornment position="start"></InputAdornment>,
-          }}
+          sx={{ m: 1 }}
         />
         <TextField
+          className="half-width"
           label="Email Address"
           id="outlined-start-adornment"
-          sx={{ m: 1, width: '25ch' }}
-          InputProps={{
-            startAdornment: <InputAdornment position="start"></InputAdornment>,
-          }}
+          sx={{ m: 1 }}
         />
       </div>
     </Box>
