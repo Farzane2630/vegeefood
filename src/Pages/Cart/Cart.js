@@ -40,7 +40,7 @@ export default function Cart() {
       <Hero notIndex={true}>
         <SwiperSlide
           className="slide-1"
-          style={{ backgroundImage: `url(${bg[0]})` }}
+          style={{ backgroundImage: `url(${bg[1]})` }}
         >
           <p className="product-page"> Home CART </p>
           <h1 className="product-title">MY CART</h1>

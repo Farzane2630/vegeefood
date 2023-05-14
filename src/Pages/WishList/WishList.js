@@ -30,7 +30,7 @@ export default function WishList() {
       <Hero notIndex={true}>
         <SwiperSlide
           className="slide-1"
-          style={{ backgroundImage: `url(${bg[0]})` }}
+          style={{ backgroundImage: `url(${bg[1]})` }}
         >
           <p className="product-page"> Home WISHLIST </p>
           <h1 className="product-title">MY WISHLIST</h1>
