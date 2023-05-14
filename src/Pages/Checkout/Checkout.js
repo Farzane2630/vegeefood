@@ -4,7 +4,7 @@ import Hero from "../../components/Hero/Hero";
 import Footer from "../../components/Footer/Footer";
 import { SwiperSlide } from "swiper/react";
 import { useSelector } from "react-redux";
-import { Grid } from "@mui/material";
+import { Button, Grid } from "@mui/material";
 import InputAdornments from "../../components/InfoTable/InfoTable";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
@@ -12,6 +12,7 @@ import Radio from "@mui/material/Radio";
 import Checkbox from "@mui/material/Checkbox";
 import FormLabel from "@mui/material/FormLabel";
 import RadioGroup from "@mui/material/RadioGroup";
+import { Link } from "react-router-dom";
 
 export default function Checkout() {
   const bg = useSelector((state) => state.bgUrl);
@@ -33,23 +34,23 @@ export default function Checkout() {
         <Grid item xs={12} lg={6}>
           <InputAdornments />
           <FormControl>
-              <RadioGroup
-                row
-                aria-labelledby="demo-row-radio-buttons-group-label"
-                name="row-radio-buttons-group"
-              >
-                <FormControlLabel
-                  value="new Account"
-                  control={<Radio />}
-                  label="Create an Account?"
-                />
-                <FormControlLabel
-                  value="different Address"
-                  control={<Radio />}
-                  label="Ship to different address"
-                />
-              </RadioGroup>
-            </FormControl>
+            <RadioGroup
+              row
+              aria-labelledby="demo-row-radio-buttons-group-label"
+              name="row-radio-buttons-group"
+            >
+              <FormControlLabel
+                value="new Account"
+                control={<Radio />}
+                label="Create an Account?"
+              />
+              <FormControlLabel
+                value="different Address"
+                control={<Radio />}
+                label="Ship to different address"
+              />
+            </RadioGroup>
+          </FormControl>
         </Grid>
         <Grid className="payment" item lg={6} xs={12}>
           <div className="cart-total">
@@ -74,7 +75,10 @@ export default function Checkout() {
           </div>
           <div className="payment-method">
             <FormControl>
-              <FormLabel id="demo-radio-buttons-group-label" style={{color:"black"}}>
+              <FormLabel
+                id="demo-radio-buttons-group-label"
+                style={{ color: "black" }}
+              >
                 Payment Method
               </FormLabel>
               <RadioGroup
@@ -105,6 +109,12 @@ export default function Checkout() {
               control={<Checkbox />}
               label="I have read and accept the terms and conditions.*"
             />
+
+            <Button variant="contained" color="success">
+              <Link to="shop" className="link">
+                Place an order
+              </Link>
+            </Button>
           </div>
         </Grid>
       </Grid>

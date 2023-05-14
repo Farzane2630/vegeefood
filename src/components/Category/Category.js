@@ -36,7 +36,7 @@ export default function Category() {
               protect the health of every home
             </p>
             <Button variant="contained" color="success">
-              <Link to="shop" className="link">
+              <Link to="/products/1" className="link">
                 Shop Now
               </Link>
             </Button>
