@@ -5,6 +5,13 @@ import Footer from "../../components/Footer/Footer";
 import { SwiperSlide } from "swiper/react";
 import { useSelector } from "react-redux";
 import { Grid } from "@mui/material";
+import InputAdornments from "../../components/InfoTable/InfoTable";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import FormControl from "@mui/material/FormControl";
+import Radio from "@mui/material/Radio";
+import Checkbox from "@mui/material/Checkbox";
+import FormLabel from "@mui/material/FormLabel";
+import RadioGroup from "@mui/material/RadioGroup";
 
 export default function Checkout() {
   const bg = useSelector((state) => state.bgUrl);
@@ -20,86 +27,87 @@ export default function Checkout() {
           <h1 className="product-title">Product info</h1>
         </SwiperSlide>
       </Hero>
-
       <h2 className="billing-detail-header">Billing Details</h2>
-      <form action="">
-        <Grid container>
-          <Grid className="customer-form" item lg={6} xs={12}>
-            <Grid className="name" item xs={12} md={6}>
-              <Grid className="first-name" >
-                <label htmlFor=""> First name </label>
-                <input type="text" />
-              </Grid>
-              <Grid className="last-name">
-                <label htmlFor=""> last name </label>
-                <input type="text" />
-              </Grid>
-            </Grid>
-            <Grid className="state">
-              <label htmlFor=""> State/Country </label>
-              <input type="text" placeholder="Germany" />
-            </Grid>
-            <Grid className="address" item xs={12} md={6}>
-              <Grid className="street" >
-                <label htmlFor=""> Street Address </label>
-                <input
-                  type="text"
-                  placeholder="House number and street name "
+
+      <Grid container>
+        <Grid item xs={12} lg={6}>
+          <InputAdornments />
+          <FormControl>
+              <RadioGroup
+                row
+                aria-labelledby="demo-row-radio-buttons-group-label"
+                name="row-radio-buttons-group"
+              >
+                <FormControlLabel
+                  value="new Account"
+                  control={<Radio />}
+                  label="Create an Account?"
                 />
-              </Grid>
-              <Grid className="apartment">
-                {/* <label htmlFor=""> Street Address </label> */}
-                <input
-                  type="text"
-                  placeholder="apartment/suit/unit *optional "
+                <FormControlLabel
+                  value="different Address"
+                  control={<Radio />}
+                  label="Ship to different address"
                 />
-              </Grid>
-            </Grid>
-            <Grid className="sub-address" xs={12} md={6}>
-              <Grid className="city" item >
-                <label htmlFor=""> Town/City </label>
-                <input type="text" />
-              </Grid>
-              <Grid className="ZIP" item >
-                <label htmlFor=""> Postcode / ZIP* </label>
-                <input type="text" />
-              </Grid>
-            </Grid>
-            <Grid className="contact-info" item xs={12} md={6}>
-              <Grid className="phone">
-                <label htmlFor=""> Phone</label>
-                <input type="text" />
-              </Grid>
-              <Grid className="email">
-                <label htmlFor=""> Email address </label>
-                <input type="text" />
-              </Grid>
-            </Grid>
-          </Grid>
-          <Grid className="payment" item lg={6} xs={12}>
-            <div className="cart-total">
-              <div className="head">Cart total</div>
-              <div className="sub-total">
-                <span>Subtotal</span>
-                <span> $ 67</span>
-              </div>
-              <div className="delivery">
-                <span>Delivery</span>
-                <span>$ 00.0</span>
-              </div>
-              <div className="discount">
-                <span>Discount</span>
-                <span>$ 30</span>
-              </div>
-              <hr />
-              <div className="total">
-                <span>TOTAL</span>
-                <span>$ 50</span>
-              </div>
-            </div>
-          </Grid>
+              </RadioGroup>
+            </FormControl>
         </Grid>
-      </form>
+        <Grid className="payment" item lg={6} xs={12}>
+          <div className="cart-total">
+            <div className="head">Cart total</div>
+            <div className="sub-total">
+              <span>Subtotal</span>
+              <span> $ 67</span>
+            </div>
+            <div className="delivery">
+              <span>Delivery</span>
+              <span>$ 00.0</span>
+            </div>
+            <div className="discount">
+              <span>Discount</span>
+              <span>$ 30</span>
+            </div>
+            <hr />
+            <div className="total">
+              <span>TOTAL</span>
+              <span>$ 50</span>
+            </div>
+          </div>
+          <div className="payment-method">
+            <FormControl>
+              <FormLabel id="demo-radio-buttons-group-label" style={{color:"black"}}>
+                Payment Method
+              </FormLabel>
+              <RadioGroup
+                aria-labelledby="demo-radio-buttons-group-label"
+                defaultValue="female"
+                name="radio-buttons-group"
+              >
+                <FormControlLabel
+                  value="female"
+                  control={<Radio />}
+                  label="Direct Bank Tranfer"
+                />
+                <FormControlLabel
+                  value="male"
+                  control={<Radio />}
+                  label="Check Payment"
+                />
+                <FormControlLabel
+                  value="other"
+                  control={<Radio />}
+                  label="Paypal"
+                />
+              </RadioGroup>
+            </FormControl>
+            <FormControlLabel
+              value="end"
+              required
+              control={<Checkbox />}
+              label="I have read and accept the terms and conditions.*"
+            />
+          </div>
+        </Grid>
+      </Grid>
 
       <Footer />
     </>
