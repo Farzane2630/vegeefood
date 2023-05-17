@@ -10,7 +10,7 @@ import { useSelector } from "react-redux";
 
 export default function Testimony() {
   const usersInfo = useSelector((state) => state.usersInfo);
-  console.log("userinfo => ", usersInfo);
+  // console.log("userinfo => ", usersInfo);
   return (
     <>
       <div className="landing-section-title">Testimony</div>

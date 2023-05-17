@@ -2,11 +2,13 @@ $mainGreen: #82ae46;
 .product-container {
   border: solid 1px lightgray;
 
-  .img-product {
+  .img-fluid {
     display: flex;
     flex-direction: column-reverse;
     justify-content: flex-start;
-    object-fit: contain;
+    object-fit: cover;
+    max-width: fit-content !important;
+    max-height: 200px !important;
   }
   .status {
     background-color: $mainGreen;

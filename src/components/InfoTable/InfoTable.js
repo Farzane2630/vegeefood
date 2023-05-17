@@ -11,12 +11,14 @@ export default function InputAdornments() {
     >
       <div>
         <TextField
+          required
           className="half-width"
           label="First name"
           id="outlined-start-adornment"
           sx={{ m: 1 }}
         />
         <TextField
+          required
           className="half-width"
           label="Last name"
           id="outlined-start-adornment"
@@ -24,7 +26,8 @@ export default function InputAdornments() {
         />
       </div>
       <div>
-      <TextField
+        <TextField
+          required
           className="full-width"
           label="Country / State"
           id="outlined-start-adornment"
@@ -33,6 +36,7 @@ export default function InputAdornments() {
       </div>
       <div>
         <TextField
+          required
           className="half-width"
           label="Street Address"
           placeholder="Hous number and street name"
@@ -41,7 +45,6 @@ export default function InputAdornments() {
         />
         <TextField
           className="half-width"
-          //  label="Last name"
           id="outlined-start-adornment"
           sx={{ m: 1 }}
           placeholder="Appartment,unit(etc):optional"
@@ -49,12 +52,14 @@ export default function InputAdornments() {
       </div>
       <div>
         <TextField
+          required
           className="half-width"
           label="Town City"
           id="outlined-start-adornment"
           sx={{ m: 1 }}
         />
         <TextField
+          required
           className="half-width"
           label="Postcode / ZIP *"
           id="outlined-start-adornment"
@@ -63,12 +68,14 @@ export default function InputAdornments() {
       </div>
       <div>
         <TextField
+          required
           className="half-width"
           label="Phone"
           id="outlined-start-adornment"
           sx={{ m: 1 }}
         />
         <TextField
+          required
           className="half-width"
           label="Email Address"
           id="outlined-start-adornment"

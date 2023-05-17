@@ -46,21 +46,6 @@ $mainGreen: #82ae46;
 .body {
   @include flexCenter(row, center, center, _);
 
-  .side-line-design {
-    @include flexCenter(column, center, center, _);
-    height: 100%;
-
-    .top {
-      height: 35%;
-      border: $mainGreen solid 0.005px;
-    }
-
-    .middle {
-      height: 10%;
-      border: $mainGreen solid 3px;
-    }
-  }
-
   .testimony-txt {
     text-align: center;
     color: rgba(0, 0, 0, 0.8);

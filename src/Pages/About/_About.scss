@@ -1,0 +1,20 @@
+@mixin flexCenter($direction, $justify, $text) {
+   display: flex;
+   flex-direction: $direction;
+   justify-content: $justify;
+   align-items: center;
+   text-align: $text;
+ }
+
+.best-price-container {
+   @include flexCenter(column, right, left);
+   flex: 1;
+   background-size: cover;
+   background-repeat: no-repeat;
+   background-position: center;
+   background-position: center;
+   margin: 50px 0 100px 0;
+   padding: 100px 0;
+   height: 320px;
+   opacity: 0.6;
+}

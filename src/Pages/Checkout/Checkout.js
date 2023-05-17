@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import Header from "../../components/Header/Header";
 import Hero from "../../components/Hero/Hero";
 import Footer from "../../components/Footer/Footer";
@@ -13,11 +13,43 @@ import Checkbox from "@mui/material/Checkbox";
 import FormLabel from "@mui/material/FormLabel";
 import RadioGroup from "@mui/material/RadioGroup";
 import { Link } from "react-router-dom";
+import { cartContext } from "../../Contexts/Contexts";
+import swal from "sweetalert";
 
 import "./_Checkout.scss";
 
 export default function Checkout() {
+  
   const bg = useSelector((state) => state.bgUrl);
+
+
+  // payment
+  const context = useContext(cartContext);
+  const purchasedItems = useSelector((state) => state.cart);
+
+  const subTotal = purchasedItems.reduce((total, product) => {
+    return total + product.price * context.productQuantity;
+  }, 0);
+
+  const totalDiscount = purchasedItems.reduce((total, product) => {
+    if (product.discount > 0) {
+      return total + product.discount * context.productQuantity;
+    }
+  }, 0);
+
+  const [isCheckedOut, setIsCheckedOut] = useState(false);
+  const purchaseHandler = () => {
+    if (purchasedItems.length > 0) {
+      swal({
+        title: "Purchased!",
+        icon: "success",
+        buttons: "confirm",
+      });
+      setIsCheckedOut(true);
+    }
+  };
+
+  const total = (subTotal * (100 - totalDiscount)) / 100;
   return (
     <>
       <Header />
@@ -61,20 +93,26 @@ export default function Checkout() {
 
               <div className="sub-total">
                 <span>Subtotal</span>
-                <span> $ 67</span>
+                <span>
+                  {purchasedItems.length > 0 ? ` $ ${subTotal}` : `$ 00.0`}
+                </span>
               </div>
               <div className="delivery">
                 <span>Delivery</span>
-                <span>$ 00.0</span>
+                <span>{purchasedItems.length > 0 ? ` $ 14.99` : `$ 00.0`}</span>
               </div>
               <div className="discount">
                 <span>Discount</span>
-                <span>$ 30</span>
+                <span>
+                  {purchasedItems.length > 0 ? ` % ${totalDiscount}` : `%0`}
+                </span>
               </div>
               <hr />
               <div className="total">
                 <span>TOTAL</span>
-                <span className="total-price">$ 50</span>
+                <span className="total-price">
+                  {purchasedItems.length > 0 ? ` $ ${total}` : `$ 00.0`}
+                </span>
               </div>
             </div>
             <div className="payment-method">
@@ -118,7 +156,13 @@ export default function Checkout() {
                 label="I have read and accept the terms and conditions.*"
               />
 
-              <Button variant="contained" color="success" className="order-btn">
+              <Button
+                variant="contained"
+                color="success"
+                className="order-btn"
+                onClick={purchaseHandler}
+                disabled={isCheckedOut === false ? false : true}
+              >
                 <Link to="shop" className="link">
                   Place an order
                 </Link>

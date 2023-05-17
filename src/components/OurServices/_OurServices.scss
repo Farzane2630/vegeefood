@@ -6,10 +6,14 @@
   text-align: center;
 }
 
-$mainGreen: #82ae46;
 
+$mainGreen: #82ae46;
+.about {
+  background-color: #f7f6f2 !important;
+}
+ 
 .grid-container {
-  padding: 6rem;
+ padding: 6rem;
   .grid-item {
     @include flexCenter(column, center);
 
@@ -39,5 +43,30 @@ $mainGreen: #82ae46;
       font-size: 15px;
       color: #aaa;
     }
+  }
+}
+
+.about-swipe-up {
+  @include flexCenter(row, center);
+  background-color: $mainGreen;
+  border-radius: 50%;
+  padding: 10px;
+  flex-direction: column;
+  width: 50px;
+  height: 50px;
+  margin-top: -2%;
+  left: 50%;
+  position: absolute;
+  z-index: 9999 !important;
+
+  button {
+    @include flexCenter(row, center);
+    border: none;
+    outline: none !important;
+  }
+  .icon {
+    color: #fff;
+    margin: 0;
+    align-self: center;
   }
 }

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import Header from "../../components/Header/Header";
 import Hero from "../../components/Hero/Hero";
 import { SwiperSlide } from "swiper/react";
@@ -6,9 +6,11 @@ import Footer from "../../components/Footer/Footer";
 import { useDispatch, useSelector } from "react-redux";
 import { removeFromList } from "../../Redux/Reducers/Wishlist";
 import BasicTable from "../../Utils/Table/Table";
+import ShowAlert from "../../Utils/Alert/Alert";
+import { cartContext } from "../../Contexts/Contexts";
+import { TextField } from "@mui/material";
 
 import "./_WishList.scss";
-import ShowAlert from "../../Utils/Alert/Alert";
 
 export default function WishList() {
   const bg = useSelector((state) => state.bgUrl);
@@ -22,6 +24,13 @@ export default function WishList() {
 
     dispatch(removeFromList(remainsProducts));
   };
+
+  //total price
+  const context = useContext(cartContext);
+
+  const totalPrice = wishlist.reduce((total, product) => {
+    return total + product.price * context.productQuantity;
+  }, 0);
 
   return (
     <>
@@ -37,17 +46,27 @@ export default function WishList() {
         </SwiperSlide>
       </Hero>
 
-{
-  wishlist.length !== 0 ?(
-      <BasicTable
-        products={wishlist}
-        deleteFromList={deleteFromList}
-      >
-        </BasicTable>
-  ):(
-    <ShowAlert variant="filled" type="error" msg="You Have not select any product yet!" wishlist={true} />
-  )
-}
+      {wishlist.length !== 0 ? (
+        <>
+          <BasicTable
+            products={wishlist}
+            deleteFromList={deleteFromList}
+          ></BasicTable>
+          <TextField
+            id="outlined-basic"
+            label={`$${totalPrice}`}
+            variant="outlined"
+            disabled={true}
+          />
+        </>
+      ) : (
+        <ShowAlert
+          variant="filled"
+          type="error"
+          msg="You Have not select any product yet!"
+          wishlist={true}
+        />
+      )}
 
       <Footer />
     </>

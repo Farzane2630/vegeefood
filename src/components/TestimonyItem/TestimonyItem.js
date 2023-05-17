@@ -15,11 +15,6 @@ export default function TestimonyItem(props ) {
       </div>
 
       <div className="body">
-      <div className="side-line-design">
-         <div className="top"></div>
-         <div className="middle"></div>
-         <div className="top"></div>
-      </div>
       <div className="testimony-txt">{props.msg}</div>
       </div>
 

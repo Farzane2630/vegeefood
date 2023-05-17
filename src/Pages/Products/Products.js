@@ -50,7 +50,7 @@ export default function Products() {
     if (cartItems.includes(selectedItem)) {
       toast.error("You have added this Item before!", {
         position: "top-right",
-        autoClose: 1000,
+        autoClose: 500,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
@@ -62,7 +62,7 @@ export default function Products() {
       dispatch(addToCart(selectedItem));
       toast.success("Item added to cart", {
         position: "top-right",
-        autoClose: 1000,
+        autoClose: 500,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
@@ -73,10 +73,37 @@ export default function Products() {
     }
   };
 
-  const wishlistHandler = (productID) => {
-    const favorieItem = products.find((product) => product.id === productID);
 
-    dispatch(addTolist(favorieItem));
+  //wishlist
+  const wishlist = useSelector((state) => state.wishlist);
+
+  const wishlistHandler = (productID) => {
+    const favoriteItem = products.find((product) => product.id === productID);
+    if (wishlist.includes(favoriteItem)) {
+      toast.error("You have added this Item before!", {
+        position: "top-right",
+        autoClose: 500,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
+    } else {
+      toast.success("Item has been added to your wishlist", {
+        position: "top-right",
+        autoClose: 500,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
+      dispatch(addTolist(favoriteItem));
+    }
+    dispatch(addTolist(favoriteItem));
   };
 
   return (

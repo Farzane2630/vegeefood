@@ -19,12 +19,12 @@ export default function ProductItem(props) {
     >
       <div className="product">
         <Link to={props.path} className="img-product link">
-          <img className="img-fluid" src={props.img} alt={props.name} />
           {props.discount ? (
             <span className="status">{props.discount}%</span>
           ) : (
             <span className="status hide"> 0 % </span>
           )}
+          <img className="img-fluid" src={props.img} alt={props.name} />
         </Link>
         <div className="p-3 text-center">
           <h3>

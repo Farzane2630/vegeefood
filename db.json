@@ -264,5 +264,11 @@
       "detail": "24/7 support",
       "bg": "#dcd691"
     }
+  ],
+  "countup": [
+    { "end": 1056, "desc": "HAPPY CUSTOMERS" },
+    { "end": 93, "desc": "BRANCHES" },
+    { "end": 60, "desc": "PARTNER" },
+    { "end": 20, "desc": "AWARDS" }
   ]
 }

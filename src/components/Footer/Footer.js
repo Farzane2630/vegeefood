@@ -5,14 +5,15 @@ import { FaFacebookF, FaTwitter, FaInstagram } from "react-icons/fa";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import PhoneIcon from "@mui/icons-material/Phone";
 import MailIcon from "@mui/icons-material/Mail";
-import FavoriteIcon from '@mui/icons-material/Favorite';
+import FavoriteIcon from "@mui/icons-material/Favorite";
 import { Link } from "react-router-dom";
 
 import "./_Footer.scss";
-export default function Footer() {
+export default function Footer({about}) {
   return (
     <>
-      <Newsletter />
+      {about ? "" : <Newsletter />}
+
       <Grid container className="footer">
         <Grid item xs={12} sm={3} className="v-food">
           <h2 className="footer-title">Vegefoods</h2>
@@ -20,7 +21,7 @@ export default function Footer() {
             Far far away, behind the word mountains, far from the countries
             Vokalia and Consonantia.
           </div>
-          <Grid  item sm={12} md={4} className="social-media-icons">
+          <Grid item sm={12} md={4} className="social-media-icons">
             <Link to="#">
               <FaTwitter className="icon" />
             </Link>
@@ -108,7 +109,11 @@ export default function Footer() {
         </Grid>
       </Grid>
       <p className="copy-right">
-      Copyright ©2023 All rights reserved | This template is made with <FavoriteIcon style={{color: "red"}} /> by <Link to="https://github.com/Farzane2630" className="link author">FARZANAK</Link>
+        Copyright ©2023 All rights reserved | This template is made with{" "}
+        <FavoriteIcon style={{ color: "red" }} /> by{" "}
+        <Link to="https://github.com/Farzane2630" className="link author">
+          FARZANAK
+        </Link>
       </p>
     </>
   );
