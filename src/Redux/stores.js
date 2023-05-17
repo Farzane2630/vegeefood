@@ -13,6 +13,7 @@ import servicesReducer, { fetchServicesData } from "./Reducers/Services";
 import wishlistReducer from "./Reducers/Wishlist";
 import cartReducer from "./Reducers/Cart";
 import countUpReducer, { fetchCountUpData } from "./Reducers/countUp";
+import aboutReducer, { fetchAboutData } from "./Reducers/about";
 
 const rootReducer = combineReducers({
   products: dataReducer,
@@ -25,6 +26,7 @@ const rootReducer = combineReducers({
   wishlist: wishlistReducer,
   cart: cartReducer,
   countUp: countUpReducer,
+  about: aboutReducer,
 });
 
 const store = configureStore({
@@ -40,6 +42,7 @@ store.dispatch(fetchBackgroundUrl());
 store.dispatch(fetchUsersInfo());
 store.dispatch(fetchServicesData());
 store.dispatch(fetchCountUpData());
+store.dispatch(fetchAboutData());
 store.subscribe(() => console.log(store.getState()));
 
 export default store;

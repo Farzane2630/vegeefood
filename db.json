@@ -213,30 +213,6 @@
       "userName": "Stephie",
       "userImgUrl": "./assets/images/person.jpg",
       "userCommentText": "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts."
-    },
-    {
-      "userID": 5,
-      "userName": "Muller",
-      "userImgUrl": "./assets/images/person.jpg",
-      "userCommentText": "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts."
-    },
-    {
-      "userID": 6,
-      "userName": "Sara",
-      "userImgUrl": "./assets/images/person.jpg",
-      "userCommentText": "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts."
-    },
-    {
-      "userID": 7,
-      "userName": "Chelssi",
-      "userImgUrl": "./assets/images/person.jpg",
-      "userCommentText": "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts."
-    },
-    {
-      "userID": 8,
-      "userName": "Berlin",
-      "userImgUrl": "./assets/images/person.jpg",
-      "userCommentText": "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts."
     }
   ],
   "services": [
@@ -270,5 +246,6 @@
     { "end": 93, "desc": "BRANCHES" },
     { "end": 60, "desc": "PARTNER" },
     { "end": 20, "desc": "AWARDS" }
-  ]
+  ],
+  "about": { "url": "./assets/images/about.jpg" }
 }

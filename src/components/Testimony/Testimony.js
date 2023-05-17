@@ -21,7 +21,7 @@ export default function Testimony() {
         in
       </div>
       <Swiper
-        slidesPerView={1}
+        slidesPerView={3}
         spaceBetween={10}
         pagination={{
           clickable: true,
@@ -37,7 +37,7 @@ export default function Testimony() {
           },
           "@1.50": {
             slidesPerView: 3,
-            spaceBetween: 40,
+            spaceBetween: 30,
           },
         }}
         modules={[Pagination]}
