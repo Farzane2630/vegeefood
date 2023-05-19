@@ -8,7 +8,7 @@ import AlarmIcon from "@mui/icons-material/Alarm";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import { Link } from "react-router-dom";
 
-export default function MouseOverPopover({ PopOverTxt, target }) {
+export default function MouseOverPopover({ PopOverTxt, target , path}) {
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handlePopoverOpen = (event) => {
@@ -29,7 +29,7 @@ export default function MouseOverPopover({ PopOverTxt, target }) {
         onMouseEnter={handlePopoverOpen}
         onMouseLeave={handlePopoverClose}
       >
-        <Link to="/products/1" className="link">
+        <Link to={path} className="link">
           <IconButton color="black" aria-label="add to shopping cart">
             <AddShoppingCartIcon />
           </IconButton>

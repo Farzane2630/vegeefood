@@ -19,9 +19,7 @@ import swal from "sweetalert";
 import "./_Checkout.scss";
 
 export default function Checkout() {
-  
   const bg = useSelector((state) => state.bgUrl);
-
 
   // payment
   const context = useContext(cartContext);
@@ -32,10 +30,18 @@ export default function Checkout() {
   }, 0);
 
   const totalDiscount = purchasedItems.reduce((total, product) => {
-    if (product.discount > 0) {
+    if (product.discount !== 0) {
       return total + product.discount * context.productQuantity;
-    }
+    } 
+    return 0
   }, 0);
+
+  console.log(totalDiscount);
+
+  const total =
+    Number(totalDiscount) !== 0
+      ? (subTotal * (100 - totalDiscount)) / 100 + 4.99
+      : subTotal + 4.99;
 
   const [isCheckedOut, setIsCheckedOut] = useState(false);
   const purchaseHandler = () => {
@@ -49,7 +55,6 @@ export default function Checkout() {
     }
   };
 
-  const total = (subTotal * (100 - totalDiscount)) / 100;
   return (
     <>
       <Header />
@@ -99,7 +104,7 @@ export default function Checkout() {
               </div>
               <div className="delivery">
                 <span>Delivery</span>
-                <span>{purchasedItems.length > 0 ? ` $ 14.99` : `$ 00.0`}</span>
+                <span>{purchasedItems.length > 0 ? ` $ 4.99` : `$ 00.0`}</span>
               </div>
               <div className="discount">
                 <span>Discount</span>

@@ -1,0 +1,24 @@
+.contact-info-container {
+  padding: 4rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  column-gap: 5%;
+  width: 100%;
+
+  .contact-info {
+    padding: 1rem;
+    background-color: #fff;
+    width: 20% !important;
+    height: 100px;
+    display: flex;
+    flex-direction: row !important;
+    align-items: center;
+    justify-content: center;
+
+    span {
+      color: gray;
+    }
+  }
+}

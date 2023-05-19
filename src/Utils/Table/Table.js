@@ -9,8 +9,11 @@ import TableRow from "@mui/material/TableRow";
 import DeleteIcon from "@mui/icons-material/Delete";
 import IconButton from "@mui/material/IconButton";
 import { cartContext } from "../../Contexts/Contexts";
+import MouseOverPopover from "../Poper";
+import { Link } from "react-router-dom";
 
 import "./_Table.scss";
+import { useSelector } from "react-redux";
 
 function QuantityInput({ quantity, setQuantity }) {
   return (
@@ -24,22 +27,35 @@ function QuantityInput({ quantity, setQuantity }) {
   );
 }
 
-function ProductRow({ product, deleteFromList }) {
+function ProductRow({ product, deleteFromList, wishlist, addToCartHandler }) {
   const [quantity, setQuantity] = useState(1);
 
-  const context = React.useContext(cartContext)
+  // const totalPrice = useSelector(state=>state.totalPrice)
+  // console.log("total price: ",totalPrice);
 
-  useEffect(
-    () => {
-      context.setProductQuantity(quantity)
-    },[quantity, setQuantity]);
-    
+  //total quantity
+  const context = React.useContext(cartContext);
+
+  useEffect(() => {
+    context.setProductQuantity(quantity);
+  }, [quantity, setQuantity]);
+
   return (
     <TableRow
       key={product.name}
       sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
     >
-      <TableCell className="table-body-cell" component="th" scope="row">
+      <TableCell
+        className="table-body-cell"
+        component="th"
+        scope="row"
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          alignItems: "center",
+          columnGap: "5%",
+        }}
+      >
         <IconButton
           onClick={deleteFromList}
           aria-label="delete"
@@ -49,7 +65,16 @@ function ProductRow({ product, deleteFromList }) {
         >
           <DeleteIcon fontSize="inherit" />
         </IconButton>
-        <img src={product.cover} className="whishItem-img" />
+        <div className="add-to-cart-btn" onClick={addToCartHandler}>
+          {wishlist ? (
+            <MouseOverPopover path="" PopOverTxt="ADD to CART!" />
+          ) : (
+            ""
+          )}
+        </div>
+        <Link to={`/product-info/${product.id}`} className="link">
+          <img src={product.cover} className="whishItem-img" />
+        </Link>
         {product.title}
       </TableCell>
       <TableCell className="table-body-cell" align="center">
@@ -63,13 +88,22 @@ function ProductRow({ product, deleteFromList }) {
         />
       </TableCell>
       <TableCell className="table-body-cell" align="center">
-        $ {product.price * quantity}
+        {product.discount !== 0
+          ? ` $ ${
+              ((product.price * (100 - product.discount)) / 100) * quantity
+            }`
+          : `$ ${product.price * quantity}`}
       </TableCell>
     </TableRow>
   );
 }
 
-export default function BasicTable({ products, deleteFromList }) {
+export default function BasicTable({
+  products,
+  deleteFromList,
+  wishlist,
+  addToCartHandler,
+}) {
   return (
     <TableContainer className="table-container">
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -95,6 +129,8 @@ export default function BasicTable({ products, deleteFromList }) {
               key={product.title}
               product={product}
               deleteFromList={() => deleteFromList(product.id)}
+              wishlist={wishlist}
+              addToCartHandler={() => addToCartHandler(product.id)}
             />
           ))}
         </TableBody>

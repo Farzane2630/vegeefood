@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import MenuIcon from "@mui/icons-material/Menu";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import { cartContext } from "../../Contexts/Contexts";
+// import { cartContext } from "../../Contexts/Contexts";
 
 import "./_ProductItem.scss";
 

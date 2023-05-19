@@ -5,7 +5,7 @@ import "./_Products.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../../Redux/Reducers/Cart";
 import { addTolist } from "../../Redux/Reducers/Wishlist";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 
 
 export default function Products() {
@@ -42,10 +42,35 @@ export default function Products() {
     }
   };
 
+  // wishlist
+  const wishlist = useSelector(state=>state.wishlist)
+
   const wishlistHandler = (productID) => {
     const favorieItem = products.find((product) => product.id === productID);
-
-    dispatch(addTolist(favorieItem));
+    if (wishlist.includes(favorieItem)) {
+      toast.error("You have added this Item before!", {
+        position: "top-right",
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
+    } else {
+      toast.success("Item added to wishlist", {
+        position: "top-right",
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
+      dispatch(addTolist(favorieItem));
+    }
   };
 
   return (

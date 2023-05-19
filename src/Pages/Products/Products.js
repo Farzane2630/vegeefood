@@ -101,7 +101,6 @@ export default function Products() {
         progress: undefined,
         theme: "colored",
       });
-      dispatch(addTolist(favoriteItem));
     }
     dispatch(addTolist(favoriteItem));
   };

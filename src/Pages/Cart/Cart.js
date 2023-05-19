@@ -8,9 +8,11 @@ import BasicTable from "../../Utils/Table/Table";
 import { removeFromCart } from "../../Redux/Reducers/Cart";
 import TextField from "@mui/material/TextField";
 import ShowAlert from "../../Utils/Alert/Alert";
+import { Button, Grid } from "@mui/material";
+import { cartContext } from "../../Contexts/Contexts";
+import { Link } from "react-router-dom";
 
 import "./_Cart.scss";
-import { cartContext } from "../../Contexts/Contexts";
 
 export default function Cart() {
   const bg = useSelector((state) => state.bgUrl);
@@ -28,10 +30,10 @@ export default function Cart() {
 
   //cart total price
 
-  const context = useContext(cartContext)
+  const context = useContext(cartContext);
 
   const totalPrice = cartItems.reduce((total, product) => {
-    return total + product.price * context.productQuantity;
+    return total + (product.price * context.productQuantity);
   }, 0);
 
   return (
@@ -49,13 +51,34 @@ export default function Cart() {
       {cartItems.length !== 0 ? (
         <>
           <BasicTable products={cartItems} deleteFromList={deleteFromList} />
-          <TextField
-            id="outlined-basic"
-            label={`$${totalPrice}`}
-            variant="outlined"
-            disabled={true}
-
-          />
+          <Grid
+            item
+            xs={12}
+            md={6}
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "flex-end",
+              padding: "0 15rem",
+              columnGap: "5%",
+            }}
+          >
+            <TextField
+              id="outlined-basic"
+              label={`$${totalPrice}`}
+              variant="outlined"
+              disabled={true}
+            />
+            <Button
+              variant="contained"
+              color="success"
+              className="lets-pay-btn"
+            >
+              <Link to="/checkout" className="link">
+                continue and pay
+              </Link>
+            </Button>
+          </Grid>
         </>
       ) : (
         <ShowAlert

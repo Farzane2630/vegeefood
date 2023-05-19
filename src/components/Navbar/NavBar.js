@@ -53,11 +53,11 @@ export default function NavBar({props}) {
                 About
               </Link>
             </Nav.Link>
-            <Nav.Link href="/blog" className="nav-item">
+            {/* <Nav.Link href="/blog" className="nav-item">
               <Link to="/blog" className="link">
                 Blog
               </Link>
-            </Nav.Link>
+            </Nav.Link> */}
             <Nav.Link href="/contact" className="nav-item">
               <Link to="/contact" className="link">
                 Contact

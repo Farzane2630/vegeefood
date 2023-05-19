@@ -14,6 +14,7 @@ import wishlistReducer from "./Reducers/Wishlist";
 import cartReducer from "./Reducers/Cart";
 import countUpReducer, { fetchCountUpData } from "./Reducers/countUp";
 import aboutReducer, { fetchAboutData } from "./Reducers/about";
+import contactReducer, { fetchContactInfo } from "./Reducers/contact";
 
 const rootReducer = combineReducers({
   products: dataReducer,
@@ -27,6 +28,7 @@ const rootReducer = combineReducers({
   cart: cartReducer,
   countUp: countUpReducer,
   about: aboutReducer,
+  contact: contactReducer,
 });
 
 const store = configureStore({
@@ -43,6 +45,7 @@ store.dispatch(fetchUsersInfo());
 store.dispatch(fetchServicesData());
 store.dispatch(fetchCountUpData());
 store.dispatch(fetchAboutData());
+store.dispatch(fetchContactInfo());
 store.subscribe(() => console.log(store.getState()));
 
 export default store;

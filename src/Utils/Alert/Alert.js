@@ -15,9 +15,9 @@ export default function ShowAlert({ variant, type, msg, cart, wishlist }) {
       <Alert variant={variant} severity={type}>
         {msg}
       </Alert>
-      {cart ? <MouseOverPopover PopOverTxt="Let`s shop!" /> : ""}
+      {cart ? <MouseOverPopover path="/products/1" PopOverTxt="Let`s shop!" /> : ""}
       {wishlist ? (
-        <MouseOverPopover PopOverTxt="Let`s select favorie products!" />
+        <MouseOverPopover path="/products/1" PopOverTxt="Let`s select favorie products!" />
       ) : (
         ""
       )}

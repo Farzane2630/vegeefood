@@ -11,12 +11,16 @@ export const fetchCategories = createAsyncThunk("fetchCategories", async () => {
   return response.data;
 });
 
-export const fetchProductCount = createAsyncThunk("fetchProductCount", async (products , productID)=>{
-  const mainProduct = await products.find(product=> product.id === productID)
+export const fetchProductCount = createAsyncThunk(
+  "fetchProductCount",
+  async (products, productID) => {
+    const mainProduct = await products.find(
+      (product) => product.id === productID
+    );
 
-  return mainProduct.count
-})
-
+    return mainProduct.count;
+  }
+);
 
 export const slice = createSlice({
   name: "products",
@@ -24,11 +28,18 @@ export const slice = createSlice({
     products: [],
     categories: [],
     selectedCategory: "",
-    productCount: 1
+    totalPrice: 0,
   },
   reducers: {
     selectCategory: (state, action) => {
       state.selectedCategory = action.payload;
+    },
+    totalPrice: (state, action, productID) => {
+      
+      const mainItemTotalPrice = state.products.find(
+        (products) => products.id === productID
+      ).totalPrice;
+      state.totalPrice = mainItemTotalPrice;
     },
   },
   extraReducers: (builder) => {
@@ -44,8 +55,6 @@ export const slice = createSlice({
   },
 });
 
-export const {selectCategory} = slice.actions;
+export const { selectCategory, totalPrice } = slice.actions;
 
 export default slice.reducer;
-
-

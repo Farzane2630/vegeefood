@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
 import BasicRating from "../../Utils/Rating/Rating";
 import { addToCart } from "../../Redux/Reducers/Cart";
+import { toast } from "react-toastify";
 
 export default function ProductInfo() {
   const dispatch = useDispatch();
@@ -21,11 +22,34 @@ export default function ProductInfo() {
   const products = useSelector((state) => state.products.products);
   const { productID } = useParams();
   const mainProduct = products.find((product) => product.id == productID);
-
+  const cartItems = useSelector((state) => state.cart);
   const addToCartHandler = (id) => {
-    if (!isSelected) {
-      dispatch(addToCart(mainProduct));
-      setIsSelected(true);
+    if (!isSelected && inputValue > 0) {
+      if (cartItems.includes(mainProduct)) {
+        toast.error("You have added this Item before!", {
+          position: "top-right",
+          autoClose: 500,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+        });
+      } else {
+        toast.success("Item has been added to your Cart", {
+          position: "top-right",
+          autoClose: 500,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+        });
+        dispatch(addToCart(mainProduct));
+        setIsSelected(true);
+      }
     }
   };
   return (

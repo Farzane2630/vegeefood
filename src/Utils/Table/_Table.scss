@@ -1,12 +1,17 @@
 $mainGreen: #82ae46;
 
 .table-container {
-  padding: 5rem 15rem;
+  padding: 5rem 15rem 0 15rem;
 
   .table-head {
     background-color: $mainGreen;
   }
 
+  .tablecell{
+    display: flex !important;
+    flex-direction: row !important;
+
+  }
   .table-head-cell {
     color: #fff;
     font-weight: 700;
