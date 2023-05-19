@@ -4,11 +4,11 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  column-gap: 5%;
+  // column-gap: 1%;
   width: 100%;
 
   .contact-info {
-    padding: 1rem;
+    // margin: 1%;
     background-color: #fff;
     width: 20% !important;
     height: 100px;
@@ -16,9 +16,53 @@
     flex-direction: row !important;
     align-items: center;
     justify-content: center;
-
+    .address-info {
+      min-width: 100% !important;
+      align-items: baseline;
+    }
     span {
       color: gray;
+    }
+  }
+}
+
+.map-contactform {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 6rem;
+
+  .google-map,
+  .contact-form-container {
+    padding: 1.5rem;
+    height: 600px;
+  }
+  
+
+  .contact-form-container {
+    display: flex;
+    flex-direction: column !important;
+    justify-content: top;
+    align-items: flex-start;
+    border: none;
+    background-color: #fff;
+    padding: 3%;
+    height: inherit;
+
+    .msg-txtaria {
+      margin-top: 15px;
+      background-color: transparent;
+      width: 100%;
+      min-height: 100px;
+    }
+
+    .send-btn{
+      padding: 1rem 1.5rem;
+      width: 100%;
+      margin: 2rem 1rem;
+      border-radius: 45px !important;
+      text-transform: capitalize;
     }
   }
 }
