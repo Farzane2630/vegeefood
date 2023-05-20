@@ -7,6 +7,7 @@ import { useSelector } from "react-redux";
 import { Grid, TextField, Button } from "@mui/material";
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from "google-maps-react";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 
 import "./_Contact.scss";
 
@@ -43,6 +44,20 @@ function Contact() {
     height: "100%",
   };
 
+  // onclick handler
+  const sendMessageHandler = () => {
+    toast.success("Your massage has been sent successfully", {
+      position: "top-right",
+      autoClose: 1000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+    });
+  };
+
   return (
     <div style={{ backgroundColor: "#f7f6f2" }}>
       <Header />
@@ -53,7 +68,7 @@ function Contact() {
           style={{ backgroundImage: `url(${bg[1]})` }}
         >
           <p className="product-page"> Home CONTACT US </p>
-          <h1 className="product-title">MY CONTACT US</h1>
+          <h1 className="product-title">CONTACT US</h1>
         </SwiperSlide>
       </Hero>
       <Grid
@@ -61,26 +76,26 @@ function Contact() {
         className="contact-info-container"
         style={{ backgroundColor: "#f7f6f2" }}
       >
-        <Grid className="contact-info address-info" item sx={12} md={3}>
-          <div className="contact-info">
+        <Grid className="contact-info" item sx={12} md={6} lg={3}>
+          <div className="contact-div">
             <span>Address:</span>
-            {contactInfo.address}
+            <div className="contact-address">{contactInfo.address}</div>
           </div>
         </Grid>
-        <Grid className="contact-info" item sx={12} md={3}>
-          <div className="contact-info">
+        <Grid className="contact-info" item sx={12} md={6} lg={3}>
+          <div className="contact-div">
             <span> Phone: </span>
             {contactInfo.phone}
           </div>
         </Grid>
-        <Grid className="contact-info" item sx={12} md={3}>
-          <div className="contact-info">
+        <Grid className="contact-info" item sx={12} md={6} lg={3}>
+          <div className="contact-div">
             <span>Email: </span>
             {contactInfo.email}
           </div>
         </Grid>
-        <Grid className="contact-info" item sx={12} md={3}>
-          <div className="contact-info">
+        <Grid className="contact-info" item sx={12} md={6} lg={3}>
+          <div className="contact-div">
             <span>Website: </span>
             {contactInfo.website}
           </div>
@@ -92,7 +107,13 @@ function Contact() {
         className="map-contactform"
         style={{ backgroundColor: "#f7f6f2" }}
       >
-        <Grid item xs={12} lg={6} className="google-map">
+        <Grid
+          item
+          xs={12}
+          lg={6}
+          className="google-map"
+          sx={{ display: { xs: "none", sm: "flex" } }}
+        >
           <Map
             google={window.google}
             onClick={onMapClicked}
@@ -111,7 +132,6 @@ function Contact() {
           </Map>
         </Grid>
         <Grid item xs={12} lg={6} className="contact-form-container">
-          {/* <div className="contact-form"> */}
           <TextField
             label={"Your Name"}
             id="margin-normal"
@@ -131,18 +151,23 @@ function Contact() {
             margin="normal"
             fullWidth
           />
-          <textarea className="msg-txtaria" minRows={3} placeholder="Message" />
+
+          <textarea
+            className="msg-txtaria"
+            minRows={3}
+            placeholder="Message"
+            required
+          />
           <Button
             variant="contained"
             color="success"
             className="order-btn send-btn"
-            // onClick={purchaseHandler}
+            onClick={sendMessageHandler}
           >
-            <Link to="shop" className="link">
+            <Link to="" className="link">
               Send Message
             </Link>
           </Button>
-          {/* </div> */}
         </Grid>
       </Grid>
       <Footer />

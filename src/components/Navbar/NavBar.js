@@ -53,18 +53,14 @@ export default function NavBar({props}) {
                 About
               </Link>
             </Nav.Link>
-            {/* <Nav.Link href="/blog" className="nav-item">
-              <Link to="/blog" className="link">
-                Blog
-              </Link>
-            </Nav.Link> */}
+           
             <Nav.Link href="/contact" className="nav-item">
               <Link to="/contact" className="link">
                 Contact
               </Link>
             </Nav.Link>
-            <Nav.Link href="/cart" className="nav-item cart-elem">
-              <Link to="/cart" className="link">
+            <Nav.Link href="cart" className="nav-item cart-elem">
+              <Link to="cart" className="link">
                 <ShoppingCartIcon />
                 <span className="orders-count">[{selectedProducts.length}]</span>
               </Link>

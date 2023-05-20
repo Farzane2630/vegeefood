@@ -168,7 +168,7 @@ export default function Checkout() {
                 onClick={purchaseHandler}
                 disabled={isCheckedOut === false ? false : true}
               >
-                <Link to="shop" className="link">
+                <Link to="" className="link">
                   Place an order
                 </Link>
               </Button>
