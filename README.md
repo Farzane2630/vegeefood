@@ -1,5 +1,5 @@
 
-# vegeeFood(vegetable online shop)
+# Vegefood (online shop)
 
 This is a responsive and fully dynamic website using react js and json-server as its backend technology.
 
