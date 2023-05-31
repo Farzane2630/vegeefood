@@ -3,7 +3,7 @@ import ProductItem from "../ProductItem/ProductItem";
 import { Box, Grid } from "@mui/material";
 import "./_Products.scss";
 import { useDispatch, useSelector } from "react-redux";
-import { addToCart } from "../../Redux/Reducers/Cart";
+import { addToCart } from "../../Redux/Reducers/cartItems";
 import { addTolist } from "../../Redux/Reducers/Wishlist";
 import { toast } from "react-toastify";
 

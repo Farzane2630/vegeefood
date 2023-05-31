@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -8,37 +8,42 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import DeleteIcon from "@mui/icons-material/Delete";
 import IconButton from "@mui/material/IconButton";
-import { cartContext } from "../../Contexts/Contexts";
 import MouseOverPopover from "../Poper";
 import { Link } from "react-router-dom";
 
 import "./_Table.scss";
-import { useSelector } from "react-redux";
-
-function QuantityInput({ quantity, setQuantity }) {
-  return (
-    <input
-      value={quantity}
-      type="text"
-      onChange={(e) => {
-        setQuantity(e.target.value);
-      }}
-    />
-  );
-}
+import { updateTotalPrice } from "../../Redux/Reducers/cartItems";
+import { useDispatch, useSelector } from "react-redux";
 
 function ProductRow({ product, deleteFromList, wishlist, addToCartHandler }) {
   const [quantity, setQuantity] = useState(1);
+  const carttItems = useSelector((state) => state.cart);
+  const setproductQuantity = (productID, e) => {
+    setQuantity(e.target.value);
 
-  // const totalPrice = useSelector(state=>state.totalPrice)
-  // console.log("total price: ",totalPrice);
+   carttItems.length > 0 && carttItems.find((product) => {
+      if (product.id === productID) {
+        setNewObject(e.target.value, productID);
+      }
+    });
+  };
+  const dispatch = useDispatch();
 
-  //total quantity
-  const context = React.useContext(cartContext);
-
-  useEffect(() => {
-    context.setProductQuantity(quantity);
-  }, [quantity, setQuantity]);
+  function setNewObject(quantity, productID) {
+    const updatetProductObject = {
+      id: product.id,
+      title: product.title,
+      price: product.price,
+      quantity: quantity,
+      rate: product.rate,
+      sold: product.sold,
+      cover: product.cover,
+      inStock: product.inStock,
+      category: product.category,
+      discount: product.discount,
+    };
+    dispatch(updateTotalPrice(productID,updatetProductObject));
+  }
 
   return (
     <TableRow
@@ -78,21 +83,27 @@ function ProductRow({ product, deleteFromList, wishlist, addToCartHandler }) {
         {product.title}
       </TableCell>
       <TableCell className="table-body-cell" align="center">
-        $ {product.price}
+        ${" "}
+        {product.discount
+          ? (product.price * (100 - product.discount)) / 100
+          : product.price}
       </TableCell>
       <TableCell className="table-body-cell" align="center">
-        <QuantityInput
+        <input
           className="count-input"
-          quantity={quantity}
-          setQuantity={setQuantity}
+          value={quantity}
+          onChange={(e) => setproductQuantity(product.id, e)}
         />
       </TableCell>
       <TableCell className="table-body-cell" align="center">
-        {product.discount !== 0
-          ? ` $ ${
-              ((product.price * (100 - product.discount)) / 100) * quantity
-            }`
-          : `$ ${product.price * quantity}`}
+        {product.discount !== 0 && product.quantity > 1
+          ? ((product.price * (100 - product.discount)) / 100) *
+            product.quantity
+          : product.discount !== 0 && product.quantity <= 1
+          ? product.price * ((100 - product.discount) / 100)
+          : product.discount === 0 && product.quantity > 1
+          ? product.price * product.quantity
+          : ""}
       </TableCell>
     </TableRow>
   );

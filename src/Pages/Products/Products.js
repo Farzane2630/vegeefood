@@ -10,9 +10,10 @@ import ProductItem from "../../components/ProductItem/ProductItem";
 import CustomPagination from "../../Utils/Pagination/Pagination";
 import { useDispatch, useSelector } from "react-redux";
 import { selectCategory } from "../../Redux/Reducers/products";
-import { addToCart } from "../../Redux/Reducers/Cart";
+import { addToCart } from "../../Redux/Reducers/cartItems";
 import { addTolist } from "../../Redux/Reducers/Wishlist";
 import { toast } from "react-toastify";
+import { v4 as uuidv4 } from "uuid";
 
 export default function Products() {
   const dispatch = useDispatch();
@@ -45,9 +46,9 @@ export default function Products() {
 
   //cartItems
   const cartItems = useSelector((state) => state.cart);
-  const addToCartHandler = (productID) => {
-    const selectedItem = products.find((product) => product.id === productID);
-    if (cartItems.includes(selectedItem)) {
+
+  const addToCartHandler = (product) => {
+    if (cartItems.length > 1 && cartItems.includes(product)) {
       toast.error("You have added this Item before!", {
         position: "top-right",
         autoClose: 500,
@@ -59,7 +60,6 @@ export default function Products() {
         theme: "colored",
       });
     } else {
-      dispatch(addToCart(selectedItem));
       toast.success("Item added to cart", {
         position: "top-right",
         autoClose: 500,
@@ -70,9 +70,23 @@ export default function Products() {
         progress: undefined,
         theme: "colored",
       });
+      const updatedProductObject = {
+        id: uuidv4(),
+        title: product.title,
+        price: product.price,
+        quantity: 1,
+        rate: product.rate,
+        sold: product.sold,
+        cover: product.cover,
+        inStock: product.inStock,
+        category: product.category,
+        discount: product.discount,
+      };
+
+      dispatch(addToCart(updatedProductObject));
     }
   };
-
+  
 
   //wishlist
   const wishlist = useSelector((state) => state.wishlist);
@@ -135,7 +149,7 @@ export default function Products() {
           <Grid key={product.id} item sx={12} sm={6} md={3} p={3}>
             <ProductItem
               addToWishlist={() => wishlistHandler(product.id)}
-              addToCart={() => addToCartHandler(product.id)}
+              addToCart={() => addToCartHandler(product)}
               name={product.title}
               img={product.cover}
               price={product.price}

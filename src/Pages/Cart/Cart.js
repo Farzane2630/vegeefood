@@ -1,15 +1,14 @@
-import React, { useContext, useEffect, useState } from "react";
+import React from "react";
 import Footer from "../../components/Footer/Footer";
 import Header from "../../components/Header/Header";
 import Hero from "../../components/Hero/Hero";
 import { SwiperSlide } from "swiper/react";
 import { useDispatch, useSelector } from "react-redux";
 import BasicTable from "../../Utils/Table/Table";
-import { removeFromCart } from "../../Redux/Reducers/Cart";
+import { removeFromCart } from "../../Redux/Reducers/cartItems";
 import TextField from "@mui/material/TextField";
 import ShowAlert from "../../Utils/Alert/Alert";
 import { Button, Grid } from "@mui/material";
-import { cartContext } from "../../Contexts/Contexts";
 import { Link } from "react-router-dom";
 
 import "./_Cart.scss";
@@ -18,22 +17,26 @@ export default function Cart() {
   const bg = useSelector((state) => state.bgUrl);
 
   const dispatch = useDispatch();
-  const cartItems = useSelector((state) => state.cart);
+  const cartItems =  useSelector((state) => state.cart);
 
   const deleteFromList = (productID) => {
-    const remainsItems = cartItems.filter(
-      (product) => product.id !== productID
-    );
-
-    dispatch(removeFromCart(remainsItems));
+    dispatch(removeFromCart(productID));
   };
 
   //cart total price
 
-  const context = useContext(cartContext);
+  const totalPrice = cartItems.length > 0 && cartItems.reduce((total, product) => {
+    if (product.discount !== 0) {
+      console.log("quantity", console.log(product.quantity));
 
-  const totalPrice = cartItems.reduce((total, product) => {
-    return total + (product.price * context.productQuantity);
+      return (
+        total +
+        product.price * ((100 - product.discount) / 100) * product.quantity
+      );
+    } else {
+      console.log("quantity", console.log(product.quantity));
+      return total + product.price * product.quantity;
+    }
   }, 0);
 
   return (
@@ -48,7 +51,7 @@ export default function Cart() {
           <h1 className="product-title">MY CART</h1>
         </SwiperSlide>
       </Hero>
-      {cartItems.length !== 0 ? (
+      {cartItems.length > 0 ? (
         <>
           <BasicTable products={cartItems} deleteFromList={deleteFromList} />
           <Grid
