@@ -52,13 +52,4 @@ json-server --watch db.json
 Javascript, HTML, CSS, React-js, Redux, Webpack, SASS
 
 
-## Usage/Examples
-
-```javascript
-import Component from 'my-project'
-
-function App() {
-  return <Component />
-}
-```
 
