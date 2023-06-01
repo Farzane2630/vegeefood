@@ -1,15 +1,19 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import Footer from "../../components/Footer/Footer";
 import Header from "../../components/Header/Header";
 import Hero from "../../components/Hero/Hero";
 import { SwiperSlide } from "swiper/react";
 import { useDispatch, useSelector } from "react-redux";
 import BasicTable from "../../Utils/Table/Table";
-import { removeFromCart } from "../../Redux/Reducers/Cart";
+import {
+  removeFromCart,
+  getTotals,
+  addToCart,
+  decreaseCart,
+} from "../../Redux/Reducers/Cart";
 import TextField from "@mui/material/TextField";
 import ShowAlert from "../../Utils/Alert/Alert";
 import { Button, Grid } from "@mui/material";
-import { cartContext } from "../../Contexts/Contexts";
 import { Link } from "react-router-dom";
 
 import "./_Cart.scss";
@@ -17,24 +21,25 @@ import "./_Cart.scss";
 export default function Cart() {
   const bg = useSelector((state) => state.bgUrl);
 
+  const cartItems = useSelector((state) => state.cart.cartItems);
+  const cartTotalAmount = useSelector((state) => state.cart.cartTotalAmount);
+
   const dispatch = useDispatch();
-  const cartItems = useSelector((state) => state.cart);
 
-  const deleteFromList = (productID) => {
-    const remainsItems = cartItems.filter(
-      (product) => product.id !== productID
-    );
-
-    dispatch(removeFromCart(remainsItems));
+  const handleRemoveFromCart = (product) => {
+    dispatch(removeFromCart(product));
   };
 
-  //cart total price
+  const addToCartHandler = (product) => {
+    dispatch(addToCart(product));
+  };
+  const handleDecreaseCart = (product) => {
+    dispatch(decreaseCart(product));
+  };
 
-  const context = useContext(cartContext);
-
-  const totalPrice = cartItems.reduce((total, product) => {
-    return total + (product.price * context.productQuantity);
-  }, 0);
+  useEffect(() => {
+    dispatch(getTotals());
+  }, [cartItems, dispatch]);
 
   return (
     <>
@@ -50,7 +55,12 @@ export default function Cart() {
       </Hero>
       {cartItems.length !== 0 ? (
         <>
-          <BasicTable products={cartItems} deleteFromList={deleteFromList} />
+          <BasicTable
+            products={cartItems}
+            handleRemoveFromCart={handleRemoveFromCart}
+            handleDecreaseCart={handleDecreaseCart}
+            addToCartHandler={addToCartHandler}
+          />
           <Grid
             item
             xs={12}
@@ -65,7 +75,7 @@ export default function Cart() {
           >
             <TextField
               id="outlined-basic"
-              label={`$${totalPrice}`}
+              label={cartTotalAmount}
               variant="outlined"
               disabled={true}
             />

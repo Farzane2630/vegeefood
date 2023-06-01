@@ -22,7 +22,7 @@ export default function ProductInfo() {
   const products = useSelector((state) => state.products.products);
   const { productID } = useParams();
   const mainProduct = products.find((product) => product.id == productID);
-  const cartItems = useSelector((state) => state.cart);
+  const cartItems = useSelector((state) => state.cart.cartItems);
   const addToCartHandler = (id) => {
     if (!isSelected && inputValue > 0) {
       if (cartItems.includes(mainProduct)) {

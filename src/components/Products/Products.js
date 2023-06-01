@@ -13,7 +13,7 @@ export default function Products() {
   const products = useSelector((state) => state.products.products);
 
 //cartItems
-  const cartItems = useSelector((state) => state.cart);
+  const cartItems = useSelector((state) => state.cart.cartItems);
   const addToCartHandler = (productID) => {
     const selectedItem = products.find((product) => product.id === productID);
     if (cartItems.includes(selectedItem)) {

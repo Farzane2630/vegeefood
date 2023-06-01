@@ -1,5 +1,4 @@
 import * as React from "react";
-import { useState, useEffect } from "react";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -8,38 +7,18 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import DeleteIcon from "@mui/icons-material/Delete";
 import IconButton from "@mui/material/IconButton";
-import { cartContext } from "../../Contexts/Contexts";
 import MouseOverPopover from "../Poper";
 import { Link } from "react-router-dom";
 
 import "./_Table.scss";
-import { useSelector } from "react-redux";
 
-function QuantityInput({ quantity, setQuantity }) {
-  return (
-    <input
-      value={quantity}
-      type="text"
-      onChange={(e) => {
-        setQuantity(e.target.value);
-      }}
-    />
-  );
-}
-
-function ProductRow({ product, deleteFromList, wishlist, addToCartHandler }) {
-  const [quantity, setQuantity] = useState(1);
-
-  // const totalPrice = useSelector(state=>state.totalPrice)
-  // console.log("total price: ",totalPrice);
-
-  //total quantity
-  const context = React.useContext(cartContext);
-
-  useEffect(() => {
-    context.setProductQuantity(quantity);
-  }, [quantity, setQuantity]);
-
+function ProductRow({
+  product,
+  handleRemoveFromCart,
+  wishlist,
+  addToCartHandler,
+  handleDecreaseCart,
+}) {
   return (
     <TableRow
       key={product.name}
@@ -57,7 +36,7 @@ function ProductRow({ product, deleteFromList, wishlist, addToCartHandler }) {
         }}
       >
         <IconButton
-          onClick={deleteFromList}
+          onClick={handleRemoveFromCart}
           aria-label="delete"
           size="large"
           color="black"
@@ -78,21 +57,24 @@ function ProductRow({ product, deleteFromList, wishlist, addToCartHandler }) {
         {product.title}
       </TableCell>
       <TableCell className="table-body-cell" align="center">
-        $ {product.price}
+        ${" "}
+        {product.discount
+          ? (product.price * (100 - product.discount)) / 100
+          : product.price}
       </TableCell>
       <TableCell className="table-body-cell" align="center">
-        <QuantityInput
-          className="count-input"
-          quantity={quantity}
-          setQuantity={setQuantity}
-        />
+        <div className="amount">
+          <button onClick={handleDecreaseCart}>-</button>
+          <div className="count">{product.cartQuantity}</div>
+          <button onClick={addToCartHandler}>+</button>
+        </div>
       </TableCell>
       <TableCell className="table-body-cell" align="center">
-        {product.discount !== 0
-          ? ` $ ${
-              ((product.price * (100 - product.discount)) / 100) * quantity
-            }`
-          : `$ ${product.price * quantity}`}
+        {product.discount > 0
+          ? product.price *
+            ((100 - product.discount) / 100) *
+            product.cartQuantity
+          : product.price * product.cartQuantity}
       </TableCell>
     </TableRow>
   );
@@ -100,9 +82,10 @@ function ProductRow({ product, deleteFromList, wishlist, addToCartHandler }) {
 
 export default function BasicTable({
   products,
-  deleteFromList,
+  handleRemoveFromCart,
   wishlist,
   addToCartHandler,
+  handleDecreaseCart,
 }) {
   return (
     <TableContainer className="table-container">
@@ -128,9 +111,10 @@ export default function BasicTable({
             <ProductRow
               key={product.title}
               product={product}
-              deleteFromList={() => deleteFromList(product.id)}
+              handleRemoveFromCart={() => handleRemoveFromCart(product)}
               wishlist={wishlist}
-              addToCartHandler={() => addToCartHandler(product.id)}
+              addToCartHandler={() => addToCartHandler(product)}
+              handleDecreaseCart={() => handleDecreaseCart(product)}
             />
           ))}
         </TableBody>

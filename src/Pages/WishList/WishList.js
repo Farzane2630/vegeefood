@@ -29,7 +29,7 @@ export default function WishList() {
   };
 
   //add to cart
-  const cartItems = useSelector((state) => state.cart);
+  const cartItems = useSelector((state) => state.cart.cartItems);
 
   const addToCartHandler = (productID) => {
     const selectedItem = wishlist.find((product) => product.id === productID);

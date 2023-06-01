@@ -9,8 +9,8 @@ import { useSelector } from "react-redux";
 
 import "./_Navbar.scss";
 
-export default function NavBar({props}) {
- const selectedProducts = useSelector(state=> state.cart)
+export default function NavBar() {
+ const selectedProducts = useSelector(state=> state.cart.cartItems)
 
   return (
     <Navbar expand="lg" className="nav-main">
@@ -59,8 +59,8 @@ export default function NavBar({props}) {
                 Contact
               </Link>
             </Nav.Link>
-            <Nav.Link href="cart" className="nav-item cart-elem">
-              <Link to="cart" className="link">
+            <Nav.Link href="/cart" className="nav-item cart-elem">
+              <Link to="/cart" className="link">
                 <ShoppingCartIcon />
                 <span className="orders-count">[{selectedProducts.length}]</span>
               </Link>

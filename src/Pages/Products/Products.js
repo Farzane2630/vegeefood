@@ -44,10 +44,10 @@ export default function Products() {
   };
 
   //cartItems
-  const cartItems = useSelector((state) => state.cart);
-  const addToCartHandler = (productID) => {
-    const selectedItem = products.find((product) => product.id === productID);
-    if (cartItems.includes(selectedItem)) {
+  const cartItems = useSelector((state) => state.cart.cartItems);
+  const addToCartHandler = (product) => {
+   
+    if (cartItems.includes(product)) {
       toast.error("You have added this Item before!", {
         position: "top-right",
         autoClose: 500,
@@ -59,7 +59,7 @@ export default function Products() {
         theme: "colored",
       });
     } else {
-      dispatch(addToCart(selectedItem));
+      dispatch(addToCart(product));
       toast.success("Item added to cart", {
         position: "top-right",
         autoClose: 500,
@@ -135,7 +135,7 @@ export default function Products() {
           <Grid key={product.id} item sx={12} sm={6} md={3} p={3}>
             <ProductItem
               addToWishlist={() => wishlistHandler(product.id)}
-              addToCart={() => addToCartHandler(product.id)}
+              addToCart={() => addToCartHandler(product)}
               name={product.title}
               img={product.cover}
               price={product.price}
