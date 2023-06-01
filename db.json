@@ -1,64 +1,94 @@
 {
   "products": [
     {
-      "id": 58,
-      "title": "BROCOLLI",
+      "id": 1,
+      "title": "TOMATOE",
       "price": 7,
-      "rate": 3,
+      "totalPrice": 0,
+      "rate": 4.4,
       "sold": 900,
-      "cover": "./assets/images/brocollie.jpg",
+      "cover": "./assets/images/tomatoe.jpg",
+      "inStock": 10,
+      "category": "Vegetables",
+      "discount": 0
+    },
+    {
+      "id": 2,
+      "title": "CARROT",
+      "price": 11,
+      "totalPrice": 0,
+      "rate": 3.4,
+      "sold": 260,
+      "cover": "./assets/images/carrot.jpg",
       "inStock": 1,
       "category": "Vegetables",
-      "discount": 5
+      "discount": 0
     },
     {
-      "id": 39,
-      "title": "Fruits JUICE",
-      "price": 15,
-      "rate": 4,
-      "sold": 1600,
-      "cover": "./assets/images/fruit-juice.jpg",
+      "id": 3,
+      "title": "GARLIC",
+      "price": 10,
+      "totalPrice": 0,
+      "rate": 4.1,
+      "sold": 600,
+      "cover": "./assets/images/garlic.jpg",
       "inStock": 1,
-      "category": "Juice",
-      "discount": 3
+      "category": "Vegetables",
+      "discount": 10
     },
     {
-      "id": 123,
-      "title": "ALMOND",
-      "price": 19,
+      "id": 4,
+      "title": "BELL PEPPER",
+      "price": 17,
+      "totalPrice": 0,
+      "rate": 2.4,
+      "sold": 90,
+      "cover": "./assets/images/bell-peper.jpg",
+      "inStock": 1,
+      "category": "Vegetables",
+      "discount": 0
+    },
+    {
+      "id": 5,
+      "title": "STRAWBERRY",
+      "price": 12,
+      "totalPrice": 0,
       "rate": 4.4,
       "sold": 900,
-      "cover": "./assets/images/almond.jpg",
+      "cover": "./assets/images/strawbery.jpg",
       "inStock": 1,
-      "category": "Dreid",
-      "discount": 5
+      "category": "Fruits",
+      "discount": 0
     },
     {
-      "id": 34,
-      "title": "SUNFLOWER SEEDS",
-      "price": 14,
-      "rate": 4.4,
-      "sold": 800,
-      "cover": "./assets/images/sunflower-seeds.jpg",
+      "id": 6,
+      "title": "GREEN BEANS",
+      "price": 7,
+      "totalPrice": 0,
+      "rate": 3.4,
+      "sold": 600,
+      "cover": "./assets/images/green-beans.jpg",
       "inStock": 1,
-      "category": "Dried",
+      "category": "Vegetables",
       "discount": 3
     },
     {
-      "id": 35,
-      "title": "ORANGE JUICE",
+      "id": 7,
+      "title": "PURPLE CABBAGE",
       "price": 9,
+      "totalPrice": 0,
       "rate": 4.4,
-      "sold": 900,
-      "cover": "./assets/images/orange-juice.jpg",
+      "sold": 50,
+      "cover": "./assets/images/purple-cabage.jpg",
       "inStock": 1,
-      "category": "Juice",
-      "discount": "3"
+      "category": "Vegetables",
+      "discount": 0
     },
     {
       "id": 8,
       "title": "BROCOLLI",
       "price": 7,
+      "totalPrice": 0,
       "rate": 3,
       "sold": 900,
       "cover": "./assets/images/brocollie.jpg",
@@ -70,6 +100,7 @@
       "id": 9,
       "title": "Fruits JUICE",
       "price": 15,
+      "totalPrice": 0,
       "rate": 4,
       "sold": 1600,
       "cover": "./assets/images/fruit-juice.jpg",
@@ -78,9 +109,46 @@
       "discount": 3
     },
     {
+      "id": 10,
+      "title": "APPLE",
+      "price": 9,
+      "totalPrice": 0,
+      "rate": 4.4,
+      "sold": 800,
+      "cover": "./assets/images/apple.jpg",
+      "inStock": 1,
+      "category": "Fruits",
+      "discount": 0
+    },
+    {
+      "id": 11,
+      "title": "ONION",
+      "price": 8,
+      "totalPrice": 0,
+      "rate": 4.4,
+      "sold": 800,
+      "cover": "./assets/images/onion.jpg",
+      "inStock": 1,
+      "category": "Vegetables",
+      "discount": 0
+    },
+    {
+      "id": 12,
+      "title": "CHILLI",
+      "price": 9,
+      "totalPrice": 0,
+      "rate": 3.4,
+      "sold": 170,
+      "cover": "./assets/images/chili.jpg",
+      "inStock": 1,
+      "category": "Vegetables",
+      "discount": 0
+    },
+    {
       "id": 13,
       "title": "ALMOND",
       "price": 19,
+      "totalPrice": 0,
       "rate": 4.4,
       "sold": 900,
       "cover": "./assets/images/almond.jpg",
@@ -92,6 +160,7 @@
       "id": 14,
       "title": "SUNFLOWER SEEDS",
       "price": 14,
+      "totalPrice": 0,
       "rate": 4.4,
       "sold": 800,
       "cover": "./assets/images/sunflower-seeds.jpg",
@@ -103,6 +172,7 @@
       "id": 15,
       "title": "ORANGE JUICE",
       "price": 9,
+      "totalPrice": 0,
       "rate": 4.4,
       "sold": 900,
       "cover": "./assets/images/orange-juice.jpg",
@@ -112,31 +182,15 @@
     }
   ],
   "categories": [
-    {
-      "id": 5,
-      "title": "All",
-      "cover": "./assets/images/category-4.jpg"
-    },
+    { "id": 5, "title": "All", "cover": "./assets/images/category-4.jpg" },
     {
       "id": 1,
       "title": "Vegetables",
       "cover": "./assets/images/category-1.jpg"
     },
-    {
-      "id": 2,
-      "title": "Fruits",
-      "cover": "./assets/images/category-2.jpg"
-    },
-    {
-      "id": 3,
-      "title": "Juice",
-      "cover": "./assets/images/category-3.jpg"
-    },
-    {
-      "id": 4,
-      "title": "Dried",
-      "cover": "./assets/images/category-4.jpg"
-    }
+    { "id": 2, "title": "Fruits", "cover": "./assets/images/category-2.jpg" },
+    { "id": 3, "title": "Juice", "cover": "./assets/images/category-3.jpg" },
+    { "id": 4, "title": "Dried", "cover": "./assets/images/category-4.jpg" }
   ],
   "heroImages": [
     "./assets/images/bg_1.jpg",
@@ -204,44 +258,16 @@
     }
   ],
   "countup": [
-    {
-      "end": 1056,
-      "desc": "HAPPY CUSTOMERS"
-    },
-    {
-      "end": 93,
-      "desc": "BRANCHES"
-    },
-    {
-      "end": 60,
-      "desc": "PARTNER"
-    },
-    {
-      "end": 20,
-      "desc": "AWARDS"
-    }
+    { "end": 1056, "desc": "HAPPY CUSTOMERS" },
+    { "end": 93, "desc": "BRANCHES" },
+    { "end": 60, "desc": "PARTNER" },
+    { "end": 20, "desc": "AWARDS" }
   ],
-  "about": {
-    "url": "./assets/images/about.jpg"
-  },
+  "about": { "url": "./assets/images/about.jpg" },
   "contact-info": {
     "address": "198 West 21th Street, Suite 721 New York NY 10016",
     "email": "farzanekazemi8517@gmail.com",
     "phone": "+989120738517",
     "website": "www.vegeeshop.com"
-  },
-  "cartItems": [
-    {
-      "id": "9a187cf7-a842-4f0b-b8a1-588a66d573e5",
-      "title": "ALMOND",
-      "price": 19,
-      "quantity": 1,
-      "rate": 4.4,
-      "sold": 900,
-      "cover": "./assets/images/almond.jpg",
-      "inStock": 1,
-      "category": "Dreid",
-      "discount": 5
-    }
-  ]
+  }
 }

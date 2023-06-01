@@ -9,7 +9,7 @@ import { Grid } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
 import BasicRating from "../../Utils/Rating/Rating";
-import { addToCart } from "../../Redux/Reducers/cartItems";
+import { addToCart } from "../../Redux/Reducers/Cart";
 import { toast } from "react-toastify";
 
 export default function ProductInfo() {

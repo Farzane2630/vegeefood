@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -8,42 +8,37 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import DeleteIcon from "@mui/icons-material/Delete";
 import IconButton from "@mui/material/IconButton";
+import { cartContext } from "../../Contexts/Contexts";
 import MouseOverPopover from "../Poper";
 import { Link } from "react-router-dom";
 
 import "./_Table.scss";
-import { updateTotalPrice } from "../../Redux/Reducers/cartItems";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
+
+function QuantityInput({ quantity, setQuantity }) {
+  return (
+    <input
+      value={quantity}
+      type="text"
+      onChange={(e) => {
+        setQuantity(e.target.value);
+      }}
+    />
+  );
+}
 
 function ProductRow({ product, deleteFromList, wishlist, addToCartHandler }) {
   const [quantity, setQuantity] = useState(1);
-  const carttItems = useSelector((state) => state.cart);
-  const setproductQuantity = (productID, e) => {
-    setQuantity(e.target.value);
 
-   carttItems.length > 0 && carttItems.find((product) => {
-      if (product.id === productID) {
-        setNewObject(e.target.value, productID);
-      }
-    });
-  };
-  const dispatch = useDispatch();
+  // const totalPrice = useSelector(state=>state.totalPrice)
+  // console.log("total price: ",totalPrice);
 
-  function setNewObject(quantity, productID) {
-    const updatetProductObject = {
-      id: product.id,
-      title: product.title,
-      price: product.price,
-      quantity: quantity,
-      rate: product.rate,
-      sold: product.sold,
-      cover: product.cover,
-      inStock: product.inStock,
-      category: product.category,
-      discount: product.discount,
-    };
-    dispatch(updateTotalPrice(productID,updatetProductObject));
-  }
+  //total quantity
+  const context = React.useContext(cartContext);
+
+  useEffect(() => {
+    context.setProductQuantity(quantity);
+  }, [quantity, setQuantity]);
 
   return (
     <TableRow
@@ -83,27 +78,21 @@ function ProductRow({ product, deleteFromList, wishlist, addToCartHandler }) {
         {product.title}
       </TableCell>
       <TableCell className="table-body-cell" align="center">
-        ${" "}
-        {product.discount
-          ? (product.price * (100 - product.discount)) / 100
-          : product.price}
+        $ {product.price}
       </TableCell>
       <TableCell className="table-body-cell" align="center">
-        <input
+        <QuantityInput
           className="count-input"
-          value={quantity}
-          onChange={(e) => setproductQuantity(product.id, e)}
+          quantity={quantity}
+          setQuantity={setQuantity}
         />
       </TableCell>
       <TableCell className="table-body-cell" align="center">
-        {product.discount !== 0 && product.quantity > 1
-          ? ((product.price * (100 - product.discount)) / 100) *
-            product.quantity
-          : product.discount !== 0 && product.quantity <= 1
-          ? product.price * ((100 - product.discount) / 100)
-          : product.discount === 0 && product.quantity > 1
-          ? product.price * product.quantity
-          : ""}
+        {product.discount !== 0
+          ? ` $ ${
+              ((product.price * (100 - product.discount)) / 100) * quantity
+            }`
+          : `$ ${product.price * quantity}`}
       </TableCell>
     </TableRow>
   );
