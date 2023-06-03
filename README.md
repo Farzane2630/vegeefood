@@ -20,6 +20,7 @@
 - add/remove product into wishlist
 - register in newsletter
 - filter products based on categories
+- countdown timer for best price
 
 
 
