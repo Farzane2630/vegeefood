@@ -9,8 +9,8 @@ import { useSelector } from "react-redux";
 
 import "./_Navbar.scss";
 
-export default function NavBar() {
- const selectedProducts = useSelector(state=> state.cart.cartItems)
+export default function NavBar({props}) {
+ const selectedProducts = useSelector(state=> state.cart)
 
   return (
     <Navbar expand="lg" className="nav-main">

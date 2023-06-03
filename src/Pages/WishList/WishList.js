@@ -9,7 +9,7 @@ import BasicTable from "../../Utils/Table/Table";
 import ShowAlert from "../../Utils/Alert/Alert";
 import { cartContext } from "../../Contexts/Contexts";
 import { TextField } from "@mui/material";
-import { addToCart } from "../../Redux/Reducers/Cart";
+import { addToCart } from "../../Redux/Reducers/cartItems";
 import { toast } from "react-toastify";
 
 import "./_WishList.scss";
@@ -29,7 +29,7 @@ export default function WishList() {
   };
 
   //add to cart
-  const cartItems = useSelector((state) => state.cart.cartItems);
+  const cartItems = useSelector((state) => state.cart);
 
   const addToCartHandler = (productID) => {
     const selectedItem = wishlist.find((product) => product.id === productID);
