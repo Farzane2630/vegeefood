@@ -21,11 +21,12 @@ function ProductRow({ product, deleteFromList, wishlist, addToCartHandler }) {
   const setproductQuantity = (productID, e) => {
     setQuantity(e.target.value);
 
-   carttItems.length > 0 && carttItems.find((product) => {
-      if (product.id === productID) {
-        setNewObject(e.target.value, productID);
-      }
-    });
+    carttItems.length > 0 &&
+      carttItems.find((product) => {
+        if (product.id === productID) {
+          setNewObject(e.target.value, productID);
+        }
+      });
   };
   const dispatch = useDispatch();
 
@@ -42,7 +43,7 @@ function ProductRow({ product, deleteFromList, wishlist, addToCartHandler }) {
       category: product.category,
       discount: product.discount,
     };
-    dispatch(updateTotalPrice(productID,updatetProductObject));
+    dispatch(updateTotalPrice(productID, updatetProductObject));
   }
 
   return (
@@ -85,7 +86,7 @@ function ProductRow({ product, deleteFromList, wishlist, addToCartHandler }) {
       <TableCell className="table-body-cell" align="center">
         ${" "}
         {product.discount
-          ? (product.price * (100 - product.discount)) / 100
+          ? ((product.price * (100 - product.discount)) / 100).toFixed(3)
           : product.price}
       </TableCell>
       <TableCell className="table-body-cell" align="center">

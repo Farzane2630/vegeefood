@@ -17,7 +17,7 @@ export default function Cart() {
   const bg = useSelector((state) => state.bgUrl);
 
   const dispatch = useDispatch();
-  const cartItems =  useSelector((state) => state.cart);
+  const cartItems = useSelector((state) => state.cart);
 
   const deleteFromList = (productID) => {
     dispatch(removeFromCart(productID));
@@ -25,19 +25,20 @@ export default function Cart() {
 
   //cart total price
 
-  const totalPrice = cartItems.length > 0 && cartItems.reduce((total, product) => {
-    if (product.discount !== 0) {
-      console.log("quantity", console.log(product.quantity));
+  const totalPrice =
+    cartItems.length > 0 &&
+    cartItems.reduce((total, product) => {
+      if (product.discount !== 0) {
+        console.log("quantity", console.log(product.quantity));
 
-      return (
-        total +
-        product.price * ((100 - product.discount) / 100) * product.quantity
-      );
-    } else {
-      console.log("quantity", console.log(product.quantity));
-      return total + product.price * product.quantity;
-    }
-  }, 0);
+        return (
+          total +
+          product.price * ((100 - product.discount) / 100) * product.quantity
+        );
+      } else {
+        return total + product.price * product.quantity;
+      }
+    }, 0);
 
   return (
     <>

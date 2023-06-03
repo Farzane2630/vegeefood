@@ -232,16 +232,37 @@
   },
   "cartItems": [
     {
-      "id": "9a187cf7-a842-4f0b-b8a1-588a66d573e5",
-      "title": "ALMOND",
-      "price": 19,
-      "quantity": 1,
-      "rate": 4.4,
-      "sold": 900,
-      "cover": "./assets/images/almond.jpg",
+      "id": 9,
+      "title": "Fruits JUICE",
+      "price": 15,
+      "rate": 4,
+      "sold": 1600,
+      "cover": "./assets/images/fruit-juice.jpg",
       "inStock": 1,
-      "category": "Dreid",
+      "category": "Juice",
+      "discount": 3
+    },
+    {
+      "id": 8,
+      "title": "BROCOLLI",
+      "price": 7,
+      "rate": 3,
+      "sold": 900,
+      "cover": "./assets/images/brocollie.jpg",
+      "inStock": 1,
+      "category": "Vegetables",
       "discount": 5
+    },
+    {
+      "id": 39,
+      "title": "Fruits JUICE",
+      "price": 15,
+      "rate": 4,
+      "sold": 1600,
+      "cover": "./assets/images/fruit-juice.jpg",
+      "inStock": 1,
+      "category": "Juice",
+      "discount": 3
     }
   ]
 }
