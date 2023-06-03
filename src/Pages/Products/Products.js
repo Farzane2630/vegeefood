@@ -10,10 +10,9 @@ import ProductItem from "../../components/ProductItem/ProductItem";
 import CustomPagination from "../../Utils/Pagination/Pagination";
 import { useDispatch, useSelector } from "react-redux";
 import { selectCategory } from "../../Redux/Reducers/products";
-import { addToCart } from "../../Redux/Reducers/cartItems";
+import { addToCart } from "../../Redux/Reducers/Cart";
 import { addTolist } from "../../Redux/Reducers/Wishlist";
 import { toast } from "react-toastify";
-import { v4 as uuidv4 } from "uuid";
 
 export default function Products() {
   const dispatch = useDispatch();
@@ -45,10 +44,10 @@ export default function Products() {
   };
 
   //cartItems
-  const cartItems = useSelector((state) => state.cart);
-
+  const cartItems = useSelector((state) => state.cart.cartItems);
   const addToCartHandler = (product) => {
-    if (cartItems.length > 1 && cartItems.includes(product)) {
+   
+    if (cartItems.includes(product)) {
       toast.error("You have added this Item before!", {
         position: "top-right",
         autoClose: 500,
@@ -60,6 +59,7 @@ export default function Products() {
         theme: "colored",
       });
     } else {
+      dispatch(addToCart(product));
       toast.success("Item added to cart", {
         position: "top-right",
         autoClose: 500,
@@ -70,23 +70,9 @@ export default function Products() {
         progress: undefined,
         theme: "colored",
       });
-      const updatedProductObject = {
-        id: uuidv4(),
-        title: product.title,
-        price: product.price,
-        quantity: 1,
-        rate: product.rate,
-        sold: product.sold,
-        cover: product.cover,
-        inStock: product.inStock,
-        category: product.category,
-        discount: product.discount,
-      };
-
-      dispatch(addToCart(updatedProductObject));
     }
   };
-  
+
 
   //wishlist
   const wishlist = useSelector((state) => state.wishlist);
