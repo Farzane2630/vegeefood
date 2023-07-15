@@ -11,42 +11,6 @@ import MouseOverPopover from "../Poper";
 import { Link } from "react-router-dom";
 
 import "./_Table.scss";
-<<<<<<< HEAD
-import { updateTotalPrice } from "../../Redux/Reducers/cartItems";
-import { useDispatch, useSelector } from "react-redux";
-
-function ProductRow({ product, deleteFromList, wishlist, addToCartHandler }) {
-  const [quantity, setQuantity] = useState(1);
-  const carttItems = useSelector((state) => state.cart);
-  const setproductQuantity = (productID, e) => {
-    setQuantity(e.target.value);
-
-    carttItems.length > 0 &&
-      carttItems.find((product) => {
-        if (product.id === productID) {
-          setNewObject(e.target.value, productID);
-        }
-      });
-  };
-  const dispatch = useDispatch();
-
-  function setNewObject(quantity, productID) {
-    const updatetProductObject = {
-      id: product.id,
-      title: product.title,
-      price: product.price,
-      quantity: quantity,
-      rate: product.rate,
-      sold: product.sold,
-      cover: product.cover,
-      inStock: product.inStock,
-      category: product.category,
-      discount: product.discount,
-    };
-    dispatch(updateTotalPrice(productID, updatetProductObject));
-  }
-=======
->>>>>>> 0c0a5b5020a88c654b3f9666946873128344a029
 
 function ProductRow({
   product,

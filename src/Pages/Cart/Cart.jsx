@@ -21,15 +21,10 @@ import "./_Cart.scss";
 export default function Cart() {
   const bg = useSelector((state) => state.bgUrl);
 
-<<<<<<< HEAD
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cart);
-=======
-  const cartItems = useSelector((state) => state.cart.cartItems);
-  const cartTotalAmount = useSelector((state) => state.cart.cartTotalAmount);
->>>>>>> 0c0a5b5020a88c654b3f9666946873128344a029
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   const handleRemoveFromCart = (product) => {
     dispatch(removeFromCart(product));
@@ -42,7 +37,6 @@ export default function Cart() {
     dispatch(decreaseCart(product));
   };
 
-<<<<<<< HEAD
   const totalPrice =
     cartItems.length > 0 &&
     cartItems.reduce((total, product) => {
@@ -57,11 +51,6 @@ export default function Cart() {
         return total + product.price * product.quantity;
       }
     }, 0);
-=======
-  useEffect(() => {
-    dispatch(getTotals());
-  }, [cartItems, dispatch]);
->>>>>>> 0c0a5b5020a88c654b3f9666946873128344a029
 
   return (
     <>
