@@ -13,6 +13,7 @@ import Checkbox from "@mui/material/Checkbox";
 import FormLabel from "@mui/material/FormLabel";
 import RadioGroup from "@mui/material/RadioGroup";
 import { Link } from "react-router-dom";
+import { cartContext } from "../../Contexts/Contexts";
 import swal from "sweetalert";
 
 import "./_Checkout.scss";
@@ -20,24 +21,27 @@ import "./_Checkout.scss";
 export default function Checkout() {
   const bg = useSelector((state) => state.bgUrl);
 
-  // payment;
-  const purchasedItems = useSelector((state) => state.cart.cartItems);
+  // payment
+  const context = useContext(cartContext);
+  const purchasedItems = useSelector((state) => state.cart);
 
-  const subtotal = useSelector((state) => state.cart.cartTotalAmount);
+  const subTotal = purchasedItems.reduce((total, product) => {
+    return total + product.price * context.productQuantity;
+  }, 0);
 
-  const totalDiscount =
-    purchasedItems.length > 0
-      ? purchasedItems.reduce((total, item) => {
-          if (item.discount !== 0) {
-            return total + item.discount;
-          }
-        }, 0)
-      : 0;
+  const totalDiscount = purchasedItems.reduce((total, product) => {
+    if (product.discount !== 0) {
+      return total + product.discount * context.productQuantity;
+    } 
+    return 0
+  }, 0);
+
+  console.log(totalDiscount);
 
   const total =
     Number(totalDiscount) !== 0
-      ? (subtotal * (100 - totalDiscount)) / 100 + 4.99
-      : subtotal + 4.99;
+      ? (subTotal * (100 - totalDiscount)) / 100 + 4.99
+      : subTotal + 4.99;
 
   const [isCheckedOut, setIsCheckedOut] = useState(false);
   const purchaseHandler = () => {
@@ -95,7 +99,7 @@ export default function Checkout() {
               <div className="sub-total">
                 <span>Subtotal</span>
                 <span>
-                  {purchasedItems.length > 0 ? ` $ ${subtotal}` : `$ 00.0`}
+                  {purchasedItems.length > 0 ? ` $ ${subTotal}` : `$ 00.0`}
                 </span>
               </div>
               <div className="delivery">

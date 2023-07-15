@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useState } from "react";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -11,14 +12,40 @@ import MouseOverPopover from "../Poper";
 import { Link } from "react-router-dom";
 
 import "./_Table.scss";
+import { updateTotalPrice } from "../../Redux/Reducers/cartItems";
+import { useDispatch, useSelector } from "react-redux";
 
-function ProductRow({
-  product,
-  handleRemoveFromCart,
-  wishlist,
-  addToCartHandler,
-  handleDecreaseCart,
-}) {
+function ProductRow({ product, deleteFromList, wishlist, addToCartHandler }) {
+  const [quantity, setQuantity] = useState(1);
+  const carttItems = useSelector((state) => state.cart);
+  const setproductQuantity = (productID, e) => {
+    setQuantity(e.target.value);
+
+    carttItems.length > 0 &&
+      carttItems.find((product) => {
+        if (product.id === productID) {
+          setNewObject(e.target.value, productID);
+        }
+      });
+  };
+  const dispatch = useDispatch();
+
+  function setNewObject(quantity, productID) {
+    const updatetProductObject = {
+      id: product.id,
+      title: product.title,
+      price: product.price,
+      quantity: quantity,
+      rate: product.rate,
+      sold: product.sold,
+      cover: product.cover,
+      inStock: product.inStock,
+      category: product.category,
+      discount: product.discount,
+    };
+    dispatch(updateTotalPrice(productID, updatetProductObject));
+  }
+
   return (
     <TableRow
       key={product.name}
@@ -36,7 +63,7 @@ function ProductRow({
         }}
       >
         <IconButton
-          onClick={handleRemoveFromCart}
+          onClick={deleteFromList}
           aria-label="delete"
           size="large"
           color="black"
@@ -63,18 +90,21 @@ function ProductRow({
           : product.price}
       </TableCell>
       <TableCell className="table-body-cell" align="center">
-        <div className="amount">
-          <button onClick={handleDecreaseCart}>-</button>
-          <div className="count">{product.cartQuantity}</div>
-          <button onClick={addToCartHandler}>+</button>
-        </div>
+        <input
+          className="count-input"
+          value={quantity}
+          onChange={(e) => setproductQuantity(product.id, e)}
+        />
       </TableCell>
       <TableCell className="table-body-cell" align="center">
-        {product.discount > 0
-          ? product.price *
-            ((100 - product.discount) / 100) *
-            product.cartQuantity
-          : product.price * product.cartQuantity}
+        {product.discount !== 0 && product.quantity > 1
+          ? ((product.price * (100 - product.discount)) / 100) *
+            product.quantity
+          : product.discount !== 0 && product.quantity <= 1
+          ? product.price * ((100 - product.discount) / 100)
+          : product.discount === 0 && product.quantity > 1
+          ? product.price * product.quantity
+          : ""}
       </TableCell>
     </TableRow>
   );
@@ -82,10 +112,9 @@ function ProductRow({
 
 export default function BasicTable({
   products,
-  handleRemoveFromCart,
+  deleteFromList,
   wishlist,
   addToCartHandler,
-  handleDecreaseCart,
 }) {
   return (
     <TableContainer className="table-container">
@@ -111,10 +140,9 @@ export default function BasicTable({
             <ProductRow
               key={product.title}
               product={product}
-              handleRemoveFromCart={() => handleRemoveFromCart(product)}
+              deleteFromList={() => deleteFromList(product.id)}
               wishlist={wishlist}
-              addToCartHandler={() => addToCartHandler(product)}
-              handleDecreaseCart={() => handleDecreaseCart(product)}
+              addToCartHandler={() => addToCartHandler(product.id)}
             />
           ))}
         </TableBody>

@@ -3,7 +3,7 @@ import ProductItem from "../ProductItem/ProductItem";
 import { Box, Grid } from "@mui/material";
 import "./_Products.scss";
 import { useDispatch, useSelector } from "react-redux";
-import { addToCart } from "../../Redux/Reducers/Cart";
+import { addToCart } from "../../Redux/Reducers/cartItems";
 import { addTolist } from "../../Redux/Reducers/Wishlist";
 import { toast } from "react-toastify";
 
@@ -13,7 +13,7 @@ export default function Products() {
   const products = useSelector((state) => state.products.products);
 
 //cartItems
-  const cartItems = useSelector((state) => state.cart.cartItems);
+  const cartItems = useSelector((state) => state.cart);
   const addToCartHandler = (productID) => {
     const selectedItem = products.find((product) => product.id === productID);
     if (cartItems.includes(selectedItem)) {
