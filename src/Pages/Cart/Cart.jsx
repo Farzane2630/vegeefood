@@ -20,10 +20,15 @@ export default function Cart() {
   const cartItems = useSelector((state) => state.cart);
 
 <<<<<<< HEAD:src/Pages/Cart/Cart.jsx
+<<<<<<< HEAD:src/Pages/Cart/Cart.jsx
   // const dispatch = useDispatch();
 
   function handleRemoveFromCart(id) {
     dispatch(removeFromCart(id));
+=======
+  const deleteFromList = (productID) => {
+    dispatch(removeFromCart(productID));
+>>>>>>> parent of 7aba0ba (Merge branch 'master' of https://github.com/Farzane2630/webpack-init):src/Pages/Cart/Cart.js
 =======
   const deleteFromList = (productID) => {
     dispatch(removeFromCart(productID));
@@ -60,10 +65,16 @@ export default function Cart() {
         </SwiperSlide>
       </Hero>
 <<<<<<< HEAD:src/Pages/Cart/Cart.jsx
+<<<<<<< HEAD:src/Pages/Cart/Cart.jsx
 
       {cartItems.length > 0 ? (
         <>
           <BasicTable products={cartItems} deleteFromList={handleRemoveFromCart} />
+=======
+      {cartItems.length > 0 ? (
+        <>
+          <BasicTable products={cartItems} deleteFromList={deleteFromList} />
+>>>>>>> parent of 7aba0ba (Merge branch 'master' of https://github.com/Farzane2630/webpack-init):src/Pages/Cart/Cart.js
 =======
       {cartItems.length > 0 ? (
         <>
