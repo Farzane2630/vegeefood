@@ -76,14 +76,6 @@ export const updateTotalPrice = createAsyncThunk(
 );
 
 export const removeFromCart = createAsyncThunk("removeFromCart", async (id) => {
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-
->>>>>>> parent of 7aba0ba (Merge branch 'master' of https://github.com/Farzane2630/webpack-init)
-=======
-
->>>>>>> parent of 7aba0ba (Merge branch 'master' of https://github.com/Farzane2630/webpack-init)
   const res = await apiRequests.delete(`/cartItems/${id}`);
 
   console.log(res.data);
@@ -106,18 +98,10 @@ const slice = createSlice({
       return action.payload;
     });
     builder.addCase(removeFromCart.fulfilled, (state, action) => {
-<<<<<<< HEAD
-<<<<<<< HEAD
       const newState = state.filter(
         (product) => product.id !== action.payload.id
       );
       return newState;
-=======
-      return action.payload;
->>>>>>> parent of 7aba0ba (Merge branch 'master' of https://github.com/Farzane2630/webpack-init)
-=======
-      return action.payload;
->>>>>>> parent of 7aba0ba (Merge branch 'master' of https://github.com/Farzane2630/webpack-init)
     });
   },
 });

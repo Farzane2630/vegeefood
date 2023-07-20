@@ -229,7 +229,6 @@
     "email": "farzanekazemi8517@gmail.com",
     "phone": "+989120738517",
     "website": "www.vegeeshop.com"
-<<<<<<< HEAD
   },
   "cartItems": [
     {
@@ -257,18 +256,4 @@
       "discount": 5
     }
   ]
-<<<<<<< HEAD
 }
-=======
-<<<<<<< HEAD
-}
-=======
-  }
-}
->>>>>>> 0c0a5b5020a88c654b3f9666946873128344a029
->>>>>>> parent of e510e0c (webpack --> vite)
-=======
-  }
-}
->>>>>>> 0c0a5b5020a88c654b3f9666946873128344a029
->>>>>>> parent of e510e0c (webpack --> vite)

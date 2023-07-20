@@ -16,41 +16,15 @@ import "./_Cart.scss";
 export default function Cart() {
   const bg = useSelector((state) => state.bgUrl);
 
-<<<<<<< HEAD
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cart);
-=======
-  const cartItems = useSelector((state) => state.cart.cartItems);
-  const cartTotalAmount = useSelector((state) => state.cart.cartTotalAmount);
->>>>>>> 0c0a5b5020a88c654b3f9666946873128344a029
 
-<<<<<<< HEAD
-<<<<<<< HEAD:src/Pages/Cart/Cart.jsx
-<<<<<<< HEAD:src/Pages/Cart/Cart.jsx
-<<<<<<< HEAD:src/Pages/Cart/Cart.jsx
-  // const dispatch = useDispatch();
-=======
-  const dispatch = useDispatch();
->>>>>>> parent of e510e0c (webpack --> vite):src/Pages/Cart/Cart.js
-=======
-  const dispatch = useDispatch();
->>>>>>> parent of e510e0c (webpack --> vite)
-
-  function handleRemoveFromCart(id) {
-    dispatch(removeFromCart(id));
-=======
   const deleteFromList = (productID) => {
     dispatch(removeFromCart(productID));
->>>>>>> parent of 7aba0ba (Merge branch 'master' of https://github.com/Farzane2630/webpack-init):src/Pages/Cart/Cart.js
-=======
-  const deleteFromList = (productID) => {
-    dispatch(removeFromCart(productID));
->>>>>>> parent of 7aba0ba (Merge branch 'master' of https://github.com/Farzane2630/webpack-init):src/Pages/Cart/Cart.js
   };
 
   //cart total price
 
-<<<<<<< HEAD
   const totalPrice =
     cartItems.length > 0 &&
     cartItems.reduce((total, product) => {
@@ -65,11 +39,6 @@ export default function Cart() {
         return total + product.price * product.quantity;
       }
     }, 0);
-=======
-  useEffect(() => {
-    dispatch(getTotals());
-  }, [cartItems, dispatch]);
->>>>>>> 0c0a5b5020a88c654b3f9666946873128344a029
 
   return (
     <>
@@ -83,22 +52,10 @@ export default function Cart() {
           <h1 className="product-title">MY CART</h1>
         </SwiperSlide>
       </Hero>
-<<<<<<< HEAD:src/Pages/Cart/Cart.jsx
-<<<<<<< HEAD:src/Pages/Cart/Cart.jsx
 
       {cartItems.length > 0 ? (
         <>
-          <BasicTable products={cartItems} deleteFromList={handleRemoveFromCart} />
-=======
-      {cartItems.length > 0 ? (
-        <>
           <BasicTable products={cartItems} deleteFromList={deleteFromList} />
->>>>>>> parent of 7aba0ba (Merge branch 'master' of https://github.com/Farzane2630/webpack-init):src/Pages/Cart/Cart.js
-=======
-      {cartItems.length > 0 ? (
-        <>
-          <BasicTable products={cartItems} deleteFromList={deleteFromList} />
->>>>>>> parent of 7aba0ba (Merge branch 'master' of https://github.com/Farzane2630/webpack-init):src/Pages/Cart/Cart.js
           <Grid
             item
             xs={12}
