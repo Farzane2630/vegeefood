@@ -27,23 +27,17 @@
 
 ## Screenshots
 🏠 homepage
-![screencapture-localhost-8080-2023-06-03-20_48_05](https://github.com/Farzane2630/vegeefood/assets/110881082/985e7bfe-60c1-4825-a730-fefd61711ab7)
-
+![screencapture-localhost-8080-2023-06-03-20_44_26](https://github.com/Farzane2630/vegeefood/assets/110881082/90d1cf01-e964-4049-b49f-a92d9af1837a)
 ☎ contact us
-![screencapture-localhost-8080-2023-06-03-20_48_40](https://github.com/Farzane2630/vegeefood/assets/110881082/9d277981-869c-4db2-9e37-21612437872b)
-
+![screencapture-localhost-8080-2023-06-03-20_45_57](https://github.com/Farzane2630/vegeefood/assets/110881082/a86559d6-f3e0-4af9-9739-a1540239abf4)
 🧙‍♀️ about us
-![screencapture-localhost-8080-2023-06-03-20_49_12](https://github.com/Farzane2630/vegeefood/assets/110881082/6b3c81bc-3d39-4bec-9bcc-5262288a2dfe)
-
+![screencapture-localhost-8080-2023-06-03-20_48_05](https://github.com/Farzane2630/vegeefood/assets/110881082/ed1e41a1-0bd2-4ea0-bc75-81018358ace4)
 🛒 cart
-![screencapture-localhost-8080-2023-06-03-20_44_03](https://github.com/Farzane2630/vegeefood/assets/110881082/bd09c173-563b-4f08-bb2e-77be8ecd2078)
-
+![screencapture-localhost-8080-2023-06-03-20_48_40](https://github.com/Farzane2630/vegeefood/assets/110881082/f7b550aa-2bea-4e0f-842c-c6f0b9fba308)
 🏠 homepage
-![screencapture-localhost-8080-2023-06-03-20_44_26](https://github.com/Farzane2630/vegeefood/assets/110881082/0e3abe78-580c-45eb-b324-66ffa0a52526)
-
+![screencapture-localhost-8080-2023-06-03-20_49_12](https://github.com/Farzane2630/vegeefood/assets/110881082/9f127c4e-27ed-4419-a3b8-86971dbb34e2)
 ✨ wishlist
-![screencapture-localhost-8080-2023-06-03-20_45_57](https://github.com/Farzane2630/vegeefood/assets/110881082/95635770-1307-4dea-914f-7c920cfb7248)
-
+![screencapture-localhost-8080-2023-06-03-20_44_03](https://github.com/Farzane2630/vegeefood/assets/110881082/e6edab3b-fa1f-4494-89dc-7e0fb9109629)
 
 ## 🔗 Links
 [![portfolio](https://img.shields.io/badge/github-000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Farzane2630)
