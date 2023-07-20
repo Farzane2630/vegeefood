@@ -1,12 +1,18 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { Provider } from "react-redux";
 import { useParams } from "react-router";
 import { Provider } from "react-redux";
 =======
+=======
+>>>>>>> parent of e510e0c (webpack --> vite)
 import React, { useEffect } from "react";
 import AllRoutes from "./Routes";
 import store from "./Redux/stores";
 import { Provider } from "react-redux"; 
+<<<<<<< HEAD
+>>>>>>> parent of e510e0c (webpack --> vite)
+=======
 >>>>>>> parent of e510e0c (webpack --> vite)
 import { useParams } from "react-router";
 

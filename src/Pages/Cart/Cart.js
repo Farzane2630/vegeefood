@@ -25,9 +25,12 @@ export default function Cart() {
 >>>>>>> 0c0a5b5020a88c654b3f9666946873128344a029
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   const deleteFromList = (productID) => {
     dispatch(removeFromCart(productID));
 =======
+=======
+>>>>>>> parent of e510e0c (webpack --> vite)
   const dispatch = useDispatch();
 
   const handleRemoveFromCart = (product) => {
