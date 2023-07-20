@@ -24,6 +24,7 @@ export default function Cart() {
   const cartTotalAmount = useSelector((state) => state.cart.cartTotalAmount);
 >>>>>>> 0c0a5b5020a88c654b3f9666946873128344a029
 
+<<<<<<< HEAD
 <<<<<<< HEAD:src/Pages/Cart/Cart.jsx
 <<<<<<< HEAD:src/Pages/Cart/Cart.jsx
 <<<<<<< HEAD:src/Pages/Cart/Cart.jsx
@@ -31,6 +32,9 @@ export default function Cart() {
 =======
   const dispatch = useDispatch();
 >>>>>>> parent of e510e0c (webpack --> vite):src/Pages/Cart/Cart.js
+=======
+  const dispatch = useDispatch();
+>>>>>>> parent of e510e0c (webpack --> vite)
 
   function handleRemoveFromCart(id) {
     dispatch(removeFromCart(id));
