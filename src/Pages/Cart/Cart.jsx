@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Footer from "../../components/Footer/Footer";
 import Header from "../../components/Header/Header";
 import Hero from "../../components/Hero/Hero";
@@ -19,10 +19,15 @@ export default function Cart() {
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cart);
 
+<<<<<<< HEAD:src/Pages/Cart/Cart.jsx
   // const dispatch = useDispatch();
 
   function handleRemoveFromCart(id) {
     dispatch(removeFromCart(id));
+=======
+  const deleteFromList = (productID) => {
+    dispatch(removeFromCart(productID));
+>>>>>>> parent of 7aba0ba (Merge branch 'master' of https://github.com/Farzane2630/webpack-init):src/Pages/Cart/Cart.js
   };
 
   //cart total price
@@ -54,10 +59,16 @@ export default function Cart() {
           <h1 className="product-title">MY CART</h1>
         </SwiperSlide>
       </Hero>
+<<<<<<< HEAD:src/Pages/Cart/Cart.jsx
 
       {cartItems.length > 0 ? (
         <>
           <BasicTable products={cartItems} deleteFromList={handleRemoveFromCart} />
+=======
+      {cartItems.length > 0 ? (
+        <>
+          <BasicTable products={cartItems} deleteFromList={deleteFromList} />
+>>>>>>> parent of 7aba0ba (Merge branch 'master' of https://github.com/Farzane2630/webpack-init):src/Pages/Cart/Cart.js
           <Grid
             item
             xs={12}
