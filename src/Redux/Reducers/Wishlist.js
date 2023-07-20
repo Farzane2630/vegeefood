@@ -5,7 +5,10 @@ const slice = createSlice({
   initialState: [],
   reducers: {
     addTolist: (state, action) => [...state, action.payload],
-    removeFromList: (state, action) => action.payload,
+    removeFromList: (state, action) => {
+     const newState = state.filter(product => product.id !== action.payload.id)
+     return newState
+    },
   },
 });
 

@@ -3,7 +3,7 @@ import Header from "../../components/Header/Header";
 import Hero from "../../components/Hero/Hero";
 import Footer from "../../components/Footer/Footer";
 import { SwiperSlide } from "swiper/react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Button, Grid } from "@mui/material";
 import InputAdornments from "../../components/InfoTable/InfoTable";
 import FormControlLabel from "@mui/material/FormControlLabel";
@@ -16,6 +16,7 @@ import { Link } from "react-router-dom";
 import swal from "sweetalert";
 
 import "./_Checkout.scss";
+import { clearCart } from "../../Redux/Reducers/Cart";
 
 export default function Checkout() {
   const bg = useSelector((state) => state.bgUrl);
@@ -23,21 +24,24 @@ export default function Checkout() {
   // payment;
   const purchasedItems = useSelector((state) => state.cart.cartItems);
 
+  const dispatch = useDispatch()
+
   const subtotal = useSelector((state) => state.cart.cartTotalAmount);
 
   const totalDiscount =
     purchasedItems.length > 0
       ? purchasedItems.reduce((total, item) => {
-          if (item.discount !== 0) {
+          if (item.discount > 0) {
             return total + item.discount;
           }
+          return 0
         }, 0)
-      : 0;
+      : Number(0) ;
 
   const total =
     Number(totalDiscount) !== 0
-      ? (subtotal * (100 - totalDiscount)) / 100 + 4.99
-      : subtotal + 4.99;
+      ? (Number(subtotal) * (100 - totalDiscount)) / 100 + 4.99
+      : Number(subtotal) + 4.99;
 
   const [isCheckedOut, setIsCheckedOut] = useState(false);
   const purchaseHandler = () => {
@@ -48,6 +52,8 @@ export default function Checkout() {
         buttons: "confirm",
       });
       setIsCheckedOut(true);
+
+      dispatch(clearCart())
     }
   };
 

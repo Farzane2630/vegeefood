@@ -269,45 +269,5 @@
     "email": "farzanekazemi8517@gmail.com",
     "phone": "+989120738517",
     "website": "www.vegeeshop.com"
-<<<<<<< HEAD
-  },
-  "cartItems": [
-    {
-      "id": 9,
-      "title": "Fruits JUICE",
-      "price": 15,
-      "rate": 4,
-      "sold": 1600,
-      "cover": "./assets/images/fruit-juice.jpg",
-      "inStock": 1,
-      "category": "Juice",
-      "discount": 3
-    },
-    {
-      "id": 8,
-      "title": "BROCOLLI",
-      "price": 7,
-      "rate": 3,
-      "sold": 900,
-      "cover": "./assets/images/brocollie.jpg",
-      "inStock": 1,
-      "category": "Vegetables",
-      "discount": 5
-    },
-    {
-      "id": 39,
-      "title": "Fruits JUICE",
-      "price": 15,
-      "rate": 4,
-      "sold": 1600,
-      "cover": "./assets/images/fruit-juice.jpg",
-      "inStock": 1,
-      "category": "Juice",
-      "discount": 3
-    }
-  ]
-}
-=======
   }
 }
->>>>>>> 0c0a5b5020a88c654b3f9666946873128344a029

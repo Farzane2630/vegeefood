@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useEffect } from "react";
 import Header from "../../components/Header/Header";
 import Hero from "../../components/Hero/Hero";
 import { SwiperSlide } from "swiper/react";
@@ -9,30 +9,29 @@ import BasicTable from "../../Utils/Table/Table";
 import ShowAlert from "../../Utils/Alert/Alert";
 import { cartContext } from "../../Contexts/Contexts";
 import { TextField } from "@mui/material";
-import { addToCart } from "../../Redux/Reducers/Cart";
+import { addToCart, getTotals } from "../../Redux/Reducers/Cart";
 import { toast } from "react-toastify";
 
 import "./_WishList.scss";
 
 export default function WishList() {
   const bg = useSelector((state) => state.bgUrl);
-  const wishlist = useSelector((state) => state.wishlist);
+  const wishlistItems = useSelector((state) => state.wishlist);
   const dispatch = useDispatch();
+  const totalPrice = useSelector((state) => state.cart.cartTotalAmount);
 
   //delete
-  const deleteFromList = (productID) => {
-    const remainsProducts = wishlist.filter(
-      (product) => product.id !== productID
-    );
-
-    dispatch(removeFromList(remainsProducts));
+  const deleteFromList = (product) => {
+    dispatch(removeFromList(product));
   };
 
   //add to cart
   const cartItems = useSelector((state) => state.cart.cartItems);
 
-  const addToCartHandler = (productID) => {
-    const selectedItem = wishlist.find((product) => product.id === productID);
+  const addToCartHandler = (mainProduct) => {
+    const selectedItem = wishlistItems.find(
+      (product) => product.id === mainProduct.id
+    );
     if (cartItems.includes(selectedItem)) {
       toast.error("You have added this Item before!", {
         position: "top-right",
@@ -55,16 +54,15 @@ export default function WishList() {
         progress: undefined,
         theme: "colored",
       });
-      dispatch(addToCart(selectedItem));
+      dispatch(addToCart(mainProduct));
+      dispatch(removeFromList(mainProduct));
     }
   };
 
   //total price
-  const context = useContext(cartContext);
-
-  const totalPrice = wishlist.reduce((total, product) => {
-    return total + product.price * context.productQuantity;
-  }, 0);
+  useEffect(() => {
+    dispatch(getTotals());
+  }, [wishlistItems, dispatch]);
 
   return (
     <>
@@ -80,11 +78,11 @@ export default function WishList() {
         </SwiperSlide>
       </Hero>
 
-      {wishlist.length !== 0 ? (
+      {wishlistItems.length !== 0 ? (
         <>
           <BasicTable
-            products={wishlist}
-            deleteFromList={deleteFromList}
+            products={wishlistItems}
+            handleRemoveFromCart={deleteFromList}
             wishlist={true}
             addToCartHandler={addToCartHandler}
           ></BasicTable>

@@ -26,7 +26,6 @@ const slice = createSlice({
         let tempProductItem = { ...action.payload, cartQuantity: 1 };
         state.cartItems.push(tempProductItem);
       }
-      // localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
     },
     decreaseCart(state, action) {
       const itemIndex = state.cartItems.findIndex(
@@ -42,10 +41,6 @@ const slice = createSlice({
 
         state.cartItems = nextCartItems;
       }
-
-      //  addToCart: (state, action) => {
-      //    state.cartItems.push(action.payload);
-      //  },
     },
     getTotals(state, action) {
       let { total, quantity } = state.cartItems.reduce(
