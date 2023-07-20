@@ -11,6 +11,10 @@ import IconButton from "@mui/material/IconButton";
 import MouseOverPopover from "../Poper";
 import { Link } from "react-router-dom";
 import "./_Table.scss";
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> parent of e510e0c (webpack --> vite)
 import { updateTotalPrice } from "../../Redux/Reducers/cartItems";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -44,6 +48,11 @@ function ProductRow({ product, deleteFromList, wishlist, addToCartHandler }) {
     };
     dispatch(updateTotalPrice(productID, updatetProductObject));
   }
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 0c0a5b5020a88c654b3f9666946873128344a029
+>>>>>>> parent of e510e0c (webpack --> vite)
 
   return (
     <TableRow
