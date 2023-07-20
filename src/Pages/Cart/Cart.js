@@ -52,7 +52,6 @@ export default function Cart() {
           <h1 className="product-title">MY CART</h1>
         </SwiperSlide>
       </Hero>
-
       {cartItems.length > 0 ? (
         <>
           <BasicTable products={cartItems} deleteFromList={deleteFromList} />
