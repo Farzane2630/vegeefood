@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Footer from "../../components/Footer/Footer";
 import Header from "../../components/Header/Header";
 import Hero from "../../components/Hero/Hero";
@@ -21,8 +21,8 @@ export default function Cart() {
 
   // const dispatch = useDispatch();
 
-  const handleRemoveFromCart = (product) => {
-    dispatch(removeFromCart(product));
+  function handleRemoveFromCart(id) {
+    dispatch(removeFromCart(id));
   };
 
   //cart total price
@@ -54,9 +54,10 @@ export default function Cart() {
           <h1 className="product-title">MY CART</h1>
         </SwiperSlide>
       </Hero>
+
       {cartItems.length > 0 ? (
         <>
-          <BasicTable products={cartItems} deleteFromList={deleteFromList} />
+          <BasicTable products={cartItems} deleteFromList={handleRemoveFromCart} />
           <Grid
             item
             xs={12}
