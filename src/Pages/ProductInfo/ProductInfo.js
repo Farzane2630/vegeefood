@@ -58,7 +58,7 @@ export default function ProductInfo() {
       <Hero notIndex={true}>
         <SwiperSlide
           className="slide-1"
-          style={{ backgroundImage: `url(${bg[1]})` }}
+          style={{ backgroundImage: `url(${bg[1].url})` }}
         >
           <p className="product-page"> Home Products </p>
           <h1 className="product-title">Product info</h1>

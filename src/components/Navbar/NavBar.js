@@ -15,7 +15,7 @@ export default function NavBar({props}) {
   return (
     <Navbar expand="lg" className="nav-main">
       <Container className="nav-container">
-        <Navbar.Brand href="#home" className="logo">
+        <Navbar.Brand href="#" className="logo">
           VEGEFOODS
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />

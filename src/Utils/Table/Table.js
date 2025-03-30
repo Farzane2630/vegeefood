@@ -11,13 +11,6 @@ import IconButton from "@mui/material/IconButton";
 import MouseOverPopover from "../Poper";
 import { Link } from "react-router-dom";
 import "./_Table.scss";
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> parent of e510e0c (webpack --> vite)
-=======
->>>>>>> parent of e510e0c (webpack --> vite)
 import { updateTotalPrice } from "../../Redux/Reducers/cartItems";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -51,17 +44,16 @@ function ProductRow({ product, deleteFromList, wishlist, addToCartHandler }) {
     };
     dispatch(updateTotalPrice(productID, updatetProductObject));
   }
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> 0c0a5b5020a88c654b3f9666946873128344a029
->>>>>>> parent of e510e0c (webpack --> vite)
-=======
-=======
->>>>>>> 0c0a5b5020a88c654b3f9666946873128344a029
->>>>>>> parent of e510e0c (webpack --> vite)
 
+  const totalRowPrice = product.discount !== 0 && product.quantity > 1
+          ? ((product.price * (100 - product.discount)) / 100) *
+            product.quantity
+          : product.discount !== 0 && product.quantity <= 1
+          ? product.price * ((100 - product.discount) / 100)
+          : product.discount === 0 && product.quantity > 1
+          ? product.price * product.quantity
+          : ""
+  
   return (
     <TableRow
       key={product.name}
@@ -102,7 +94,7 @@ function ProductRow({ product, deleteFromList, wishlist, addToCartHandler }) {
       <TableCell className="table-body-cell" align="center">
         ${" "}
         {product.discount
-          ? ((product.price * (100 - product.discount)) / 100).toFixed(3)
+          ? ((product.price * (100 - product.discount)) / 100).toFixed(2)
           : product.price}
       </TableCell>
       <TableCell className="table-body-cell" align="center">
@@ -113,14 +105,7 @@ function ProductRow({ product, deleteFromList, wishlist, addToCartHandler }) {
         />
       </TableCell>
       <TableCell className="table-body-cell" align="center">
-        {product.discount !== 0 && product.quantity > 1
-          ? ((product.price * (100 - product.discount)) / 100) *
-            product.quantity
-          : product.discount !== 0 && product.quantity <= 1
-          ? product.price * ((100 - product.discount) / 100)
-          : product.discount === 0 && product.quantity > 1
-          ? product.price * product.quantity
-          : ""}
+        {totalRowPrice.toFixed(2)}
       </TableCell>
     </TableRow>
   );

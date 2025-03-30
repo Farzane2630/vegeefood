@@ -11,7 +11,6 @@ import { cartContext } from "../../Contexts/Contexts";
 import { TextField } from "@mui/material";
 import { addToCart } from "../../Redux/Reducers/cartItems";
 import { toast } from "react-toastify";
-
 import "./_WishList.scss";
 
 export default function WishList() {

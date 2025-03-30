@@ -27,7 +27,7 @@ export default function About() {
       <Hero notIndex={true}>
         <SwiperSlide
           className="slide-1"
-          style={{ backgroundImage: `url(${bg[1]})` }}
+          style={{ backgroundImage: `url(${bg[1].url})` }}
         >
           <p className="product-page"> HOME ABOUT US </p>
           <h1 className="product-title">ABOUT US</h1>

@@ -24,7 +24,7 @@ export default function Index() {
     <>
       <Header />
       <Hero>
-      <SwiperSlide className="slide-1" style={{backgroundImage: `url(${bgUrls[0]})`}}>
+      <SwiperSlide className="slide-1" style={{backgroundImage: `url(${bgUrls[0].url})`}}>
           <h1 className="mb-2 index-title"> 100% Fresh & Organic Fruits</h1>
           <h2 className="index-sub-title"> We Deliver Organic Vegetables & Fruits </h2>
           <Button variant="contained" color="success" style={{marginBottom: "10rem"}}>
@@ -34,7 +34,7 @@ export default function Index() {
           </Button>
         </SwiperSlide>
 
-        <SwiperSlide className="slide-2" style={{backgroundImage: `url(${bgUrls[2]})`}}>
+        <SwiperSlide className="slide-2" style={{backgroundImage: `url(${bgUrls[2].url})`}}>
           <h1 className="mb-2 index-title"> 100% Fresh & Organic Fruits</h1>
           <h2 className="index-sub-title"> We Serve Fresh Vegetables & Fruits </h2>
           <Button variant="contained" color="success">

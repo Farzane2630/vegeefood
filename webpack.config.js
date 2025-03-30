@@ -15,7 +15,7 @@ module.exports = {
       template: "./src/index.html",
       inject: true,
       title: "webPack",
-    })
+    }),
   ],
 
   module: {
@@ -39,38 +39,40 @@ module.exports = {
         use: [
           {
             // Adds CSS to the DOM by injecting a `<style>` tag
-            loader: 'style-loader'
+            loader: "style-loader",
           },
           {
             // Interprets `@import` and `url()` like `import/require()` and will resolve them
-            loader: 'css-loader'
+            loader: "css-loader",
           },
           {
             // Loader for webpack to process CSS with PostCSS
-            loader: 'postcss-loader',
+            loader: "postcss-loader",
             options: {
               postcssOptions: {
-                plugins: () => [
-                  autoprefixer
-                ]
-              }
-            }
+                plugins: () => [autoprefixer],
+              },
+            },
           },
           {
             // Loads a SASS/SCSS file and compiles it to CSS
-            loader: 'sass-loader'
+            loader: "sass-loader",
+            options: {
+              implementation: require("sass"),
+            },
           },
-          
-        ]
+        ],
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif|ico)$/,
-        use: [{
-          loader: 'url-loader',
-          options: {
-            limit: 10000,
-          }
-        }],
+        use: [
+          {
+            loader: "url-loader",
+            options: {
+              limit: 10000,
+            },
+          },
+        ],
       },
     ],
   },

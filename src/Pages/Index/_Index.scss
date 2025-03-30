@@ -1,18 +1,19 @@
-h1 , h2 {
-   animation-duration: 1s;
-    animation-fill-mode: both;
+h1,
+h2 {
+  animation-duration: 1s;
+  animation-fill-mode: both;
+  animation-name: ftco-animation;
 
-    @keyframes ftco-animation {
-      from,
-      to {
-        opacity: 0;
-        transform: translate(0, 50px);
-      }
-      to {
-        opacity: 1;
-        transform: none;
-      }
+  @keyframes ftco-animation {
+    from,
+    to {
+      opacity: 0;
+      transform: translate(0, 50px);
     }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
 
-    animation-name: ftco-animation;
 }

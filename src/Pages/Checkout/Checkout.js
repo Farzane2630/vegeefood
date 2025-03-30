@@ -36,8 +36,6 @@ export default function Checkout() {
     return 0
   }, 0);
 
-  console.log(totalDiscount);
-
   const total =
     Number(totalDiscount) !== 0
       ? (subTotal * (100 - totalDiscount)) / 100 + 4.99
@@ -61,7 +59,7 @@ export default function Checkout() {
       <Hero notIndex={true}>
         <SwiperSlide
           className="slide-1"
-          style={{ backgroundImage: `url(${bg[1]})` }}
+          style={{ backgroundImage: `url(${bg[1].url})` }}
         >
           <p className="product-page"> Home Products </p>
           <h1 className="product-title">Product info</h1>
@@ -116,7 +114,7 @@ export default function Checkout() {
               <div className="total">
                 <span>TOTAL</span>
                 <span className="total-price">
-                  {purchasedItems.length > 0 ? ` $ ${total}` : `$ 00.0`}
+                  {purchasedItems.length > 0 ? ` $ ${total.toFixed(2)}` : `$ 00.0`}
                 </span>
               </div>
             </div>

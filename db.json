@@ -1,7 +1,7 @@
 {
   "products": [
     {
-      "id": 58,
+      "id": "58",
       "title": "BROCOLLI",
       "price": 7,
       "rate": 3,
@@ -12,7 +12,7 @@
       "discount": 5
     },
     {
-      "id": 39,
+      "id": "39",
       "title": "Fruits JUICE",
       "price": 15,
       "rate": 4,
@@ -23,7 +23,7 @@
       "discount": 3
     },
     {
-      "id": 123,
+      "id": "123",
       "title": "ALMOND",
       "price": 19,
       "rate": 4.4,
@@ -34,7 +34,7 @@
       "discount": 5
     },
     {
-      "id": 34,
+      "id": "34",
       "title": "SUNFLOWER SEEDS",
       "price": 14,
       "rate": 4.4,
@@ -45,7 +45,7 @@
       "discount": 3
     },
     {
-      "id": 35,
+      "id": "35",
       "title": "ORANGE JUICE",
       "price": 9,
       "rate": 4.4,
@@ -56,7 +56,7 @@
       "discount": "3"
     },
     {
-      "id": 8,
+      "id": "8",
       "title": "BROCOLLI",
       "price": 7,
       "rate": 3,
@@ -67,7 +67,7 @@
       "discount": 5
     },
     {
-      "id": 9,
+      "id": "9",
       "title": "Fruits JUICE",
       "price": 15,
       "rate": 4,
@@ -78,7 +78,7 @@
       "discount": 3
     },
     {
-      "id": 13,
+      "id": "13",
       "title": "ALMOND",
       "price": 19,
       "rate": 4.4,
@@ -89,7 +89,7 @@
       "discount": 5
     },
     {
-      "id": 14,
+      "id": "14",
       "title": "SUNFLOWER SEEDS",
       "price": 14,
       "rate": 4.4,
@@ -100,7 +100,7 @@
       "discount": 3
     },
     {
-      "id": 15,
+      "id": "15",
       "title": "ORANGE JUICE",
       "price": 9,
       "rate": 4.4,
@@ -113,35 +113,44 @@
   ],
   "categories": [
     {
-      "id": 5,
+      "id": "5",
       "title": "All",
       "cover": "./assets/images/category-4.jpg"
     },
     {
-      "id": 1,
+      "id": "1",
       "title": "Vegetables",
       "cover": "./assets/images/category-1.jpg"
     },
     {
-      "id": 2,
+      "id": "2",
       "title": "Fruits",
       "cover": "./assets/images/category-2.jpg"
     },
     {
-      "id": 3,
+      "id": "3",
       "title": "Juice",
       "cover": "./assets/images/category-3.jpg"
     },
     {
-      "id": 4,
+      "id": "4",
       "title": "Dried",
       "cover": "./assets/images/category-4.jpg"
     }
   ],
   "heroImages": [
-    "./assets/images/bg_1.jpg",
-    "./assets/images/p_bg_1.jpg",
-    "./assets/images/bg_2.jpg"
+    {
+      "id": "1",
+      "url": "./assets/images/bg_1.jpg"
+    },
+    {
+      "id": "2",
+      "url": "./assets/images/p_bg_1.jpg"
+    },
+    {
+      "id": "3",
+      "url": "./assets/images/bg_2.jpg"
+    }
   ],
   "best-price": {
     "id": 1,
@@ -156,25 +165,29 @@
       "userID": 1,
       "userName": "Farzane",
       "userImgUrl": "./assets/images/person.jpg",
-      "userCommentText": "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts."
+      "userCommentText": "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.",
+      "id": "6a29"
     },
     {
       "userID": 2,
       "userName": "Hossein",
       "userImgUrl": "./assets/images/person.jpg",
-      "userCommentText": "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts."
+      "userCommentText": "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.",
+      "id": "2320"
     },
     {
       "userID": 3,
       "userName": "Sahel",
       "userImgUrl": "./assets/images/person.jpg",
-      "userCommentText": "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts."
+      "userCommentText": "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.",
+      "id": "8ef2"
     },
     {
       "userID": 4,
       "userName": "Stephie",
       "userImgUrl": "./assets/images/person.jpg",
-      "userCommentText": "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts."
+      "userCommentText": "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.",
+      "id": "a50e"
     }
   ],
   "services": [
@@ -182,43 +195,51 @@
       "url": "./assets/images/free-delivery.png",
       "title": "Free Shipping",
       "detail": "on order over $100",
-      "bg": "#e4b2d6"
+      "bg": "#e4b2d6",
+      "id": "ebfe"
     },
     {
       "url": "./assets/images/grocery-cart.png",
       "title": "Always Fresh",
       "detail": "products well packaged",
-      "bg": "#dcc698"
+      "bg": "#dcc698",
+      "id": "8968"
     },
     {
       "url": "./assets/images/premium-quality.png",
       "title": "Superior Quality",
       "detail": "quality products",
-      "bg": "#a2d1e1"
+      "bg": "#a2d1e1",
+      "id": "ae0e"
     },
     {
       "url": "./assets/images/customer-service.png",
       "title": "Support",
       "detail": "24/7 support",
-      "bg": "#dcd691"
+      "bg": "#dcd691",
+      "id": "c4e0"
     }
   ],
   "countup": [
     {
       "end": 1056,
-      "desc": "HAPPY CUSTOMERS"
+      "desc": "HAPPY CUSTOMERS",
+      "id": "dfaf"
     },
     {
       "end": 93,
-      "desc": "BRANCHES"
+      "desc": "BRANCHES",
+      "id": "5597"
     },
     {
       "end": 60,
-      "desc": "PARTNER"
+      "desc": "PARTNER",
+      "id": "a5f6"
     },
     {
       "end": 20,
-      "desc": "AWARDS"
+      "desc": "AWARDS",
+      "id": "0557"
     }
   ],
   "about": {
@@ -229,11 +250,10 @@
     "email": "farzanekazemi8517@gmail.com",
     "phone": "+989120738517",
     "website": "www.vegeeshop.com"
-<<<<<<< HEAD
   },
   "cartItems": [
     {
-      "id": "9fe4e84f-b362-44bc-bf36-4de3f0740a07",
+      "id": "cab01571-d484-4be7-bb55-9d907e186f9c",
       "title": "BROCOLLI",
       "price": 7,
       "quantity": 1,
@@ -245,20 +265,28 @@
       "discount": 5
     },
     {
-      "id": "b9da319a-00e9-459a-a1c1-1cb3405dca9f",
-      "title": "ALMOND",
-      "price": 19,
+      "id": "5bed48e9-0c75-462e-a806-0cebdd1ae584",
+      "title": "ORANGE JUICE",
+      "price": 9,
       "quantity": 1,
       "rate": 4.4,
       "sold": 900,
-      "cover": "./assets/images/almond.jpg",
+      "cover": "./assets/images/orange-juice.jpg",
       "inStock": 1,
-      "category": "Dreid",
-      "discount": 5
+      "category": "Juice",
+      "discount": "3"
+    },
+    {
+      "id": "a2b0fc29-8c0f-4a71-8f23-c410e4d1b6df",
+      "title": "SUNFLOWER SEEDS",
+      "price": 14,
+      "quantity": 1,
+      "rate": 4.4,
+      "sold": 800,
+      "cover": "./assets/images/sunflower-seeds.jpg",
+      "inStock": 1,
+      "category": "Dried",
+      "discount": 3
     }
   ]
 }
-=======
-  }
-}
->>>>>>> 0c0a5b5020a88c654b3f9666946873128344a029

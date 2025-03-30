@@ -15,7 +15,7 @@ import cartReducer, {
   updateTotalPrice,
   addToCart,
   fetchCartItems,
-  removeFromCart,
+  removeFromCart
 } from "./Reducers/cartItems";
 import countUpReducer, { fetchCountUpData } from "./Reducers/countUp";
 import aboutReducer, { fetchAboutData } from "./Reducers/about";

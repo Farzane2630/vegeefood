@@ -43,7 +43,6 @@ export const addToCart = createAsyncThunk(
 export const updateTotalPrice = createAsyncThunk(
   "updateTotalPrice",
   async (
-    productID,
     {
       id,
       title,
@@ -58,7 +57,7 @@ export const updateTotalPrice = createAsyncThunk(
     }
   ) => {
     const newObj = {
-      id: productID,
+      id,
       title,
       price,
       quantity,
@@ -69,17 +68,14 @@ export const updateTotalPrice = createAsyncThunk(
       category,
       discount,
     };
-    const res = await apiRequests.put(`/cartItems/${productID}`, newObj);
+    const res = await apiRequests.put(`/cartItems/${id}`, newObj);
 
     return res.data;
   }
 );
 
 export const removeFromCart = createAsyncThunk("removeFromCart", async (id) => {
-  const res = await apiRequests.delete(`/cartItems/${id}`);
-
-  console.log(res.data);
-
+ const res = await apiRequests.delete(`/cartItems/${id}`);
   return res.data;
 });
 
