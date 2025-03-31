@@ -1,8 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import Footer from "../../components/Footer/Footer";
 import Header from "../../components/Header/Header";
-import Hero from "../../components/Hero/Hero";
-import { SwiperSlide } from "swiper/react";
 import { useDispatch, useSelector } from "react-redux";
 import BasicTable from "../../Utils/Table/Table";
 import {
@@ -17,7 +15,7 @@ import { Link } from "react-router-dom";
 import "./_Cart.scss";
 
 export default function Cart() {
-  const [cartItems, serCartItems] = useState([]);
+  const cartItems = useSelector((state)=> state.cart)
   const dispatch = useDispatch();
 
   const deleteFromList = (productID) => {
@@ -36,33 +34,15 @@ export default function Cart() {
         }, 0)
       : 0;
 
-  //load cart items function
-  const loadcartItems = async () => {
-    const items = await dispatch(fetchCartItems());
-    serCartItems(items.payload);
-  };
-  // update total price
-  useEffect(() => {
-    dispatch(updateTotalPrice());
-  }, [dispatch]);
-
   // update cart items
   useEffect(() => {
-    loadcartItems();
-  }, [cartItems, removeFromCart]);
+    dispatch(fetchCartItems());
+    dispatch(updateTotalPrice());
+  }, []);
 
   return (
     <>
       <Header indexPage={false} pageTitle="MY CART" />
-      {/* <Hero notIndex={true}>
-        <SwiperSlide
-          className="slide-1"
-          style={{ backgroundImage: `url(${bg[1].url})` }}
-        >
-          <p className="product-page"> Home CART </p>
-          <h1 className="product-title">MY CART</h1>
-        </SwiperSlide>
-      </Hero> */}
       {cartItems.length > 0 ? (
         <>
           <BasicTable products={cartItems} deleteFromList={deleteFromList} />

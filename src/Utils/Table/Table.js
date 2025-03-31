@@ -45,14 +45,14 @@ function ProductRow({ product, deleteFromList, wishlist, addToCartHandler }) {
     dispatch(updateTotalPrice(productID, updatetProductObject));
   }
 
-  const totalRowPrice = product.discount !== 0 && product.quantity > 1
-          ? ((product.price * (100 - product.discount)) / 100) *
-            product.quantity
-          : product.discount !== 0 && product.quantity <= 1
-          ? product.price * ((100 - product.discount) / 100)
-          : product.discount === 0 && product.quantity > 1
-          ? product.price * product.quantity
-          : ""
+  // const totalRowPrice = product.discount !== 0 && product.quantity > 1
+  //         ? ((product.price * (100 - product.discount)) / 100) *
+  //           product.quantity
+  //         : product.discount !== 0 && product.quantity <= 1
+  //         ? product.price * ((100 - product.discount) / 100)
+  //         : product.discount === 0 && product.quantity > 1
+  //         ? product.price * product.quantity
+  //         : ""
   
   return (
     <TableRow
@@ -104,9 +104,9 @@ function ProductRow({ product, deleteFromList, wishlist, addToCartHandler }) {
           onChange={(e) => setproductQuantity(product.id, e)}
         />
       </TableCell>
-      <TableCell className="table-body-cell" align="center">
+      {/* <TableCell className="table-body-cell" align="center">
         {totalRowPrice.toFixed(2)}
-      </TableCell>
+      </TableCell> */}
     </TableRow>
   );
 }
@@ -131,15 +131,15 @@ export default function BasicTable({
             <TableCell className="table-head-cell" align="right">
               Quantity
             </TableCell>
-            <TableCell className="table-head-cell" align="right">
+            {/* <TableCell className="table-head-cell" align="right">
               Total
-            </TableCell>
+            </TableCell> */}
           </TableRow>
         </TableHead>
         <TableBody>
-          {products.map((product) => (
+          {products.map((product, index) => (
             <ProductRow
-              key={product.title}
+              key={index}
               product={product}
               deleteFromList={() => deleteFromList(product.id)}
               wishlist={wishlist}

@@ -253,7 +253,31 @@
   },
   "cartItems": [
     {
-      "id": "5bed48e9-0c75-462e-a806-0cebdd1ae584",
+      "id": "f5539014-e3d5-40b9-9365-3444b4994bdc",
+      "title": "Fruits JUICE",
+      "price": 15,
+      "quantity": 1,
+      "rate": 4,
+      "sold": 1600,
+      "cover": "./assets/images/fruit-juice.jpg",
+      "inStock": 1,
+      "category": "Juice",
+      "discount": 3
+    },
+    {
+      "id": "c7dd8c53-c142-426c-9e35-ea73f2c5e79e",
+      "title": "BROCOLLI",
+      "price": 7,
+      "quantity": 1,
+      "rate": 3,
+      "sold": 900,
+      "cover": "./assets/images/brocollie.jpg",
+      "inStock": 1,
+      "category": "Vegetables",
+      "discount": 5
+    },
+    {
+      "id": "25f6d540-3075-42fd-ac4c-512b29ef89db",
       "title": "ORANGE JUICE",
       "price": 9,
       "quantity": 1,
