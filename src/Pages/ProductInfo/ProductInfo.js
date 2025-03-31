@@ -1,7 +1,6 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import Header from "../../components/Header/Header";
-import Hero from "../../components/Hero/Hero";
-import { SwiperSlide } from "swiper/react";
+
 import "swiper/css";
 import "./_ProductInfo.scss";
 import Footer from "../../components/Footer/Footer";
@@ -17,12 +16,12 @@ export default function ProductInfo() {
   const [isSelected, setIsSelected] = useState(false);
   const [inputValue, setInputValue] = useState(0);
 
-  const bg = useSelector((state) => state.bgUrl);
-
   const products = useSelector((state) => state.products.products);
   const { productID } = useParams();
   const mainProduct = products.find((product) => product.id == productID);
   const cartItems = useSelector((state) => state.cart);
+
+  // adto cart
   const addToCartHandler = (id) => {
     if (!isSelected && inputValue > 0) {
       if (cartItems.includes(mainProduct)) {
@@ -52,10 +51,10 @@ export default function ProductInfo() {
       }
     }
   };
+  
   return (
     <>
       <Header indexPage={false} pageTitle="PRODUCT INFO" />
-      
 
       <Grid container className="product-info-container">
         <Grid className="img-section" item xs={12} lg={6}>

@@ -8,7 +8,6 @@ import shop from "../../../public/assets/images/category.jpg";
 
 export default function Category() {
   const categories = useSelector((state) => state.categories);
-  console.log("categories", categories);
   return (
     <Box>
       <Grid

@@ -3,7 +3,6 @@ import Newsletter from "../Newsletter/Newsletter";
 import { Grid } from "@mui/material";
 import { FaFacebookF, FaTwitter, FaInstagram } from "react-icons/fa";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
-import PhoneIcon from "@mui/icons-material/Phone";
 import MailIcon from "@mui/icons-material/Mail";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { Link } from "react-router-dom";

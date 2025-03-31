@@ -1,10 +1,8 @@
 import React from "react";
 import Header from "../../components/Header/Header";
-import Hero from "../../components/Hero/Hero";
 import Footer from "../../components/Footer/Footer";
 import Testimony from "../../components/Testimony/Testimony";
 import OurServices from "../../components/OurServices/OurServices";
-import { SwiperSlide } from "swiper/react";
 import { useSelector } from "react-redux";
 import CountUp from "../../components/CountUp/CountUp";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
@@ -22,19 +20,8 @@ export default function About() {
   return (
     <>
       <Header indexPage={false} pageTitle="ABOUT US" />
-      {/* <Hero notIndex={true}>
-        <SwiperSlide
-          className="slide-1"
-          style={{ backgroundImage: `url(${bg[1].url})` }}
-        >
-          <p className="product-page"> HOME ABOUT US </p>
-          <h1 className="product-title">ABOUT US</h1>
-        </SwiperSlide>
-      </Hero> */}
-
       <Grid container className="about-container">
         <Grid item xs={12} md={6} className="about-media">
-          {/* <img src={aboutURL.url} alt="about-us" /> */}
           <div
             className="about-img"
             style={{ backgroundImage: `url(${aboutURL.url})` }}

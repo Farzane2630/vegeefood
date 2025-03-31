@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-// import MapComponent from "../../components/MapComponent";
 import Footer from "../../components/Footer/Footer";
 import Header from "../../components/Header/Header";
 import { useSelector } from "react-redux";
@@ -60,7 +59,7 @@ function Contact() {
   return (
     <div style={{ backgroundColor: "#f7f6f2" }}>
       <Header indexPage={false} pageTitle="CONTACT US" />
-
+      // contact section
       <Grid
         container
         className="contact-info-container"
@@ -91,7 +90,7 @@ function Contact() {
           </div>
         </Grid>
       </Grid>
-
+      // map section
       <Grid
         container
         className="map-contactform"
