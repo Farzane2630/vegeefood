@@ -99,12 +99,11 @@ export default function Footer({about}) {
             203 Fake St. Mountain View, San Francisco, California, USA
           </div>
           <div className="phone">
-            <PhoneIcon />
-            +989120738517
+            +4915755991926
           </div>
           <div className="email">
             <MailIcon />
-            Vegefoods@gmail.com
+            farzanekazemi8517@gmail.com
           </div>
         </Grid>
       </Grid>

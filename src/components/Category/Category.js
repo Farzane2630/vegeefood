@@ -19,7 +19,7 @@ export default function Category() {
       >
         <Grid xs={12} md={3} className="grid-item">
           {categories.slice(0, 2).map((category) => (
-            <div className="image-container">
+            <div key={category.id} className="image-container">
               <div
                 className="image-container"
                 style={{ backgroundImage: `url(${category.cover})` }}

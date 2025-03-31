@@ -14,7 +14,7 @@ export default function TopContactbar() {
              <span className="phone-icon">
                <PhoneEnabledIcon />
              </span>
-             + 1235 2355 98
+             + 49 157 5599 1926
            </Grid>
             
            <Grid xs={12} md={4} className="topbar-contact-info">

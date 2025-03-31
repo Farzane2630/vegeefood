@@ -1,26 +1,24 @@
 import React, { useContext, useState } from "react";
+import { Link } from "react-router-dom";
+
 import Header from "../../components/Header/Header";
-import Hero from "../../components/Hero/Hero";
 import Footer from "../../components/Footer/Footer";
-import { SwiperSlide } from "swiper/react";
-import { useSelector } from "react-redux";
-import { Button, Grid } from "@mui/material";
 import InputAdornments from "../../components/InfoTable/InfoTable";
+import { cartContext } from "../../Contexts/Contexts";
+
+import { useSelector } from "react-redux";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import Radio from "@mui/material/Radio";
 import Checkbox from "@mui/material/Checkbox";
 import FormLabel from "@mui/material/FormLabel";
 import RadioGroup from "@mui/material/RadioGroup";
-import { Link } from "react-router-dom";
-import { cartContext } from "../../Contexts/Contexts";
+import { Button, Grid } from "@mui/material";
 import swal from "sweetalert";
 
 import "./_Checkout.scss";
 
 export default function Checkout() {
-  const bg = useSelector((state) => state.bgUrl);
-
   // payment
   const context = useContext(cartContext);
   const purchasedItems = useSelector((state) => state.cart);
@@ -53,18 +51,12 @@ export default function Checkout() {
     }
   };
 
+
+  // Set the cart empty after purchase 
+
   return (
     <>
-      <Header />
-      <Hero notIndex={true}>
-        <SwiperSlide
-          className="slide-1"
-          style={{ backgroundImage: `url(${bg[1].url})` }}
-        >
-          <p className="product-page"> Home Products </p>
-          <h1 className="product-title">Product info</h1>
-        </SwiperSlide>
-      </Hero>
+      <Header indexPage={false} pageTitle="CHECKOUT" />
       <div className="checkout-container">
         <h2 className="billing-header">Billing Details</h2>
 

@@ -1,7 +1,5 @@
 import React, { useContext } from "react";
 import Header from "../../components/Header/Header";
-import Hero from "../../components/Hero/Hero";
-import { SwiperSlide } from "swiper/react";
 import Footer from "../../components/Footer/Footer";
 import { useDispatch, useSelector } from "react-redux";
 import { removeFromList } from "../../Redux/Reducers/Wishlist";
@@ -14,7 +12,6 @@ import { toast } from "react-toastify";
 import "./_WishList.scss";
 
 export default function WishList() {
-  const bg = useSelector((state) => state.bgUrl);
   const wishlist = useSelector((state) => state.wishlist);
   const dispatch = useDispatch();
 
@@ -67,17 +64,7 @@ export default function WishList() {
 
   return (
     <>
-      <Header />
-
-      <Hero notIndex={true}>
-        <SwiperSlide
-          className="slide-1"
-          style={{ backgroundImage: `url(${bg[1]})` }}
-        >
-          <p className="product-page"> Home WISHLIST </p>
-          <h1 className="product-title">MY WISHLIST</h1>
-        </SwiperSlide>
-      </Hero>
+      <Header indexPage={false} pageTitle="WISHLIST" />
 
       {wishlist.length !== 0 ? (
         <>

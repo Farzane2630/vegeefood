@@ -17,7 +17,6 @@ import { Link } from "react-router-dom";
 import "./_Cart.scss";
 
 export default function Cart() {
-  const bg = useSelector((state) => state.bgUrl);
   const [cartItems, serCartItems] = useState([]);
   const dispatch = useDispatch();
 
@@ -30,34 +29,32 @@ export default function Cart() {
     cartItems.length > 0
       ? cartItems.reduce((total, product) => {
           if (product.discount !== 0) {
-            return (
-             total +
-             ( product.price *
-                ((100 - product.discount) / 100) )
-            );
+            return total + product.price * ((100 - product.discount) / 100);
           } else {
-            return total + product.price
+            return total + product.price;
           }
         }, 0)
       : 0;
 
+  //load cart items function
   const loadcartItems = async () => {
     const items = await dispatch(fetchCartItems());
     serCartItems(items.payload);
   };
-
+  // update total price
   useEffect(() => {
     dispatch(updateTotalPrice());
   }, [dispatch]);
 
+  // update cart items
   useEffect(() => {
     loadcartItems();
-  }, [cartItems]);
+  }, [cartItems, removeFromCart]);
 
   return (
     <>
-      <Header />
-      <Hero notIndex={true}>
+      <Header indexPage={false} pageTitle="MY CART" />
+      {/* <Hero notIndex={true}>
         <SwiperSlide
           className="slide-1"
           style={{ backgroundImage: `url(${bg[1].url})` }}
@@ -65,7 +62,7 @@ export default function Cart() {
           <p className="product-page"> Home CART </p>
           <h1 className="product-title">MY CART</h1>
         </SwiperSlide>
-      </Hero>
+      </Hero> */}
       {cartItems.length > 0 ? (
         <>
           <BasicTable products={cartItems} deleteFromList={deleteFromList} />

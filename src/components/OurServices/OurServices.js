@@ -15,8 +15,8 @@ export default function OurServices({ about }) {
   return (
     <Box className={`${about ? "about" : ""}`}>
       <Grid container className="grid-container">
-        {services.map((data) => (
-          <Grid item className="grid-item" xs={12} sm={3} wrap="no-wrap">
+        {services.map((data, index) => (
+          <Grid key={index} item className="grid-item" xs={12} sm={3} wrap="no-wrap">
             <div
               className="icon-container"
               style={{ backgroundColor: `${data.bg}` }}

@@ -17,14 +17,12 @@ export default function About() {
   const bg = useSelector((state) => state.bgUrl);
   const bestPrice = useSelector((state) => state.bestPrice);
   const countUpelems = useSelector((state) => state.countUp);
-  // console.log(countUpelems);
   const aboutURL = useSelector((state) => state.about);
-  console.log(aboutURL);
 
   return (
     <>
-      <Header />
-      <Hero notIndex={true}>
+      <Header indexPage={false} pageTitle="ABOUT US" />
+      {/* <Hero notIndex={true}>
         <SwiperSlide
           className="slide-1"
           style={{ backgroundImage: `url(${bg[1].url})` }}
@@ -32,7 +30,7 @@ export default function About() {
           <p className="product-page"> HOME ABOUT US </p>
           <h1 className="product-title">ABOUT US</h1>
         </SwiperSlide>
-      </Hero>
+      </Hero> */}
 
       <Grid container className="about-container">
         <Grid item xs={12} md={6} className="about-media">
@@ -76,8 +74,8 @@ export default function About() {
         className="container-fluid best-price-container"
         style={{ backgroundImage: `url(${bestPrice.bgUrl})` }}
       >
-        {countUpelems.map((elem) => (
-          <CountUp end={elem.end} desc={elem.desc} duration={3} />
+        {countUpelems.map((elem, index) => (
+          <CountUp key={index} end={elem.end} desc={elem.desc} duration={3} />
         ))}
       </div>
       <Testimony />

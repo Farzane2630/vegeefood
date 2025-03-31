@@ -1,18 +1,17 @@
 import React, { useState } from "react";
+// import MapComponent from "../../components/MapComponent";
 import Footer from "../../components/Footer/Footer";
 import Header from "../../components/Header/Header";
-import Hero from "../../components/Hero/Hero";
-import { SwiperSlide } from "swiper/react";
 import { useSelector } from "react-redux";
 import { Grid, TextField, Button } from "@mui/material";
-import { Map, InfoWindow, Marker, GoogleApiWrapper } from "google-maps-react";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 
 import "./_Contact.scss";
+import MapComponent from "../../components/MapComponent";
+import { GoogleApiWrapper } from "google-maps-react";
 
 function Contact() {
-  const bg = useSelector((state) => state.bgUrl);
   const contactInfo = useSelector((state) => state.contact);
 
   //map
@@ -60,17 +59,8 @@ function Contact() {
 
   return (
     <div style={{ backgroundColor: "#f7f6f2" }}>
-      <Header />
+      <Header indexPage={false} pageTitle="CONTACT US" />
 
-      <Hero notIndex={true}>
-        <SwiperSlide
-          className="slide-1"
-          style={{ backgroundImage: `url(${bg[1].url})` }}
-        >
-          <p className="product-page"> Home CONTACT US </p>
-          <h1 className="product-title">CONTACT US</h1>
-        </SwiperSlide>
-      </Hero>
       <Grid
         container
         className="contact-info-container"
@@ -114,22 +104,12 @@ function Contact() {
           className="google-map"
           sx={{ display: { xs: "none", sm: "flex" } }}
         >
-          <Map
-            google={window.google}
-            onClick={onMapClicked}
+          <MapComponent
+            onMapClicked={onMapClicked}
+            state={state}
             containerStyle={containerStyle}
-          >
-            <Marker onClick={onMarkerClick} name={"Current location"} />
-
-            <InfoWindow
-              marker={state.activeMarker}
-              visible={state.showingInfoWindow}
-            >
-              <div>
-                <h1>{state.selectedPlace.name}</h1>
-              </div>
-            </InfoWindow>
-          </Map>
+            onMarkerClick={onMarkerClick}
+          />
         </Grid>
         <Grid item xs={12} lg={6} className="contact-form-container">
           <TextField

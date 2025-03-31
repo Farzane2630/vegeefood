@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
-import Hero from "../../components/Hero/Hero";
-import { SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "./_Products.scss";
 import { Grid } from "@mui/material";
@@ -17,7 +15,6 @@ import { v4 as uuidv4 } from "uuid";
 
 export default function Products() {
   const dispatch = useDispatch();
-  const bg = useSelector((state) => state.bgUrl);
   const products = useSelector((state) => state.products.products);
   const categories = useSelector((state) => state.products.categories);
   const selectedCategory = useSelector(
@@ -121,16 +118,7 @@ export default function Products() {
 
   return (
     <>
-      <Header />
-      <Hero notIndex={true}>
-        <SwiperSlide
-          className="slide-1"
-          style={{ backgroundImage: `url(${bg[1].url})` }}
-        >
-          <p className="product-page"> Home Products </p>
-          <h1 className="product-title">Products</h1>
-        </SwiperSlide>
-      </Hero>
+      <Header indexPage={false} pageTitle="PRODUCTS" />
 
       <ul className="filter">
         {categories.map((category) => (

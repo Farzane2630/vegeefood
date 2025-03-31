@@ -54,16 +54,8 @@ export default function ProductInfo() {
   };
   return (
     <>
-      <Header />
-      <Hero notIndex={true}>
-        <SwiperSlide
-          className="slide-1"
-          style={{ backgroundImage: `url(${bg[1].url})` }}
-        >
-          <p className="product-page"> Home Products </p>
-          <h1 className="product-title">Product info</h1>
-        </SwiperSlide>
-      </Hero>
+      <Header indexPage={false} pageTitle="PRODUCT INFO" />
+      
 
       <Grid container className="product-info-container">
         <Grid className="img-section" item xs={12} lg={6}>

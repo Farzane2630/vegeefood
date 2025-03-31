@@ -246,24 +246,12 @@
     "url": "./assets/images/about.jpg"
   },
   "contact-info": {
-    "address": "198 West 21th Street, Suite 721 New York NY 10016",
+    "address": "Suite 721, New York, USA",
     "email": "farzanekazemi8517@gmail.com",
     "phone": "+989120738517",
     "website": "www.vegeeshop.com"
   },
   "cartItems": [
-    {
-      "id": "cab01571-d484-4be7-bb55-9d907e186f9c",
-      "title": "BROCOLLI",
-      "price": 7,
-      "quantity": 1,
-      "rate": 3,
-      "sold": 900,
-      "cover": "./assets/images/brocollie.jpg",
-      "inStock": 1,
-      "category": "Vegetables",
-      "discount": 5
-    },
     {
       "id": "5bed48e9-0c75-462e-a806-0cebdd1ae584",
       "title": "ORANGE JUICE",
@@ -275,18 +263,6 @@
       "inStock": 1,
       "category": "Juice",
       "discount": "3"
-    },
-    {
-      "id": "a2b0fc29-8c0f-4a71-8f23-c410e4d1b6df",
-      "title": "SUNFLOWER SEEDS",
-      "price": 14,
-      "quantity": 1,
-      "rate": 4.4,
-      "sold": 800,
-      "cover": "./assets/images/sunflower-seeds.jpg",
-      "inStock": 1,
-      "category": "Dried",
-      "discount": 3
     }
   ]
 }
