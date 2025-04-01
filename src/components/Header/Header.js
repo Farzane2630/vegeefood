@@ -10,9 +10,6 @@ import { Link } from "react-router-dom";
 export default function Header({ indexPage, pageTitle }) {
   const bg = useSelector((state) => state.bgUrl || []);
 
-  console.log(bg);
-  
-
   return (
     <>
       <TopContactbar />
