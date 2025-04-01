@@ -15,7 +15,7 @@ import { Link } from "react-router-dom";
 import "./_Cart.scss";
 
 export default function Cart() {
-  const cartItems = useSelector((state)=> state.cart)
+  const cartItems = useSelector((state) => state.cart);
   const dispatch = useDispatch();
 
   const deleteFromList = (productID) => {
@@ -38,7 +38,7 @@ export default function Cart() {
   useEffect(() => {
     dispatch(fetchCartItems());
     dispatch(updateTotalPrice());
-  }, []);
+  }, [cartItems]);
 
   return (
     <>
