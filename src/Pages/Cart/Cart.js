@@ -38,7 +38,7 @@ export default function Cart() {
   useEffect(() => {
     dispatch(fetchCartItems());
     dispatch(updateTotalPrice());
-  }, [cartItems]);
+  }, []);
 
   return (
     <>

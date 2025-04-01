@@ -42,20 +42,18 @@ export const addToCart = createAsyncThunk(
 );
 export const updateTotalPrice = createAsyncThunk(
   "updateTotalPrice",
-  async (
-    {
-      id,
-      title,
-      price,
-      quantity,
-      rate,
-      sold,
-      cover,
-      inStock,
-      category,
-      discount,
-    }
-  ) => {
+  async ({
+    id,
+    title,
+    price,
+    quantity,
+    rate,
+    sold,
+    cover,
+    inStock,
+    category,
+    discount,
+  }) => {
     const newObj = {
       id,
       title,
@@ -75,8 +73,8 @@ export const updateTotalPrice = createAsyncThunk(
 );
 
 export const removeFromCart = createAsyncThunk("removeFromCart", async (id) => {
- const res = await apiRequests.delete(`/cartItems/${id}`);
-  return res.data;
+  const res = await apiRequests.delete(`/cartItems/${id}`);
+  return id;
 });
 
 const slice = createSlice({
@@ -94,9 +92,7 @@ const slice = createSlice({
       return action.payload;
     });
     builder.addCase(removeFromCart.fulfilled, (state, action) => {
-      const newState = state.filter(
-        (product) => product.id !== action.payload.id
-      );
+      const newState = state.filter((product) => product.id !== action.payload);
       return newState;
     });
   },
