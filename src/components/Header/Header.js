@@ -8,7 +8,10 @@ import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
 
 export default function Header({ indexPage, pageTitle }) {
-  const bg = useSelector((state) => state.bgUrl);
+  const bg = useSelector((state) => state.bgUrl || []);
+
+  console.log(bg);
+  
 
   return (
     <>
@@ -20,7 +23,7 @@ export default function Header({ indexPage, pageTitle }) {
             <SwiperSlide
               className="slide-1"
               style={{
-                backgroundImage: `url(${bg[0].url})`,
+                backgroundImage: `url(${bg[0]?.url})`,
                 backgroundRepeat: "no-repeat",
                 backgroundSize: "cover",
                 backgroundPosition: "center",
@@ -56,7 +59,7 @@ export default function Header({ indexPage, pageTitle }) {
             <SwiperSlide
               className="slide-2"
               style={{
-                backgroundImage: `url(${bg[2].url})`,
+                backgroundImage: `url(${bg[2]?.url})`,
                 backgroundRepeat: "no-repeat",
                 backgroundSize: "cover",
                 backgroundPosition: "center",
@@ -89,7 +92,7 @@ export default function Header({ indexPage, pageTitle }) {
           <SwiperSlide
             className="slide-1"
             style={{
-              backgroundImage: `url(${bg[1].url})`,
+              backgroundImage: `url(${bg[1]?.url})`,
               backgroundRepeat: "no-repeat",
               backgroundSize: "cover",
               backgroundPosition: "center",
